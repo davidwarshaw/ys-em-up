@@ -33,7 +33,7 @@ Bullet Type 1
 Tiled maps
 
 - 16x16px tiles
-- One "screen" is
+- One "screen", not including HUD, is 20x11 tiles (320x176px)
 
 ### Sprites
 
@@ -43,7 +43,7 @@ Character Sprites
 - Animation Frames
   - 1 frame of idle, directions down, up, and right
   - 2 frames of walk, directions down, up, and right
-  - (Example)[assets/images/characters-spritesheet.png]
+  - [Example](assets/images/characters-spritesheet.png)
 
 Bullet Sprites
 
@@ -51,7 +51,7 @@ Bullet Sprites
 - Animation Frames
   - 2 frames of move, no directions
   - 2 frames of impact/explode, no directions
-  - (Example)[assets/images/bullets-spritesheet.png]
+  - [Example](assets/images/bullets-spritesheet.png)
 
 Boss Sprite
 
