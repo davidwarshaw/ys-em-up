@@ -1,0 +1,375 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-1.tmx": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 254.5,
+                "y": 197.5
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-1.tmx#Enemies": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-1.tmx#tileset": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-2.tmx": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 287.5,
+                "y": 184
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-2.tmx#Enemies": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-2.tmx#tileset": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-3-1.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1344,
+                "y": 158.66666666666669
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-3-1.tmx#Enemies": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-3-1.tmx#tileset": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/monster-slaver/assets/maps/map-start.tmx": {
+            "scale": 4,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 149.75,
+                "y": -54.25
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/monster-slaver/assets/maps/start.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 165.33333333333331,
+                "y": 108.66666666666664
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/crater-hop.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 216,
+                "y": 1399
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/crater-hop.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/crater-refinery.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 2991,
+                "y": 1203
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/crater-refinery.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/elevator.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 914,
+                "y": 637.3333333333333
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/elevator.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/gateway.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 620,
+                "y": 572
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/gateway.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/geofront.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1328.6666666666665,
+                "y": 2326
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/geofront.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/malapert.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 2856,
+                "y": 608
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/malapert.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/map-orbit.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 170,
+                "y": 2335
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/over-the-mountain.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2054.545454545455,
+                "y": 1148.4848484848483
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/refinery-mine.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 350,
+                "y": 1376
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/refinery-mine.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/test.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moon-shooter/assets/images/tileset_extruded.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moonhauler/assets/images/elevator.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 900,
+                "y": 631
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moonhauler/assets/images/elevator.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moonhauler/assets/images/gateway.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 620,
+                "y": 668
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/moonhauler/assets/images/gateway.tmx#tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/forest_01.tmx": {
+            "scale": 0.37,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 791.8918918918919,
+                "y": 818.918918918919
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/forest_01.tmx#overworld": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx": {
+            "scale": 3.14,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 96.4968152866242,
+                "y": 97.77070063694266
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx#overworld": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test.tmx": {
+            "scale": 1.5734374999999998,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 184.9453823237339,
+                "y": 191.93644488579943
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test.tmx#overworld": {
+            "scaleInDock": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/ys-toy/assets/maps/basic-map.tmx": {
+            "scale": 2.013095238095238,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 143.06327616794795,
+                "y": 121.70313424009464
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/ys-toy/assets/maps/basic-map.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/yslike/assets/maps/basic-map.tmx": {
+            "scale": 2.013095238095238,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 148.0307510348906,
+                "y": 124.18687167356595
+            }
+        },
+        "/Users/davidwarshaw/git/davidwarshaw/yslike/assets/maps/map-start.tmx": {
+            "scale": 2.11375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 160.37847427557656,
+                "y": 104.08042578356
+            }
+        },
+        "basic-map.tmx": {
+            "scale": 2.013095238095238,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 152.00473092844473,
+                "y": 104.31697220579537
+            }
+        },
+        "basic-map.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-01.tmx": {
+            "scale": 2.11,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 150.00000000000003,
+                "y": 82.4644549763033
+            }
+        },
+        "map-dungeon-01.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-01.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map-dungeon-02.tmx": {
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 172.75,
+                "y": 171
+            }
+        },
+        "map-dungeon-02.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-02.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-overworld-01.tmx": {
+            "scale": 2.01,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 153.48258706467664,
+                "y": 103.98009950248755
+            }
+        },
+        "map-overworld-01.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-overworld-01.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "/Users/davidwarshaw/git/davidwarshaw/ys-em-up/assets/maps",
+    "last.imagePath": "/Users/davidwarshaw/git/davidwarshaw/ys-em-up/assets/images",
+    "map.fixedSize": true,
+    "map.height": 12,
+    "map.lastUsedExportFilter": "JSON map files (*.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.orientation": 1,
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 12,
+    "openFiles": [
+    ],
+    "project": "map.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "map-overworld-01.tmx",
+        "map-dungeon-01.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/forest_01.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-1.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-3-1.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-2.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/tileset.tsx",
+        "/Users/davidwarshaw/git/davidwarshaw/ys-toy/assets/maps/basic-map.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/moonhauler/assets/images/gateway.tmx",
+        "/Users/davidwarshaw/git/davidwarshaw/moonhauler/assets/images/elevator.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFilter": "All Files (*)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    },
+    "tileset.transparentColor": "#ff00ff",
+    "tileset.type": 0,
+    "tileset.useTransparentColor": false
+}

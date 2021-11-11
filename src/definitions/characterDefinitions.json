@@ -1,0 +1,40 @@
+{
+  "player": {
+    "spritesheet": {
+      "row": 11
+    }
+  },
+  "villager-01": {
+    "ai": {
+      "behavior": "static",
+      "speech": "intro"
+    },
+    "spritesheet": {
+      "row": 1
+    }
+  },
+  "enemy-01": {
+    "ai": {
+      "behavior": "bounce-around"
+    },
+    "spritesheet": {
+      "row": 10
+    }
+  },
+  "enemy-02": {
+    "ai": {
+      "behavior": "turret"
+    },
+    "spritesheet": {
+      "row": 1
+    }
+  },
+  "enemy-03": {
+    "ai": {
+      "behavior": "turret"
+    },
+    "spritesheet": {
+      "row": 12
+    }
+  }
+}

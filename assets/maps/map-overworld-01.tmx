@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="10">
+ <editorsettings>
+  <export target="map-overworld-01.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="ys_ii_tileset_extruded" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="16" columns="4">
+  <image source="ys_ii_tileset_extruded.png" width="72" height="72"/>
+  <tile id="4">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+    <property name="pit" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="17" name="characters_spritesheet" tilewidth="16" tileheight="16" tilecount="130" columns="10">
+  <image source="../images/characters_spritesheet.png" width="160" height="208"/>
+ </tileset>
+ <layer id="1" name="background" width="20" height="13">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,2,2,
+0,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,13,2,2,2,2,2,2,2,2,2,2,13,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,2,2
+</data>
+ </layer>
+ <layer id="6" name="hazard" width="20" height="13">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="collision" width="20" height="13">
+  <data encoding="csv">
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,16,0,0,0,0,0,0,0,0,0,0,16,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,16,
+16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+</data>
+ </layer>
+ <objectgroup id="4" name="characters"/>
+ <objectgroup id="5" name="portals">
+  <object id="3" gid="12" x="144" y="16" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-dungeon-01"/>
+    <property name="toX" type="int" value="9"/>
+    <property name="toY" type="int" value="12"/>
+   </properties>
+  </object>
+  <object id="8" gid="12" x="160" y="16" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-dungeon-01"/>
+    <property name="toX" type="int" value="10"/>
+    <property name="toY" type="int" value="12"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="2" name="foreground" width="20" height="13">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,
+10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,
+14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,
+14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,
+14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,
+14,0,0,0,9,0,0,0,0,0,0,0,0,0,0,9,0,0,0,14,
+14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,
+14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,
+14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,
+14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,
+14,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,14,
+14,10,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,10,14,
+14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14
+</data>
+ </layer>
+</map>

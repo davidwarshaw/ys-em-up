@@ -1,0 +1,9 @@
+{
+  "standard": {
+    "spritesheet": {
+      "row": 0
+    },
+    "power": 3,
+    "speed": 100
+  }
+}

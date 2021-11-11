@@ -1,0 +1,56 @@
+{
+  "name": "ys-em-up",
+  "description": "2021 Github Game Off",
+  "homepage": "https://github.com/davidwarshaw/ys-em-up",
+  "version": "0.0.1",
+  "author": {
+    "name": "never_k",
+    "email": "david.warshaw@gmail.com",
+    "web": "https://never-k.itch.io/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidwarshaw/ys-em-up.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "phaser",
+    "game",
+    "itch.io"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode=development",
+    "deploy": "webpack  --mode=production --config webpack.production.config.js",
+    "test": "eslint ./src/**/**.js"
+  },
+  "devDependencies": {
+    "@babel/core": ">=7.15.5",
+    "@babel/eslint-parser": ">=7.15.7",
+    "@babel/polyfill": ">=7.0.0",
+    "@babel/preset-env": ">=7.15.6",
+    "babel-loader": ">=8.2.2",
+    "browser-sync": ">=2.27.5",
+    "browser-sync-webpack-plugin": ">=2.3.0",
+    "clean-webpack-plugin": ">=4.0.0",
+    "copy-webpack-plugin": ">=9.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": ">=2.24.2",
+    "expose-loader": ">=3.0.0",
+    "html-webpack-plugin": ">=5.3.2",
+    "prettier": "^2.4.1",
+    "raw-loader": ">=4.0.2",
+    "tile-extruder": ">=2.1.0",
+    "webpack": ">=5.55.1",
+    "webpack-cli": "^4.8.0",
+    "zip-webpack-plugin": "^4.0.1"
+  },
+  "dependencies": {
+    "eslint-config-standard": ">=16.0.3",
+    "eslint-plugin-node": ">=11.1.0",
+    "eslint-plugin-promise": ">=5.1.0",
+    "eslint-plugin-standard": ">=4.1.0",
+    "phaser": "^3.55.2",
+    "rot-js": "^2.2.0"
+  }
+}
