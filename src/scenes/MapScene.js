@@ -22,12 +22,11 @@ export default class MapScene extends Phaser.Scene {
 
   create() {
     console.log(`\n\nScene created: ${this.playState.currentMap.key}`);
-    this.map = new Map(this, this.playState.currentMap.key);
+    const { key, spawn } = this.playState.currentMap;
+    console.log(`player tile spawn: ${spawn.x}, ${spawn.y}`);
+    this.map = new Map(this, key);
     const { widthInPixels, heightInPixels } = this.map.tilemap;
-    this.spawnXY = this.map.tilemap.tileToWorldXY(
-      this.playState.currentMap.spawn.x,
-      this.playState.currentMap.spawn.y
-    );
+    this.spawnXY = this.map.tilemap.tileToWorldXY(spawn.x, spawn.y);
 
     this.physics.world.setBounds(0, 0, widthInPixels, heightInPixels);
 

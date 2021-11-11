@@ -10,6 +10,10 @@ export default class BumpAttackSystem {
     this.scene = scene;
   }
 
+  clearCurrentEnemy() {
+    this.scene.playState.currentEnemy = null;
+  }
+
   setCurrentEnemy(enemy) {
     this.scene.playState.currentEnemy = enemy;
   }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="11">
+ <editorsettings>
+  <export target="map-dungeon-boss.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="ys_ii_tileset_extruded" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="16" columns="4">
+  <image source="ys_ii_tileset_extruded.png" width="72" height="72"/>
+  <tile id="4">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+    <property name="pit" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="17" name="characters_spritesheet" tilewidth="16" tileheight="16" tilecount="130" columns="10">
+  <image source="../images/characters_spritesheet.png" width="160" height="208"/>
+ </tileset>
+ <tileset firstgid="147" name="boss-01" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="../images/boss-01.png" width="64" height="64"/>
+ </tileset>
+ <layer id="1" name="background" width="20" height="11">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,2,2,
+0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+0,6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <layer id="6" name="hazard" width="20" height="11">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="collision" width="20" height="11">
+  <data encoding="csv">
+16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
+16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+</data>
+ </layer>
+ <objectgroup id="4" name="characters">
+  <object id="10" name="boss-01" gid="147" x="128" y="80" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="5" name="portals"/>
+ <layer id="2" name="foreground" width="20" height="11">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+</map>

@@ -4,12 +4,17 @@ import characterDefinitions from "../definitions/characterDefinitions.json";
 
 export default class Character extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, map, world, characterName, bodyType) {
-    super(scene, 0, 0, "characters");
+    const spriteSheetKey = characterDefinitions[characterName].spritesheet.key;
+    super(scene, 0, 0, spriteSheetKey);
     this.map = map;
     this.characterName = characterName;
 
+    this.spriteSheetKey = spriteSheetKey;
+
     this.characterDefinition = characterDefinitions[characterName];
     this.spritesheetNumColumns = 10;
+
+    this.ai = {};
 
     this.walkspeed = 2;
     this.frameRate = properties.animFrameRate * this.walkspeed;
@@ -51,7 +56,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
       // console.log(`${characterName}_${idle}: start: ${start} end: ${end}`);
       scene.anims.create({
         key: `${characterName}_${idle}`,
-        frames: scene.anims.generateFrameNumbers("characters", { start, end }),
+        frames: scene.anims.generateFrameNumbers(spriteSheetKey, { start, end }),
         frameRate: this.frameRate,
         repeat: -1,
       });
@@ -62,7 +67,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
       // console.log(`${characterName}_${move}: start: ${start} end: ${end}`);
       scene.anims.create({
         key: `${characterName}_${move}`,
-        frames: scene.anims.generateFrameNumbers("characters", { start, end }),
+        frames: scene.anims.generateFrameNumbers(spriteSheetKey, { start, end }),
         frameRate: this.frameRate,
         repeat: -1,
       });

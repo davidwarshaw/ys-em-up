@@ -16,15 +16,22 @@ export default class BootScene extends Phaser.Scene {
     this.load.tilemapTiledJSON("map-overworld-01", "assets/maps/map-overworld-01.json");
     this.load.tilemapTiledJSON("map-dungeon-01", "assets/maps/map-dungeon-01.json");
     this.load.tilemapTiledJSON("map-dungeon-02", "assets/maps/map-dungeon-02.json");
+    this.load.tilemapTiledJSON("map-dungeon-boss", "assets/maps/map-dungeon-boss.json");
 
     // Sprites
-    this.load.spritesheet("characters", "assets/images/characters_spritesheet.png", {
+    this.load.spritesheet("bosses", "assets/images/bosses-spritesheet.png", {
+      frameWidth: 64,
+      frameHeight: 64,
+      margin: 0,
+      spacing: 0,
+    });
+    this.load.spritesheet("characters", "assets/images/characters-spritesheet.png", {
       frameWidth: 16,
       frameHeight: 16,
       margin: 0,
       spacing: 0,
     });
-    this.load.spritesheet("bullets", "assets/images/bullet_spritesheet.png", {
+    this.load.spritesheet("bullets", "assets/images/bullets-spritesheet.png", {
       frameWidth: 8,
       frameHeight: 8,
       margin: 0,

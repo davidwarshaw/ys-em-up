@@ -292,8 +292,8 @@
             "scale": 2.11,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 150.00000000000003,
-                "y": 82.4644549763033
+                "x": 164.92890995260666,
+                "y": 81.99052132701424
             }
         },
         "map-dungeon-01.tmx#characters_spritesheet": {
@@ -304,17 +304,36 @@
             "scaleInEditor": 1
         },
         "map-dungeon-02.tmx": {
-            "scale": 2,
-            "selectedLayer": 2,
+            "scale": 1.5,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 172.75,
-                "y": 171
+                "x": 215.33333333333334,
+                "y": 43.33333333333334
             }
         },
         "map-dungeon-02.tmx#characters_spritesheet": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "map-dungeon-02.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-boss.tmx": {
+            "scale": 2,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 157,
+                "y": 142.5
+            }
+        },
+        "map-dungeon-boss.tmx#boss-01": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map-dungeon-boss.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-boss.tmx#ys_ii_tileset_extruded": {
             "scaleInDock": 1
         },
         "map-overworld-01.tmx": {
@@ -366,8 +385,8 @@
     "tileset.margin": 0,
     "tileset.spacing": 0,
     "tileset.tileSize": {
-        "height": 16,
-        "width": 16
+        "height": 64,
+        "width": 64
     },
     "tileset.transparentColor": "#ff00ff",
     "tileset.type": 0,

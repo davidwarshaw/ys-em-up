@@ -1,6 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
-var CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 const ZipPlugin = require("zip-webpack-plugin");
@@ -33,8 +33,8 @@ module.exports = {
   },
   plugins: [
     definePlugin,
-    new CleanWebpackPlugin(["build"]),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new CleanWebpackPlugin(),
+    new webpack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
 
     new HtmlWebpackPlugin({
       filename: "index.html", // path.resolve(__dirname, 'build', 'index.html'),
@@ -53,7 +53,9 @@ module.exports = {
       },
       hash: true,
     }),
-    new CopyWebpackPlugin([{ from: "assets", to: "assets" }]),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "assets", to: "assets" }],
+    }),
     new ZipPlugin({
       path: "../",
       filename: `ys-em-up-${PACKAGE.version}.zip`,

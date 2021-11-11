@@ -49,7 +49,7 @@ export default class AiSystem {
         const bulletActive = character.bullet && character.bullet.active;
         character.stepCount += 0.01 * delta;
         if (character.stepCount > 10 && !bulletActive) {
-          character.bullet = this.bullets.spawn(character, this.player, "standard");
+          character.ai.bullet = this.bullets.spawnAtTarget(character, this.player, "standard");
           character.stepCount = 0;
         }
         break;
@@ -61,6 +61,21 @@ export default class AiSystem {
         character.stepCount += 0.01 * delta;
         if (character.stepCount > 20) {
           this.directionTowardsPlayer(character);
+          character.stepCount = 0;
+        }
+        character.isMoving = true;
+        break;
+      }
+      case "big-bouncer": {
+        if (!this.characterInView(character)) {
+          return;
+        }
+        character.stepCount += 0.01 * delta;
+        if (character.stepCount > 20) {
+          const angles = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
+          character.ai.bullets = angles.map((angle) =>
+            this.bullets.spawnAtAngle(character, angle, "standard")
+          );
           character.stepCount = 0;
         }
         character.isMoving = true;

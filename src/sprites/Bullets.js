@@ -35,7 +35,7 @@ export default class Bullets {
     bullet.disableBody();
     this.group.killAndHide(bullet);
     this.scene.tweens.killTweensOf(bullet);
-    character.bullet = null;
+    character.ai.bullet = null;
   }
 
   collideWithMap(character, bullet, tile) {
@@ -55,7 +55,12 @@ export default class Bullets {
     this.killBullet(character, bullet);
   }
 
-  spawn(character, targetPoint, bulletName) {
+  spawnAtTarget(character, targetPoint, bulletName) {
+    const angle = Phaser.Math.Angle.BetweenPoints(character, targetPoint);
+    return this.spawnAtAngle(character, angle, bulletName);
+  }
+
+  spawnAtAngle(character, angle, bulletName) {
     const poolBullet = this.group.get();
 
     poolBullet.initialize(this.scene, bulletName);
@@ -73,8 +78,6 @@ export default class Bullets {
     );
 
     const { speed } = bullet.bulletDefinition;
-
-    const angle = Phaser.Math.Angle.BetweenPoints(character, targetPoint);
     const velocityX = speed * Math.cos(angle);
     const velocityY = speed * Math.sin(angle);
 

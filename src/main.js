@@ -4,7 +4,6 @@ import properties from "./properties";
 
 import BootScene from "./scenes/BootScene";
 import HudScene from "./scenes/HudScene";
-import GameScene from "./scenes/GameSceneOld";
 import MapScene from "./scenes/MapScene";
 import TitleScene from "./scenes/TitleScene";
 
@@ -30,7 +29,7 @@ const config = {
       },
     },
   },
-  scene: [BootScene, TitleScene, HudScene, MapScene, GameScene],
+  scene: [BootScene, TitleScene, HudScene, MapScene],
 };
 
 const game = new Phaser.Game(config); // eslint-disable-line no-unused-vars

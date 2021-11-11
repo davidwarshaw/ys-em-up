@@ -12,9 +12,10 @@ export default class TitleScene extends Phaser.Scene {
   create() {
     this.playState = {
       currentMap: {
-        key: "map-overworld-01",
-        spawn: { x: 9, y: 6 },
+        key: "map-dungeon-02",
+        spawn: { x: 5, y: 6 },
       },
+      currentEnemy: null,
     };
 
     this.font = new Font(this);
