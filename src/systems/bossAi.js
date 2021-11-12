@@ -26,6 +26,7 @@ function stateMachine(scene, boss, player, bullets) {
       break;
     }
     case "wait": {
+      boss.setVelocity(0, 0);
       if (boss.stepCount > 10) {
         changeState(boss, "prep-charge");
       }
@@ -69,6 +70,7 @@ function stateMachine(scene, boss, player, bullets) {
       break;
     }
     case "fire-01": {
+      boss.setVelocity(0, 0);
       if (boss.stepCount > 10 && Math.round(boss.stepCount) % 5 == 0) {
         boss.ai.bullets = FIRE_ANGLES.map((angle) => angle + boss.ai.firingAngle).map((angle) =>
           bullets.spawnAtAngle(boss, angle, "standard")

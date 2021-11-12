@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "map-dungeon-boss.tmx",
     "expandedProjectPaths": [
         "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map",
         "."
@@ -330,6 +330,9 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "map-dungeon-boss.tmx#bosses-spritesheet": {
+            "scaleInDock": 1
+        },
         "map-dungeon-boss.tmx#characters_spritesheet": {
             "scaleInDock": 1
         },
@@ -362,12 +365,17 @@
     "map.tileWidth": 16,
     "map.width": 12,
     "openFiles": [
+        "map-dungeon-boss.tmx",
+        "map-dungeon-01.tmx",
+        "map-dungeon-02.tmx"
     ],
     "project": "map.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "map-overworld-01.tmx",
+        "map-dungeon-02.tmx",
         "map-dungeon-01.tmx",
+        "map-dungeon-boss.tmx",
+        "map-overworld-01.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/forest_01.tmx",
@@ -375,9 +383,7 @@
         "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-3-1.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-2.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/tileset.tsx",
-        "/Users/davidwarshaw/git/davidwarshaw/ys-toy/assets/maps/basic-map.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/moonhauler/assets/images/gateway.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/moonhauler/assets/images/elevator.tmx"
+        "/Users/davidwarshaw/git/davidwarshaw/ys-toy/assets/maps/basic-map.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "All Files (*)",
