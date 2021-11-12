@@ -23,5 +23,5 @@ export default {
   knockbackMillis: 100,
   fadeMillis: 200,
   cameraPauseMillis: 2000,
-  animFrameRate: 3,
+  animFrameRate: 6,
 };

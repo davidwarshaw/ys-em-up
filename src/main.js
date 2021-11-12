@@ -1,5 +1,7 @@
 import "phaser";
 
+import phaserJuice from "../../phaser3-juice-plugin/dist/phaserJuicePlugin.min.js";
+
 import properties from "./properties";
 
 import BootScene from "./scenes/BootScene";
@@ -28,6 +30,9 @@ const config = {
         showStaticBody: properties.debug,
       },
     },
+  },
+  plugins: {
+    scene: [{ key: "phaserJuice", plugin: phaserJuice, mapping: "juice" }],
   },
   scene: [BootScene, TitleScene, HudScene, MapScene],
 };

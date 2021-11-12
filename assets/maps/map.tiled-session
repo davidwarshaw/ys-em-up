@@ -305,10 +305,10 @@
         },
         "map-dungeon-02.tmx": {
             "scale": 1.5,
-            "selectedLayer": 4,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 215.33333333333334,
-                "y": 43.33333333333334
+                "x": 238.66666666666663,
+                "y": 155.33333333333334
             }
         },
         "map-dungeon-02.tmx#characters_spritesheet": {
@@ -322,8 +322,8 @@
             "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 157,
-                "y": 142.5
+                "x": 156.5,
+                "y": 142
             }
         },
         "map-dungeon-boss.tmx#boss-01": {
@@ -385,8 +385,8 @@
     "tileset.margin": 0,
     "tileset.spacing": 0,
     "tileset.tileSize": {
-        "height": 64,
-        "width": 64
+        "height": 32,
+        "width": 32
     },
     "tileset.transparentColor": "#ff00ff",
     "tileset.type": 0,

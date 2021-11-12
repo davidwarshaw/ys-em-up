@@ -7,9 +7,6 @@ export default class Player extends Character {
   constructor(scene, map, worldXY) {
     super(scene, map, worldXY, "player", Phaser.Physics.Arcade.DYNAMIC_BODY);
 
-    this.walkspeed = 6;
-    this.frameRate = properties.animFrameRate * this.walkspeed;
-
     this.direction = "down";
     this.state = "normal";
     this.knockback = {
@@ -21,8 +18,6 @@ export default class Player extends Character {
 
     this.power = 10;
 
-    this.healthMax = 50;
-    this.health = this.healthMax;
     this.healthRegenFactor = 0.001;
 
     this.setCollideWorldBounds(true);

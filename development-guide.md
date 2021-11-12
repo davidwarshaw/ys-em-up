@@ -8,16 +8,34 @@ Enemy Type 1
 - Turn in the direction of the player periodically
 - Randomize direction on terrain hit
 - Medium strength
+- Character sprite
 
 Enemy Type 2
 
 - Turrent, static
 - Fires Bullet Type 1 periodically
 - Invulnerable
+- 2 frame sprite: 1 frame idle, 1 frame anticipation of firing bullet
 
 Enemy Type 3
 
-- ?
+- Vibrates, then charges towards player periodically
+- High strength
+- Character sprite?
+
+Enemy Type 4
+
+- Swoops down at player ?
+- Low strength
+- 3 frame sprite: 1 frame idle, 2 frames wings flapping, no directions
+
+Boss
+
+- Vibrates, then charges towards player periodically
+- After charge, fires Bullet Type 1 pattern
+- 3 phases or increasingly faster charges / more bullets
+- Very high strength
+- Boss sprite
 
 ## Bullets
 
@@ -55,6 +73,6 @@ Bullet Sprites
 
 Boss Sprite
 
-- 64x64px ?
+- 32x32px
 - Animation Frames
   - ?

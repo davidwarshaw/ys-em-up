@@ -20,8 +20,8 @@ export default class BootScene extends Phaser.Scene {
 
     // Sprites
     this.load.spritesheet("bosses", "assets/images/bosses-spritesheet.png", {
-      frameWidth: 64,
-      frameHeight: 64,
+      frameWidth: 32,
+      frameHeight: 32,
       margin: 0,
       spacing: 0,
     });

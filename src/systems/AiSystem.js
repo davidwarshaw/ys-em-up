@@ -2,6 +2,8 @@ import properties from "../properties";
 
 import Direction from "../utils/Direction";
 
+import bossAi from "./bossAi";
+
 export default class AiSystem {
   constructor(scene, map, player, bullets) {
     this.scene = scene;
@@ -21,6 +23,13 @@ export default class AiSystem {
       }
       case "bounce-around": {
         this.randomizeDirection(character);
+        break;
+      }
+      case "charger": {
+        break;
+      }
+      case "big-charger": {
+        bossAi.collideWithMap(character);
         break;
       }
     }
@@ -66,19 +75,31 @@ export default class AiSystem {
         character.isMoving = true;
         break;
       }
-      case "big-bouncer": {
+      case "charger": {
         if (!this.characterInView(character)) {
           return;
         }
         character.stepCount += 0.01 * delta;
-        if (character.stepCount > 20) {
-          const angles = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
-          character.ai.bullets = angles.map((angle) =>
-            this.bullets.spawnAtAngle(character, angle, "standard")
-          );
-          character.stepCount = 0;
+        if (!character.ai.animation && character.stepCount > 20) {
+          this.scene.juice.shake(character, {
+            x: 1,
+            onComplete: (tween, target) => {
+              character.ai.animation = false;
+              targetPlayer(character, this.player);
+            },
+          });
+          character.ai.animation = true;
         }
-        character.isMoving = true;
+        this.directionTowardsPlayer(character);
+        break;
+      }
+      case "big-charger": {
+        if (!this.characterInView(character)) {
+          return;
+        }
+        character.stepCount += 0.01 * delta;
+        bossAi.stateMachine(this.scene, character, this.player, this.bullets);
+        this.directionTowardsPlayer(character);
         break;
       }
     }
@@ -90,6 +111,13 @@ export default class AiSystem {
 
   randomizeDirection(character) {
     character.direction = properties.rng.getItem(character.directions);
+  }
+
+  targetPlayer(character, player) {
+    character.ai.target = {
+      x: player.x,
+      y: player.y,
+    };
   }
 
   characterInView(character) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="11">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="12">
  <editorsettings>
   <export target="map-dungeon-boss.json" format="json"/>
  </editorsettings>
@@ -25,8 +25,8 @@
  <tileset firstgid="17" name="characters_spritesheet" tilewidth="16" tileheight="16" tilecount="130" columns="10">
   <image source="../images/characters_spritesheet.png" width="160" height="208"/>
  </tileset>
- <tileset firstgid="147" name="boss-01" tilewidth="64" tileheight="64" tilecount="1" columns="1">
-  <image source="../images/boss-01.png" width="64" height="64"/>
+ <tileset firstgid="147" name="bosses-spritesheet" tilewidth="32" tileheight="32" tilecount="40" columns="20">
+  <image source="../images/bosses-spritesheet.png" width="640" height="64"/>
  </tileset>
  <layer id="1" name="background" width="20" height="11">
   <data encoding="csv">
@@ -74,7 +74,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="characters">
-  <object id="10" name="boss-01" gid="147" x="128" y="80" width="64" height="64"/>
+  <object id="11" name="boss-01" gid="147" x="144" y="80" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="5" name="portals"/>
  <layer id="2" name="foreground" width="20" height="11">

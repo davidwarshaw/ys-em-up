@@ -138,7 +138,7 @@ export default class MapScene extends Phaser.Scene {
   }
 
   killCharacter(character) {
-    if (character.isType("player")) {
+    if (character.isPlayer()) {
       this.killPlayer();
     } else {
       this.killEnemy(character);

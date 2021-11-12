@@ -25,7 +25,7 @@ export default class BumpAttackSystem {
       character.setTintFill(0xffffff);
     }
     // Stop the camera follow if we knock back the player, to avoid too much shaking
-    if (character.isType("player")) {
+    if (character.isPlayer()) {
       this.scene.stopCameraFollow();
     }
     // If there's already a knockback timer, remove it before adding another one
@@ -36,18 +36,18 @@ export default class BumpAttackSystem {
       character.stateChange("normal");
       character.clearTint();
       // When the knockback is over, start the camera again
-      if (character.isType("player")) {
+      if (character.isPlayer()) {
         this.scene.startCameraFollow();
       }
     });
   }
 
   resolveAttack(attacker, attackerFacing, defender, defenderFacing) {
-    if (attacker.isType("player") && defender.isType("enemy")) {
+    if (attacker.isPlayer() && defender.isHostile()) {
       const relativeDirection = Direction.directionFromPositions(attacker, defender);
       //console.log(`Player facing: ${attackerFacing} attacks enemy to: ${relativeDirection}`);
       this.setCurrentEnemy(defender);
-    } else if (attacker.isType("enemy") && defender.isType("player")) {
+    } else if (attacker.isHostile() && defender.isPlayer()) {
       this.setCurrentEnemy(attacker);
     }
 
@@ -63,7 +63,7 @@ export default class BumpAttackSystem {
     // Enemy attack powerin frontal attacks against the players is reduced by
     // the overlap being incomplete
     // console.log(`relativeDirection: ${relativeDirection}`);
-    if (relativeDirection === "front" && attacker.isType("enemy") && defender.isType("player")) {
+    if (relativeDirection === "front" && attacker.isHostile() && defender.isPlayer()) {
       const percentOverlap = Direction.percentOverlapFromPositions(attacker, defender);
       const reduction = percentOverlap / 100;
       attackPower = attackPower * reduction;
@@ -108,10 +108,7 @@ export default class BumpAttackSystem {
     // If a characters facing matches the direction to the other character, then they're attacking
     if (firstFacing === firstDirectionToSecond) {
       // The player can only attack if a button is pressed
-      if (
-        !first.isType("player") ||
-        (first.isType("player") && this.scene.inputMultiplexer.any())
-      ) {
+      if (!first.isPlayer() || (first.isPlayer() && this.scene.inputMultiplexer.any())) {
         this.resolveAttack(first, firstFacing, second, secondFacing);
       } else {
         // console.log("Player attack skipped. No button pressed.");

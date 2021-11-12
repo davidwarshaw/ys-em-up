@@ -25,7 +25,7 @@ export default class Bullets {
     bullet.setVisible(true);
     bullet.setActive(true);
 
-    console.log(`bullet.anims.play: ${bulletName}_move`);
+    // console.log(`bullet.anims.play: ${bulletName}_move`);
     bullet.anims.play(`${bulletName}_move`);
 
     return bullet;
@@ -47,7 +47,7 @@ export default class Bullets {
     const force = bullet.bulletDefinition.power * 2;
     const flash = true;
 
-    console.log(`direction: ${direction} force: ${force} flash: ${flash}`);
+    // console.log(`direction: ${direction} force: ${force} flash: ${flash}`);
 
     this.bumpAttackSystem.resolveCombat(bullet, player);
     // this.bumpAttackSystem.createKnockBack(player, direction, force, flash);

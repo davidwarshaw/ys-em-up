@@ -45,14 +45,14 @@
          "objects":[
                 {
                  "gid":147,
-                 "height":64,
-                 "id":10,
+                 "height":32,
+                 "id":11,
                  "name":"boss-01",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":64,
-                 "x":128,
+                 "width":32,
+                 "x":144,
                  "y":80
                 }],
          "opacity":1,
@@ -85,7 +85,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":11,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -151,17 +151,17 @@
          "tilewidth":16
         }, 
         {
-         "columns":1,
+         "columns":20,
          "firstgid":147,
-         "image":"..\/images\/boss-01.png",
+         "image":"..\/images\/bosses-spritesheet.png",
          "imageheight":64,
-         "imagewidth":64,
+         "imagewidth":640,
          "margin":0,
-         "name":"boss-01",
+         "name":"bosses-spritesheet",
          "spacing":0,
-         "tilecount":1,
-         "tileheight":64,
-         "tilewidth":64
+         "tilecount":40,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":16,
  "type":"map",

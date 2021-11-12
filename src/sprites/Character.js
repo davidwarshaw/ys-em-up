@@ -16,7 +16,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
 
     this.ai = {};
 
-    this.walkspeed = 2;
+    this.walkspeed = this.characterDefinition.speed;
     this.frameRate = properties.animFrameRate * this.walkspeed;
 
     this.stepCount = 100;
@@ -26,7 +26,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
 
     this.power = 5;
 
-    this.healthMax = 20;
+    this.healthMax = this.characterDefinition.healthMax;
     this.health = this.healthMax;
 
     this.directions = ["up", "down", "left", "right"];
@@ -57,7 +57,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
       scene.anims.create({
         key: `${characterName}_${idle}`,
         frames: scene.anims.generateFrameNumbers(spriteSheetKey, { start, end }),
-        frameRate: this.frameRate,
+        frameRate: properties.animFrameRate,
         repeat: -1,
       });
     });
@@ -68,7 +68,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
       scene.anims.create({
         key: `${characterName}_${move}`,
         frames: scene.anims.generateFrameNumbers(spriteSheetKey, { start, end }),
-        frameRate: this.frameRate,
+        frameRate: properties.animFrameRate,
         repeat: -1,
       });
     });
@@ -79,8 +79,12 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
     this.anims.stopOnFrame(stopFrame);
   }
 
-  isType(type) {
-    return this.characterName.startsWith(type);
+  isHostile() {
+    return this.characterName.startsWith("enemy") || this.characterName.startsWith("boss");
+  }
+
+  isPlayer() {
+    return this.characterName === "player";
   }
 
   playAnimationForDirection(action) {

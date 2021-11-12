@@ -1,11 +1,17 @@
 {
   "player": {
+    "healthMax": 50,
+    "speed": 6,
+    "hostile": false,
     "spritesheet": {
       "key": "characters",
       "row": 11
     }
   },
   "villager-01": {
+    "healthMax": 10,
+    "speed": 2,
+    "hostile": false,
     "ai": {
       "behavior": "static",
       "speech": "intro"
@@ -16,6 +22,9 @@
     }
   },
   "enemy-01": {
+    "healthMax": 10,
+    "speed": 2,
+    "hostile": true,
     "ai": {
       "behavior": "bounce-around"
     },
@@ -25,6 +34,9 @@
     }
   },
   "enemy-02": {
+    "healthMax": 10,
+    "speed": 2,
+    "hostile": true,
     "ai": {
       "behavior": "turret"
     },
@@ -34,6 +46,9 @@
     }
   },
   "enemy-03": {
+    "healthMax": 10,
+    "speed": 2,
+    "hostile": true,
     "ai": {
       "behavior": "turret"
     },
@@ -43,8 +58,11 @@
     }
   },
   "boss-01": {
+    "healthMax": 100,
+    "speed": 150,
+    "hostile": true,
     "ai": {
-      "behavior": "big-bouncer"
+      "behavior": "big-charger"
     },
     "spritesheet": {
       "key": "bosses",
