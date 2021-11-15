@@ -1,3 +1,11 @@
+const MAP_NAMES = [
+  "overworld-forest-01",
+  "dungeon-ante-chamber-01",
+  "dungeon-ante-chamber-02",
+  "dungeon-fork",
+  "dungeon-boss",
+];
+
 export default class BootScene extends Phaser.Scene {
   constructor() {
     super({ key: "BootScene" });
@@ -13,11 +21,11 @@ export default class BootScene extends Phaser.Scene {
 
     // Maps
     this.load.image("ys_ii_tileset_extruded", "assets/maps/ys_ii_tileset_extruded.png");
-    this.load.tilemapTiledJSON("map-overworld-01", "assets/maps/map-overworld-01.json");
-    this.load.tilemapTiledJSON("map-dungeon-01", "assets/maps/map-dungeon-01.json");
-    this.load.tilemapTiledJSON("map-dungeon-02", "assets/maps/map-dungeon-02.json");
-    this.load.tilemapTiledJSON("map-dungeon-boss", "assets/maps/map-dungeon-boss.json");
 
+    this.load.tilemapTiledJSON("map-overworld-01", "assets/maps/map-overworld-01.json");
+    MAP_NAMES.forEach((mapName) =>
+      this.load.tilemapTiledJSON(`map-${mapName}`, `assets/maps/map-${mapName}.json`)
+    );
     // Sprites
     this.load.spritesheet("bosses", "assets/images/bosses-spritesheet.png", {
       frameWidth: 32,

@@ -1,8 +1,10 @@
 {
   "player": {
     "healthMax": 50,
+    "power": 3,
     "speed": 6,
     "hostile": false,
+    "flies": false,
     "spritesheet": {
       "key": "characters",
       "row": 11
@@ -10,8 +12,10 @@
   },
   "villager-01": {
     "healthMax": 10,
+    "power": 5,
     "speed": 2,
     "hostile": false,
+    "flies": false,
     "ai": {
       "behavior": "static",
       "speech": "intro"
@@ -21,22 +25,26 @@
       "row": 1
     }
   },
-  "enemy-01": {
+  "rambler": {
     "healthMax": 10,
+    "power": 10,
     "speed": 2,
     "hostile": true,
+    "flies": false,
     "ai": {
-      "behavior": "bounce-around"
+      "behavior": "ramble"
     },
     "spritesheet": {
       "key": "characters",
       "row": 10
     }
   },
-  "enemy-02": {
+  "turret": {
     "healthMax": 10,
+    "power": 5,
     "speed": 2,
     "hostile": true,
+    "flies": false,
     "ai": {
       "behavior": "turret"
     },
@@ -45,22 +53,40 @@
       "row": 1
     }
   },
-  "enemy-03": {
+  "charger": {
     "healthMax": 10,
-    "speed": 2,
+    "power": 10,
+    "speed": 150,
     "hostile": true,
+    "flies": false,
     "ai": {
-      "behavior": "turret"
+      "behavior": "charger"
     },
     "spritesheet": {
       "key": "characters",
       "row": 12
     }
   },
+  "flyer": {
+    "healthMax": 2,
+    "power": 4,
+    "speed": 60,
+    "hostile": true,
+    "flies": true,
+    "ai": {
+      "behavior": "flyer"
+    },
+    "spritesheet": {
+      "key": "characters",
+      "row": 9
+    }
+  },
   "boss-01": {
-    "healthMax": 100,
+    "healthMax": 200,
+    "power": 5,
     "speed": 150,
     "hostile": true,
+    "flies": false,
     "ai": {
       "behavior": "big-charger"
     },

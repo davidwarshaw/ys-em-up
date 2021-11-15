@@ -15,7 +15,9 @@ export default class BumpAttackSystem {
   }
 
   setCurrentEnemy(enemy) {
-    this.scene.playState.currentEnemy = enemy;
+    if (enemy.canSetCurrentEnemy()) {
+      this.scene.playState.currentEnemy = enemy;
+    }
   }
 
   createKnockBack(character, direction, force, flash) {
@@ -115,7 +117,12 @@ export default class BumpAttackSystem {
       }
     }
     if (secondFacing === secondDirectionToFirst) {
-      this.resolveAttack(second, secondFacing, first, firstFacing);
+      // The player can only attack if a button is pressed
+      if (!second.isPlayer() || (second.isPlayer() && this.scene.inputMultiplexer.any())) {
+        this.resolveAttack(second, secondFacing, first, firstFacing);
+      } else {
+        // console.log("Player attack skipped. No button pressed.");
+      }
     }
   }
 }

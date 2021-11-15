@@ -24,7 +24,9 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
     this.state = "normal";
     this.knockback = {};
 
-    this.power = 5;
+    this.power = this.characterDefinition.power;
+
+    this.invulnerable = false;
 
     this.healthMax = this.characterDefinition.healthMax;
     this.health = this.healthMax;
@@ -38,7 +40,8 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
     const { tileWidth, tileHeight } = this.map.tilemap;
     // this.setPosition(world.x + tileWidth * 0.5, world.y + tileHeight * 0.5);
     this.setPosition(world.x + tileWidth * 0.5, world.y - tileHeight * 0.5);
-    this.setDepth(20);
+    const depth = this.characterDefinition.flies ? 40 : 20;
+    this.setDepth(depth);
     this.setOrigin(0.5, 0.5);
 
     scene.physics.world.enable(this, bodyType);
@@ -79,12 +82,20 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
     this.anims.stopOnFrame(stopFrame);
   }
 
+  refillHealth() {
+    this.health = this.healthMax;
+  }
+
   isHostile() {
     return this.characterName.startsWith("enemy") || this.characterName.startsWith("boss");
   }
 
   isPlayer() {
     return this.characterName === "player";
+  }
+
+  canSetCurrentEnemy() {
+    return true;
   }
 
   playAnimationForDirection(action) {
@@ -109,6 +120,10 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
   isOnTile(tile) {
     const pTile = this.map.worldToTileXY(this.x, this.y);
     return pTile.x === tile.x && pTile.y === tile.y;
+  }
+
+  getHealthAsPercent() {
+    return this.health / this.healthMax;
   }
 
   update(delta, aiSystem) {

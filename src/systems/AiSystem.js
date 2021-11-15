@@ -1,8 +1,10 @@
 import properties from "../properties";
 
-import Direction from "../utils/Direction";
-
-import bossAi from "./bossAi";
+import turretAi from "./ai/turretAi";
+import rambleAi from "./ai/rambleAi";
+import flyerAi from "./ai/flyerAi";
+import chargerAi from "./ai/chargerAi";
+import bossAi from "./ai/bossAi";
 
 export default class AiSystem {
   constructor(scene, map, player, bullets) {
@@ -15,17 +17,28 @@ export default class AiSystem {
     this.collideWithCharacter = this.collideWithCharacter.bind(this);
   }
 
+  processCollisionWithMap(character) {
+    const { flies } = character.characterDefinition;
+    return !flies;
+  }
+
   collideWithMap(character) {
     const { ai } = character.characterDefinition;
     switch (ai.behavior) {
-      case "": {
+      case "turret": {
+        turretAi.collideWithMap(character);
         break;
       }
-      case "bounce-around": {
-        this.randomizeDirection(character);
+      case "ramble": {
+        rambleAi.collideWithMap(character);
         break;
       }
       case "charger": {
+        chargerAi.collideWithMap(character);
+        break;
+      }
+      case "flyer": {
+        flyerAi.collideWithMap(character);
         break;
       }
       case "big-charger": {
@@ -35,14 +48,33 @@ export default class AiSystem {
     }
   }
 
+  processCollisionWithCharacter(first, second) {
+    const firstFlies = first.characterDefinition.flies;
+    const secondFlies = second.characterDefinition.flies;
+    return !firstFlies && !secondFlies;
+  }
+
   collideWithCharacter(character, second) {
     const { ai } = character.characterDefinition;
     switch (ai.behavior) {
-      case "": {
+      case "turret": {
+        turretAi.collideWithCharacter(character, second);
         break;
       }
-      case "bounce-around": {
-        this.randomizeDirection(character);
+      case "ramble": {
+        rambleAi.collideWithCharacter(character, second);
+        break;
+      }
+      case "charger": {
+        chargerAi.collideWithCharacter(character, second);
+        break;
+      }
+      case "flyer": {
+        flyerAi.collideWithCharacter(character, second);
+        break;
+      }
+      case "big-charger": {
+        bossAi.collideWithCharacter(character, second);
         break;
       }
     }
@@ -50,74 +82,38 @@ export default class AiSystem {
 
   update(delta, character) {
     const { ai } = character.characterDefinition;
+    character.stepCount += 0.01 * delta;
     switch (ai.behavior) {
       case "turret": {
         if (!this.characterInView(character)) {
           return;
         }
-        const bulletActive = character.bullet && character.bullet.active;
-        character.stepCount += 0.01 * delta;
-        if (character.stepCount > 10 && !bulletActive) {
-          character.ai.bullet = this.bullets.spawnAtTarget(character, this.player, "standard");
-          character.stepCount = 0;
-        }
+        turretAi.stateMachine(this.scene, character, this.player, this.bullets);
         break;
       }
-      case "bounce-around": {
+      case "ramble": {
         if (!this.characterInView(character)) {
           return;
         }
-        character.stepCount += 0.01 * delta;
-        if (character.stepCount > 20) {
-          this.directionTowardsPlayer(character);
-          character.stepCount = 0;
-        }
-        character.isMoving = true;
+        rambleAi.stateMachine(this.scene, character, this.player);
         break;
       }
       case "charger": {
         if (!this.characterInView(character)) {
           return;
         }
-        character.stepCount += 0.01 * delta;
-        if (!character.ai.animation && character.stepCount > 20) {
-          this.scene.juice.shake(character, {
-            x: 1,
-            onComplete: (tween, target) => {
-              character.ai.animation = false;
-              targetPlayer(character, this.player);
-            },
-          });
-          character.ai.animation = true;
-        }
-        this.directionTowardsPlayer(character);
+        chargerAi.stateMachine(this.scene, character, this.player);
+        break;
+      }
+      case "flyer": {
+        flyerAi.stateMachine(this.scene, character, this.player, this.bullets, this.map);
         break;
       }
       case "big-charger": {
-        if (!this.characterInView(character)) {
-          return;
-        }
-        character.stepCount += 0.01 * delta;
-        bossAi.stateMachine(this.scene, character, this.player, this.bullets);
-        this.directionTowardsPlayer(character);
+        bossAi.stateMachine(this.scene, character, this.player, this.bullets, this.map);
         break;
       }
     }
-  }
-
-  directionTowardsPlayer(character) {
-    character.direction = Direction.directionFromPositions(character, this.player);
-  }
-
-  randomizeDirection(character) {
-    character.direction = properties.rng.getItem(character.directions);
-  }
-
-  targetPlayer(character, player) {
-    character.ai.target = {
-      x: player.x,
-      y: player.y,
-    };
   }
 
   characterInView(character) {

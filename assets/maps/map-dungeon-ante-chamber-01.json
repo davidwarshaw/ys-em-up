@@ -47,7 +47,7 @@
                  "gid":117,
                  "height":16,
                  "id":6,
-                 "name":"enemy-01",
+                 "name":"rambler",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -59,7 +59,7 @@
                  "gid":117,
                  "height":16,
                  "id":10,
-                 "name":"enemy-01",
+                 "name":"rambler",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -87,17 +87,17 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-dungeon-02"
+                         "value":"map-dungeon-ante-chamber-02"
                         }, 
                         {
                          "name":"toX",
                          "type":"int",
-                         "value":27
+                         "value":5
                         }, 
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":34
+                         "value":25
                         }],
                  "rotation":0,
                  "type":"",
@@ -143,17 +143,17 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-dungeon-02"
+                         "value":"map-dungeon-ante-chamber-02"
                         }, 
                         {
                          "name":"toX",
                          "type":"int",
-                         "value":28
+                         "value":6
                         }, 
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":34
+                         "value":25
                         }],
                  "rotation":0,
                  "type":"",
@@ -264,7 +264,7 @@
         {
          "columns":10,
          "firstgid":17,
-         "image":"..\/images\/characters_spritesheet.png",
+         "image":"..\/images\/characters-spritesheet.png",
          "imageheight":208,
          "imagewidth":160,
          "margin":0,

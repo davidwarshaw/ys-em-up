@@ -12,8 +12,8 @@ export default class TitleScene extends Phaser.Scene {
   create() {
     this.playState = {
       currentMap: {
-        key: "map-dungeon-02",
-        spawn: { x: 5, y: 6 },
+        key: "map-dungeon-ante-chamber-02",
+        spawn: { x: 5, y: 25 },
       },
       currentEnemy: null,
     };

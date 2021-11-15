@@ -58,5 +58,9 @@ export default class Bullet extends Phaser.Physics.Arcade.Sprite {
     return false;
   }
 
+  canSetCurrentEnemy() {
+    return false;
+  }
+
   stateChange() {}
 }

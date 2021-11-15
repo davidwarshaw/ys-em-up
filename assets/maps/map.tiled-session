@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map-dungeon-boss.tmx",
+    "activeFile": "map-dungeon-02.tmx",
     "expandedProjectPaths": [
         "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map",
         "."
@@ -290,25 +290,26 @@
         },
         "map-dungeon-01.tmx": {
             "scale": 2.11,
-            "selectedLayer": 4,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 164.92890995260666,
-                "y": 81.99052132701424
+                "x": 159.9526066350711,
+                "y": 104.2654028436019
             }
         },
         "map-dungeon-01.tmx#characters_spritesheet": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "map-dungeon-01.tmx#ys_ii_tileset_extruded": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "map-dungeon-02.tmx": {
-            "scale": 1.5,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 238.66666666666663,
-                "y": 155.33333333333334
+                "x": 458.5,
+                "y": 511
             }
         },
         "map-dungeon-02.tmx#characters_spritesheet": {
@@ -318,12 +319,54 @@
         "map-dungeon-02.tmx#ys_ii_tileset_extruded": {
             "scaleInDock": 1
         },
+        "map-dungeon-ante-chamber-01.tmx": {
+            "scale": 2.11,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 199.05213270142178,
+                "y": 114.218009478673
+            }
+        },
+        "map-dungeon-ante-chamber-01.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-ante-chamber-01.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-ante-chamber-02.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 193.33333333333331,
+                "y": 198
+            }
+        },
+        "map-dungeon-ante-chamber-02.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-ante-chamber-02.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-ante-chamber.tmx": {
+            "scale": 2.11,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 160.9004739336493,
+                "y": 131.7535545023697
+            }
+        },
+        "map-dungeon-ante-chamber.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-ante-chamber.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
         "map-dungeon-boss.tmx": {
             "scale": 2,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 156.5,
-                "y": 142
+                "x": 155.75,
+                "y": 217.5
             }
         },
         "map-dungeon-boss.tmx#boss-01": {
@@ -334,9 +377,24 @@
             "scaleInDock": 1
         },
         "map-dungeon-boss.tmx#characters_spritesheet": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "map-dungeon-boss.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-fork.tmx": {
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 371,
+                "y": 409
+            }
+        },
+        "map-dungeon-fork.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-fork.tmx#ys_ii_tileset_extruded": {
             "scaleInDock": 1
         },
         "map-overworld-01.tmx": {
@@ -348,22 +406,37 @@
             }
         },
         "map-overworld-01.tmx#characters_spritesheet": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "map-overworld-01.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-overworld-forest-01.tmx": {
+            "scale": 2.01,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 155.22388059701495,
+                "y": 107.96019900497515
+            }
+        },
+        "map-overworld-forest-01.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-overworld-forest-01.tmx#ys_ii_tileset_extruded": {
             "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "/Users/davidwarshaw/git/davidwarshaw/ys-em-up/assets/maps",
     "last.imagePath": "/Users/davidwarshaw/git/davidwarshaw/ys-em-up/assets/images",
     "map.fixedSize": true,
-    "map.height": 12,
+    "map.height": 20,
     "map.lastUsedExportFilter": "JSON map files (*.json)",
     "map.lastUsedFormat": "tmx",
     "map.orientation": 1,
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 12,
+    "map.width": 20,
     "openFiles": [
         "map-dungeon-boss.tmx",
         "map-dungeon-01.tmx",
@@ -372,18 +445,18 @@
     "project": "map.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "map-dungeon-fork.tmx",
+        "map-overworld-forest-01.tmx",
+        "map-dungeon-ante-chamber-02.tmx",
+        "map-dungeon-ante-chamber-01.tmx",
         "map-dungeon-02.tmx",
-        "map-dungeon-01.tmx",
         "map-dungeon-boss.tmx",
+        "map-dungeon-01.tmx",
         "map-overworld-01.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/forest_01.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-1.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-3-1.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-2.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/tileset.tsx",
-        "/Users/davidwarshaw/git/davidwarshaw/ys-toy/assets/maps/basic-map.tmx"
+        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-1.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "All Files (*)",

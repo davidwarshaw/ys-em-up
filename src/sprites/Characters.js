@@ -15,17 +15,26 @@ export default class Characters {
     this.characters.forEach((firstCharacter) => {
       // Characters collide with each other
       this.characters.forEach((secondCharacter) =>
-        this.scene.physics.add.collider(firstCharacter, secondCharacter, (first, second) =>
-          aiSystem.collideWithCharacter(first, second)
+        this.scene.physics.add.collider(
+          firstCharacter,
+          secondCharacter,
+          (first, second) => aiSystem.collideWithCharacter(first, second),
+          (first, second) => aiSystem.processCollisionWithCharacter(first, second)
         )
       );
       // Characters collide with map
-      this.scene.physics.add.collider(firstCharacter, this.map.layers.collision, (first) =>
-        aiSystem.collideWithMap(first)
+      this.scene.physics.add.collider(
+        firstCharacter,
+        this.map.layers.collision,
+        (first) => aiSystem.collideWithMap(first),
+        (first) => aiSystem.processCollisionWithMap(first)
       );
       // Characters collide with hazards
-      this.scene.physics.add.collider(firstCharacter, this.map.layers.hazard, (first) =>
-        aiSystem.collideWithMap(first)
+      this.scene.physics.add.collider(
+        firstCharacter,
+        this.map.layers.hazard,
+        (first) => aiSystem.collideWithMap(first),
+        (first) => aiSystem.processCollisionWithMap(first)
       );
       // Characters collide with the player
       this.scene.physics.add.collider(player, firstCharacter, (player, enemy) =>

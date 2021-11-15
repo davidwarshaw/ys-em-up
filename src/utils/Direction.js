@@ -1,3 +1,17 @@
+function deltaFromDirection(direction) {
+  if (direction === "up") {
+    return { x: 0, y: -1 };
+  }
+  if (direction === "down") {
+    return { x: 0, y: 1 };
+  }
+  if (direction === "left") {
+    return { x: -1, y: 0 };
+  }
+  if (direction === "right") {
+    return { x: 1, y: 0 };
+  }
+}
 function directionFromPositions(from, to) {
   if (Math.abs(from.x - to.x) >= Math.abs(from.y - to.y)) {
     return from.x - to.x >= 0 ? "left" : "right";
@@ -84,6 +98,7 @@ function percentOverlapFromPositions(from, to) {
 }
 
 export default {
+  deltaFromDirection,
   directionFromPositions,
   directionFromAngle,
   facingBack,

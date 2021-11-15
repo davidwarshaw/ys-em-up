@@ -37,6 +37,12 @@ export default class Map {
     this.tilemap.setCollisionByProperty({ collides: true }, true, true, "collision");
   }
 
+  isBackground(position) {
+    const tilePosition = this.tilemap.worldToTileXY(position.x, position.y);
+    const tile = this.layers.background.getTileAt(tilePosition.x, tilePosition.y);
+    return !!tile && tile.index != -1;
+  }
+
   arrayToProps(arr) {
     const props = {};
     arr.forEach((element) => {

@@ -63,7 +63,7 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-dungeon-01"
+                         "value":"map-dungeon-ante-chamber-01"
                         }, 
                         {
                          "name":"toX",
@@ -91,7 +91,7 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-dungeon-01"
+                         "value":"map-dungeon-ante-chamber-01"
                         }, 
                         {
                          "name":"toX",
@@ -132,7 +132,7 @@
  "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.1",
+ "tiledversion":"1.7.2",
  "tileheight":16,
  "tilesets":[
         {
@@ -184,7 +184,7 @@
         {
          "columns":10,
          "firstgid":17,
-         "image":"..\/images\/characters_spritesheet.png",
+         "image":"..\/images\/characters-spritesheet.png",
          "imageheight":208,
          "imagewidth":160,
          "margin":0,

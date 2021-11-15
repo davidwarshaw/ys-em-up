@@ -11,6 +11,8 @@ import BumpAttackSystem from "../systems/BumpAttackSystem";
 
 import InputMultiplexer from "../utils/InputMultiplexer";
 
+const CODE_WORDS = ["boss", "rambler", "charger", "flyer"];
+
 export default class MapScene extends Phaser.Scene {
   constructor() {
     super({ key: "MapScene" });
@@ -69,6 +71,39 @@ export default class MapScene extends Phaser.Scene {
       gameOver: this.sound.add("game-over"),
       nextLevel: this.sound.add("next-level"),
     };
+
+    this.comboKeyCodes = {};
+    CODE_WORDS.forEach((codeWord) => {
+      const combo = this.input.keyboard.createCombo(codeWord, { resetOnMatch: true });
+      const keyCode = combo.keyCodes.join("");
+      this.comboKeyCodes[keyCode] = codeWord;
+    });
+    this.input.keyboard.on("keycombomatch", (event) => {
+      const keyCode = event.keyCodes.join("");
+      const codeWord = this.comboKeyCodes[keyCode];
+      switch (codeWord) {
+        case "boss": {
+          this.player.refillHealth();
+          this.changeMap({ toMapKey: "map-dungeon-fork", toX: 6, toY: 2 });
+          break;
+        }
+        case "rambler": {
+          this.player.refillHealth();
+          this.changeMap({ toMapKey: "map-dungeon-ante-chamber-01", toX: 14, toY: 9 });
+          break;
+        }
+        case "charger": {
+          this.player.refillHealth();
+          this.changeMap({ toMapKey: "map-dungeon-fork", toX: 31, toY: 31 });
+          break;
+        }
+        case "flyer": {
+          this.player.refillHealth();
+          this.changeMap({ toMapKey: "map-dungeon-ante-chamber-02", toX: 13, toY: 22 });
+          break;
+        }
+      }
+    });
 
     this.cameras.main.fadeIn(properties.fadeMillis);
   }

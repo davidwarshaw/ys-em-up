@@ -23,7 +23,7 @@
   </tile>
  </tileset>
  <tileset firstgid="17" name="characters_spritesheet" tilewidth="16" tileheight="16" tilecount="130" columns="10">
-  <image source="../images/characters_spritesheet.png" width="160" height="208"/>
+  <image source="../images/characters-spritesheet.png" width="160" height="208"/>
  </tileset>
  <tileset firstgid="147" name="bosses-spritesheet" tilewidth="32" tileheight="32" tilecount="40" columns="20">
   <image source="../images/bosses-spritesheet.png" width="640" height="64"/>
