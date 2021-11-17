@@ -323,11 +323,14 @@
             "scale": 2.11,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 199.05213270142178,
-                "y": 114.218009478673
+                "x": 165.6398104265403,
+                "y": 127.01421800947865
             }
         },
         "map-dungeon-ante-chamber-01.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-ante-chamber-01.tmx#tileset": {
             "scaleInDock": 1
         },
         "map-dungeon-ante-chamber-01.tmx#ys_ii_tileset_extruded": {
@@ -335,13 +338,16 @@
         },
         "map-dungeon-ante-chamber-02.tmx": {
             "scale": 1.5,
-            "selectedLayer": 4,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 193.33333333333331,
-                "y": 198
+                "x": 168.33333333333331,
+                "y": 159.33333333333334
             }
         },
         "map-dungeon-ante-chamber-02.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-dungeon-ante-chamber-02.tmx#tileset": {
             "scaleInDock": 1
         },
         "map-dungeon-ante-chamber-02.tmx#ys_ii_tileset_extruded": {
@@ -384,15 +390,18 @@
             "scaleInDock": 1
         },
         "map-dungeon-fork.tmx": {
-            "scale": 1,
-            "selectedLayer": 3,
+            "scale": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 371,
-                "y": 409
+                "x": 141,
+                "y": 233.5
             }
         },
         "map-dungeon-fork.tmx#characters_spritesheet": {
             "scaleInDock": 1
+        },
+        "map-dungeon-fork.tmx#tileset": {
+            "scaleInDock": 1.5
         },
         "map-dungeon-fork.tmx#ys_ii_tileset_extruded": {
             "scaleInDock": 1
@@ -414,13 +423,16 @@
         },
         "map-overworld-forest-01.tmx": {
             "scale": 2.01,
-            "selectedLayer": 4,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 155.22388059701495,
-                "y": 107.96019900497515
+                "x": 153.48258706467664,
+                "y": 125.87064676616917
             }
         },
         "map-overworld-forest-01.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-overworld-forest-01.tmx#tileset": {
             "scaleInDock": 1
         },
         "map-overworld-forest-01.tmx#ys_ii_tileset_extruded": {
@@ -428,7 +440,7 @@
         }
     },
     "last.exportedFilePath": "/Users/davidwarshaw/git/davidwarshaw/ys-em-up/assets/maps",
-    "last.imagePath": "/Users/davidwarshaw/git/davidwarshaw/ys-em-up/assets/images",
+    "last.imagePath": "/Users/davidwarshaw/git/davidwarshaw/ys-em-up/assets/maps",
     "map.fixedSize": true,
     "map.height": 20,
     "map.lastUsedExportFilter": "JSON map files (*.json)",
@@ -464,8 +476,8 @@
     "tileset.margin": 0,
     "tileset.spacing": 0,
     "tileset.tileSize": {
-        "height": 32,
-        "width": 32
+        "height": 16,
+        "width": 16
     },
     "tileset.transparentColor": "#ff00ff",
     "tileset.type": 0,

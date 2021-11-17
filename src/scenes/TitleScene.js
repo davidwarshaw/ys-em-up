@@ -12,12 +12,11 @@ export default class TitleScene extends Phaser.Scene {
   create() {
     this.playState = {
       currentMap: {
-        key: "map-dungeon-ante-chamber-02",
-        spawn: { x: 5, y: 25 },
+        key: "map-overworld-forest-01",
+        spawn: { x: 9, y: 6 },
       },
       currentEnemy: null,
     };
-
     this.font = new Font(this);
 
     const centerX = properties.width / 2;
@@ -28,7 +27,7 @@ export default class TitleScene extends Phaser.Scene {
     this.images.push(this.add.image(centerX, centerY, "title-big"));
 
     const offsetY = 70;
-    const text = "press any key or button";
+    const text = "Press Any Key or Button";
     const offsetX = this.font.offsetForText(text);
     this.images.push(this.font.render(centerX + offsetX, centerY + offsetY, text));
 

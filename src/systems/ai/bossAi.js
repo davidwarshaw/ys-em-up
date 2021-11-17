@@ -69,8 +69,9 @@ function stateMachine(scene, boss, player, bullets, map) {
       boss.invulnerable = false;
       boss.setVelocity(0, 0);
       if (boss.stepCount > 10 && Math.round(boss.stepCount) % 5 == 0) {
-        boss.ai.bullets = FIRE_ANGLES.map((angle) => angle + boss.ai.firingAngle).map((angle) =>
-          bullets.spawnAtAngle(boss, angle, "standard")
+        const playerAngle = Phaser.Math.Angle.BetweenPoints(boss, boss.ai.target);
+        boss.ai.bullets = FIRE_ANGLES.map((angle) => angle + playerAngle + boss.ai.firingAngle).map(
+          (angle) => bullets.spawnAtAngle(boss, angle, "standard")
         );
         boss.ai.firingAngle += Math.PI * (0.01 * (1 + boss.ai.phase));
       }

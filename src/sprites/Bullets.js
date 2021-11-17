@@ -43,15 +43,7 @@ export default class Bullets {
   }
 
   collideWithPlayer(character, bullet, player) {
-    const direction = Direction.directionFromPositions(bullet, player);
-    const force = bullet.bulletDefinition.power * 2;
-    const flash = true;
-
-    // console.log(`direction: ${direction} force: ${force} flash: ${flash}`);
-
-    this.bumpAttackSystem.resolveCombat(bullet, player);
-    // this.bumpAttackSystem.createKnockBack(player, direction, force, flash);
-
+    this.bumpAttackSystem.resolveBulletImpact(bullet, player);
     this.killBullet(character, bullet);
   }
 

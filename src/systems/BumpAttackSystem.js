@@ -93,6 +93,22 @@ export default class BumpAttackSystem {
     this.createKnockBack(attacker, Direction.opposite(attackerFacing), LOW_FORCE, false);
   }
 
+  resolveBulletImpact(bullet, character) {
+    const attackerFacing = bullet.direction;
+
+    let attackPower = bullet.power;
+    let attackForce = HIGH_FORCE;
+
+    // console.log(`Final attackPower: ${attackPower}`);
+    character.health = Math.round(character.health - attackPower);
+    if (character.health <= 0) {
+      character.health = 0;
+      this.scene.killCharacter(character);
+    }
+
+    this.createKnockBack(character, attackerFacing, attackForce, true);
+  }
+
   resolveCombat(first, second) {
     // First, get the facing for each character
     const firstFacing = first.direction;

@@ -87,7 +87,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
   }
 
   isHostile() {
-    return this.characterName.startsWith("enemy") || this.characterName.startsWith("boss");
+    return this.characterDefinition.hostile;
   }
 
   isPlayer() {

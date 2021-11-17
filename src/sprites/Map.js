@@ -9,7 +9,8 @@ export default class Map {
     this.scene = scene;
     this.currentMapKey = currentMapKey;
 
-    const tileset = "ys_ii_tileset_extruded";
+    // const tileset = "ys_ii_tileset_extruded";
+    const tileset = "tileset";
 
     this.tilemap = scene.make.tilemap({ key: currentMapKey });
     this.tileset = this.tilemap.addTilesetImage(tileset, tileset);

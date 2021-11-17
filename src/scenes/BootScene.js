@@ -13,14 +13,12 @@ export default class BootScene extends Phaser.Scene {
 
   preload() {
     // Misc
-    this.load.image("font-small", "assets/fonts/atari_like.png");
-    this.load.image("select-frame", "assets/images/select_frame.png");
-    this.load.image("window-small", "assets/images/window_small.png");
-    this.load.image("window-big", "assets/images/window_big.png");
-    this.load.image("window-intro", "assets/images/window_intro.png");
-
+    this.load.image("font-small", "assets/fonts/Altered_Chrome_Bold.png");
+    this.load.image("font-small-two-tone", "assets/fonts/Altered_Chrome_Bold-two-tone.png");
+    this.load.image("hud", "assets/images/hud.png");
     // Maps
     this.load.image("ys_ii_tileset_extruded", "assets/maps/ys_ii_tileset_extruded.png");
+    this.load.image("tileset", "assets/maps/tileset.png");
 
     this.load.tilemapTiledJSON("map-overworld-01", "assets/maps/map-overworld-01.json");
     MAP_NAMES.forEach((mapName) =>
@@ -68,7 +66,5 @@ export default class BootScene extends Phaser.Scene {
 
   create() {
     this.scene.start("TitleScene", this.playState);
-    // this.scene.start("GameScene", this.playState);
-    // this.scene.start("HudScene", this.playState);
   }
 }
