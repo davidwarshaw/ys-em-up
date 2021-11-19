@@ -22,6 +22,8 @@ export default {
   mapHeightTiles: 100,
   knockbackMillis: 100,
   fadeMillis: 200,
+  flickerFrames: 0.5,
+  flickerMillis: 600,
   cameraPauseMillis: 2000,
   animFrameRate: 6,
 };

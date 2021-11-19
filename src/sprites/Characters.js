@@ -1,3 +1,5 @@
+import properties from "../properties";
+
 import characterDefinitions from "../definitions/characterDefinitions.json";
 
 export default class Characters {
@@ -54,6 +56,18 @@ export default class Characters {
     }
 
     return null;
+  }
+
+  killCharacter(character) {
+    this.scene.playState.currentEnemy = null;
+    character.disableBody();
+    character.setVelocity(0, 0);
+    character.isFlickering = true;
+    console.log(`flicker: ${character.flicker}`);
+    const flickerTimer = this.scene.time.delayedCall(properties.flickerMillis, () => {
+      this.purgeDead();
+      character.destroy();
+    });
   }
 
   purgeDead() {

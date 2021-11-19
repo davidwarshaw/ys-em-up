@@ -128,18 +128,6 @@
                  "y":128
                 }, 
                 {
-                 "gid":137,
-                 "height":16,
-                 "id":32,
-                 "name":"charger",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":432,
-                 "y":176
-                }, 
-                {
                  "gid":107,
                  "height":16,
                  "id":38,
@@ -232,8 +220,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":384,
-                 "y":176
+                 "x":408,
+                 "y":169.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",

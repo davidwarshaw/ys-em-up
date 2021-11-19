@@ -15,6 +15,10 @@ export default class TitleScene extends Phaser.Scene {
         key: "map-overworld-forest-01",
         spawn: { x: 9, y: 6 },
       },
+      playerState: {
+        health: 50,
+        healthMax: 50,
+      },
       currentEnemy: null,
     };
     this.font = new Font(this);

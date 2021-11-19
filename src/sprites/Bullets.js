@@ -33,9 +33,16 @@ export default class Bullets {
 
   killBullet(character, bullet) {
     bullet.disableBody();
-    this.group.killAndHide(bullet);
-    this.scene.tweens.killTweensOf(bullet);
-    character.ai.bullet = null;
+    bullet.on(
+      `${Phaser.Animations.Events.ANIMATION_COMPLETE_KEY}${bullet.bulletName}_die`,
+      () => {
+        this.group.killAndHide(bullet);
+        this.scene.tweens.killTweensOf(bullet);
+        character.ai.bullet = null;
+      },
+      this
+    );
+    bullet.anims.play(`${bullet.bulletName}_die`);
   }
 
   collideWithMap(character, bullet, tile) {

@@ -41,12 +41,15 @@ export default class Bullet extends Phaser.Physics.Arcade.Sprite {
     start = offset + 2;
     end = offset + 3;
     // console.log(`${bulletName}_die: start: ${start} end: ${end}`);
-    scene.anims.create({
+    this.dieAnim = scene.anims.create({
       key: `${bulletName}_die`,
       frames: scene.anims.generateFrameNumbers("bullets", { start, end }),
       frameRate: properties.animFrameRate,
       repeat: 0,
     });
+    console.log(this.dieAnim);
+
+    this.anims.play(`${bulletName}_move`);
   }
 
   // All bullets are enemy bullets (for now)

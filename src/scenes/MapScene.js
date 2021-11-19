@@ -23,17 +23,18 @@ export default class MapScene extends Phaser.Scene {
   }
 
   create() {
-    console.log(`\n\nScene created: ${this.playState.currentMap.key}`);
-    const { key, spawn } = this.playState.currentMap;
-    console.log(`player tile spawn: ${spawn.x}, ${spawn.y}`);
+    // console.log(`\n\nScene created: ${this.playState.currentMap.key}`);
+    const { playerState, currentMap } = this.playState;
+    const { key, spawn } = currentMap;
+    // console.log(`player tile spawn: ${spawn.x}, ${spawn.y}`);
     this.map = new Map(this, key);
     const { widthInPixels, heightInPixels } = this.map.tilemap;
     this.spawnXY = this.map.tilemap.tileToWorldXY(spawn.x, spawn.y);
 
     this.physics.world.setBounds(0, 0, widthInPixels, heightInPixels);
 
-    this.player = new Player(this, this.map, this.spawnXY);
-    console.log(`widthInPixels: ${widthInPixels} heightInPixels: ${heightInPixels}`);
+    this.player = new Player(this, this.map, this.spawnXY, playerState);
+    // console.log(`widthInPixels: ${widthInPixels} heightInPixels: ${heightInPixels}`);
 
     this.portals = new Portals(this, this.map);
     this.portals.setPortals(this.map.createPortals());
@@ -82,6 +83,10 @@ export default class MapScene extends Phaser.Scene {
       const keyCode = event.keyCodes.join("");
       const codeWord = this.comboKeyCodes[keyCode];
       switch (codeWord) {
+        case "health": {
+          this.player.refillHealth();
+          break;
+        }
         case "boss": {
           this.player.refillHealth();
           this.changeMap({ toMapKey: "map-dungeon-fork", toX: 6, toY: 2 });
@@ -123,7 +128,7 @@ export default class MapScene extends Phaser.Scene {
 
     const portal = this.portals.playerOnPortal(this.player);
     if (portal) {
-      console.log(`this.player.justPortaled: ${this.player.justPortaled}`);
+      // console.log(`this.player.justPortaled: ${this.player.justPortaled}`);
       if (!this.player.justPortaled) {
         this.changeMap(portal);
       }
@@ -137,6 +142,8 @@ export default class MapScene extends Phaser.Scene {
     }
 
     this.characters.update(delta, this.aiSystem);
+
+    this.syncPlayerState();
   }
 
   startCameraFollow() {
@@ -147,6 +154,13 @@ export default class MapScene extends Phaser.Scene {
     this.cameras.main.stopFollow();
   }
 
+  syncPlayerState() {
+    this.playState.playerState = {
+      health: this.player.health,
+      healthMax: this.player.healthMax,
+    };
+  }
+
   startConfrontation(confrontation) {
     this.playState.confrontation = confrontation;
     this.scene.pause("MapScene", this.playState);
@@ -154,6 +168,9 @@ export default class MapScene extends Phaser.Scene {
   }
 
   changeMap(portal) {
+    // Just in case we change maps in the middle of an update loop
+    this.syncPlayerState();
+
     console.log(`Changing map to: ${portal.toMapKey}`);
     const { toMapKey, toX, toY } = portal;
     this.playState.currentMap = {
@@ -182,15 +199,14 @@ export default class MapScene extends Phaser.Scene {
 
   killEnemy(enemy) {
     console.log("enemy killed");
-    this.characters.purgeDead();
-    enemy.destroy();
-    this.playState.currentEnemy = null;
+    this.characters.killCharacter(enemy);
   }
 
   killPlayer() {
     console.log("player killed");
     // this.player.destroy();
     this.playState.currentEnemy = null;
+    this.player.refillHealth();
     this.scene.restart();
   }
 

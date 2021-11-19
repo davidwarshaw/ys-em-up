@@ -38,10 +38,13 @@ export default class Map {
     this.tilemap.setCollisionByProperty({ collides: true }, true, true, "collision");
   }
 
-  isBackground(position) {
+  isBackgroundOrHazard(position) {
     const tilePosition = this.tilemap.worldToTileXY(position.x, position.y);
-    const tile = this.layers.background.getTileAt(tilePosition.x, tilePosition.y);
-    return !!tile && tile.index != -1;
+    const backgroundTile = this.layers.background.getTileAt(tilePosition.x, tilePosition.y);
+    const hazardTile = this.layers.hazard.getTileAt(tilePosition.x, tilePosition.y);
+    const isBackground = !!backgroundTile && backgroundTile.index != -1;
+    const isHazard = !!hazardTile && hazardTile.index != -1;
+    return isBackground || isHazard;
   }
 
   arrayToProps(arr) {

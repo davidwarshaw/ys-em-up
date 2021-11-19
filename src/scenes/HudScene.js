@@ -44,9 +44,9 @@ export default class HudScene extends Phaser.Scene {
   }
 
   update(time, delta) {
-    if (this.playState.player) {
-      this.playerHealthBar.width = this.playState.player.health;
-      this.playerHealthBarMax.width = this.playState.player.healthMax;
+    if (this.playState.playerState) {
+      this.playerHealthBar.width = this.playState.playerState.health;
+      this.playerHealthBarMax.width = this.playState.playerState.healthMax;
     } else {
       this.enemyHealthBar.width = 0;
       this.enemyHealthBarMax.width = 0;

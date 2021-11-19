@@ -26,8 +26,8 @@
     }
   },
   "rambler": {
-    "healthMax": 10,
-    "power": 10,
+    "healthMax": 15,
+    "power": 15,
     "speed": 2,
     "hostile": true,
     "flies": false,
@@ -54,7 +54,7 @@
     }
   },
   "charger": {
-    "healthMax": 10,
+    "healthMax": 20,
     "power": 10,
     "speed": 150,
     "hostile": true,
@@ -69,7 +69,7 @@
   },
   "flyer": {
     "healthMax": 2,
-    "power": 4,
+    "power": 3,
     "speed": 60,
     "hostile": true,
     "flies": true,
@@ -82,8 +82,8 @@
     }
   },
   "boss-01": {
-    "healthMax": 200,
-    "power": 5,
+    "healthMax": 180,
+    "power": 30,
     "speed": 150,
     "hostile": true,
     "flies": false,

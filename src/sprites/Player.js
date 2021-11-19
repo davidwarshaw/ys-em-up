@@ -4,7 +4,7 @@ import TileMath from "../utils/TileMath";
 import Character from "./Character";
 
 export default class Player extends Character {
-  constructor(scene, map, worldXY) {
+  constructor(scene, map, worldXY, playerState) {
     super(scene, map, worldXY, "player", Phaser.Physics.Arcade.DYNAMIC_BODY);
 
     this.direction = "down";
@@ -13,12 +13,14 @@ export default class Player extends Character {
       force: null,
       direction: null,
     };
-    console.log("Setting justPortaled: true");
+    // console.log("Setting justPortaled: true");
     this.justPortaled = true;
 
     this.power = 10;
-
     this.healthRegenFactor = 0.001;
+
+    this.health = playerState.health;
+    this.healthMax = playerState.healthMax;
 
     this.setCollideWorldBounds(true);
 
@@ -45,12 +47,8 @@ export default class Player extends Character {
     console.log(playerBody);
   }
 
-  regenerateHealth(delta) {
-    const healthRegenAmount = this.healthRegenFactor * delta;
-    this.health = Phaser.Math.Clamp(this.health + healthRegenAmount, 0, this.healthMax);
-  }
-
   update(delta, inputMultiplexer) {
+    this.regeneratingHealth = false;
     switch (this.state) {
       case "knockback": {
         this.updateKnockback(delta);

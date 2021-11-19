@@ -1,5 +1,10 @@
 import Direction from "../../utils/Direction";
+import BumpAttackSystem from "../BumpAttackSystem";
 import Ai from "./Ai";
+
+function collideWithPlayer(player, character) {
+  BumpAttackSystem.resolveCombat(player, character);
+}
 
 function collideWithCharacter(character, second) {
   switch (character.ai.state) {
@@ -24,7 +29,7 @@ function stateMachine(scene, character, player, bullets) {
   switch (character.ai.state) {
     case "shoot": {
       const bulletActive = character.bullet && character.bullet.active;
-      if (character.stepCount > 10 && !bulletActive) {
+      if (character.stepCount > 15 && !bulletActive) {
         character.ai.bullet = bullets.spawnAtTarget(character, player, "standard");
         character.stepCount = 0;
       }
@@ -34,6 +39,7 @@ function stateMachine(scene, character, player, bullets) {
 }
 
 export default {
+  collideWithPlayer,
   collideWithCharacter,
   collideWithMap,
   stateMachine,

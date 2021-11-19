@@ -21,6 +21,10 @@ export default class BumpAttackSystem {
   }
 
   createKnockBack(character, direction, force, flash) {
+    if (character.invulnerable) {
+      return;
+    }
+
     character.stateChange("knockback");
     character.knockback = { direction, force };
     if (flash) {
@@ -73,20 +77,22 @@ export default class BumpAttackSystem {
     }
 
     if (relativeDirection === "back") {
-      // Increase attacks to the back by 100%
-      attackPower = attackPower * 2;
-      attackForce = attackForce * 2;
+      // Increase attacks to the back by 50%
+      attackPower = attackPower * 1.5;
+      attackForce = attackForce * 1.5;
     } else if (relativeDirection === "front") {
-      // Decrease attacks to the front by 50%
-      attackPower = attackPower * 0.5;
-      attackForce = attackForce * 0.5;
+      // Decrease attacks to the front by 25%
+      attackPower = attackPower * 0.75;
+      attackForce = attackForce * 0.75;
     }
 
-    // console.log(`Final attackPower: ${attackPower}`);
-    defender.health = Math.round(defender.health - attackPower);
-    if (defender.health <= 0) {
-      defender.health = 0;
-      this.scene.killCharacter(defender);
+    if (!defender.invulnerable) {
+      // console.log(`Final attackPower: ${attackPower}`);
+      defender.health = Math.round(defender.health - attackPower);
+      if (defender.health <= 0) {
+        defender.health = 0;
+        this.scene.killCharacter(defender);
+      }
     }
 
     this.createKnockBack(defender, attackerFacing, attackForce, true);
@@ -118,10 +124,10 @@ export default class BumpAttackSystem {
     const firstDirectionToSecond = Direction.directionFromPositions(first, second);
     const secondDirectionToFirst = Direction.directionFromPositions(second, first);
 
-    console.log(`firstFacing: ${firstFacing} secondFacing: ${secondFacing}`);
-    console.log(
-      `firstDirectionToSecond: ${firstDirectionToSecond} secondDirectionToFirst: ${secondDirectionToFirst}`
-    );
+    // console.log(`firstFacing: ${firstFacing} secondFacing: ${secondFacing}`);
+    // console.log(
+    //   `firstDirectionToSecond: ${firstDirectionToSecond} secondDirectionToFirst: ${secondDirectionToFirst}`
+    // );
 
     // If a characters facing matches the direction to the other character, then they're attacking
     if (firstFacing === firstDirectionToSecond) {

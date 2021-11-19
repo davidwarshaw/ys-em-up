@@ -1,8 +1,16 @@
 import Direction from "../../utils/Direction";
+import BumpAttackSystem from "../BumpAttackSystem";
 import Ai from "./Ai";
 
 const TARGET_DELTA = 10;
 const FIRE_ANGLES = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
+
+function collideWithPlayer(player, boss) {
+  boss.setVelocity(0, 0);
+  BumpAttackSystem.resolveCombat(player, boss);
+  boss.stepCount = 0;
+  Ai.changeState(boss, "wait");
+}
 
 function collideWithMap(boss) {
   switch (boss.ai.state) {
@@ -76,6 +84,7 @@ function stateMachine(scene, boss, player, bullets, map) {
         boss.ai.firingAngle += Math.PI * (0.01 * (1 + boss.ai.phase));
       }
       if (boss.stepCount > 20 + 5 * boss.ai.phase) {
+        boss.stepCount = 0;
         Ai.changeState(boss, "wait");
       }
       if (boss.getHealthAsPercent() < 0.66 && boss.ai.phase < 1) {
@@ -137,6 +146,7 @@ function chargeAndChangeState(boss, newState) {
 }
 
 export default {
+  collideWithPlayer,
   collideWithMap,
   collideWithCharacter,
   stateMachine,

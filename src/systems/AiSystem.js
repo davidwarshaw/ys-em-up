@@ -17,6 +17,32 @@ export default class AiSystem {
     this.collideWithCharacter = this.collideWithCharacter.bind(this);
   }
 
+  collideWithPlayer(player, character) {
+    const { ai } = character.characterDefinition;
+    switch (ai.behavior) {
+      case "turret": {
+        turretAi.collideWithPlayer(player, character);
+        break;
+      }
+      case "ramble": {
+        rambleAi.collideWithMapPlayer(player, character);
+        break;
+      }
+      case "charger": {
+        chargerAi.collideWithMapPlayer(player, character);
+        break;
+      }
+      case "flyer": {
+        flyerAi.collideWithMapPlayer(player, character);
+        break;
+      }
+      case "big-charger": {
+        bossAi.collideWithMapPlayer(player, character);
+        break;
+      }
+    }
+  }
+
   processCollisionWithMap(character) {
     const { flies } = character.characterDefinition;
     return !flies;
@@ -81,6 +107,11 @@ export default class AiSystem {
   }
 
   update(delta, character) {
+    // Don't update dead characters
+    if (character.health <= 0) {
+      return;
+    }
+
     const { ai } = character.characterDefinition;
     character.stepCount += 0.01 * delta;
     switch (ai.behavior) {

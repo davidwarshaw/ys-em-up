@@ -1,7 +1,12 @@
 import Direction from "../../utils/Direction";
+import BumpAttackSystem from "../BumpAttackSystem";
 import Ai from "./Ai";
 
 const TARGET_DELTA = 10;
+
+function collideWithPlayer(player, character) {
+  BumpAttackSystem.resolveCombat(player, character);
+}
 
 function collideWithCharacter(character, second) {
   switch (character.ai.state) {
@@ -38,6 +43,7 @@ function stateMachine(scene, character, player) {
 }
 
 export default {
+  collideWithPlayer,
   collideWithCharacter,
   collideWithMap,
   stateMachine,

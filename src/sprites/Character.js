@@ -21,10 +21,19 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
 
     this.stepCount = 100;
 
+    this.flickerCount = 0;
+    this.isFlickering = false;
+
     this.state = "normal";
-    this.knockback = {};
+    this.knockback = {
+      force: null,
+      direction: null,
+    };
 
     this.power = this.characterDefinition.power;
+
+    this.healthRegenFactor = 0.001;
+    this.regeneratingHealth = false;
 
     this.invulnerable = false;
 
@@ -86,6 +95,15 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
     this.health = this.healthMax;
   }
 
+  flicker(delta) {
+    this.flickerCount += 0.01 * delta;
+    console.log(this.flickerCount);
+    if (this.flickerCount >= properties.flickerFrames) {
+      this.setVisible(!this.visible);
+      this.flickerCount = 0;
+    }
+  }
+
   isHostile() {
     return this.characterDefinition.hostile;
   }
@@ -109,10 +127,12 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
     if (this.state === "normal") {
       if (newState === "knockback") {
         this.state = "knockback";
+        this.invulnerable = true;
       }
     } else if (this.state === "knockback") {
       if (newState === "normal") {
         this.state = "normal";
+        this.invulnerable = false;
       }
     }
   }
@@ -126,7 +146,17 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
     return this.health / this.healthMax;
   }
 
+  regenerateHealth(delta) {
+    const healthRegenAmount = this.healthRegenFactor * delta;
+    this.health = Phaser.Math.Clamp(this.health + healthRegenAmount, 0, this.healthMax);
+    this.regeneratingHealth = true;
+  }
+
   update(delta, aiSystem) {
+    if (this.isFlickering) {
+      this.flicker(delta);
+    }
+    this.regeneratingHealth = false;
     switch (this.state) {
       case "knockback": {
         this.updateKnockback(delta);
