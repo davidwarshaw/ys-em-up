@@ -47,7 +47,6 @@ export default class Bullet extends Phaser.Physics.Arcade.Sprite {
       frameRate: properties.animFrameRate,
       repeat: 0,
     });
-    console.log(this.dieAnim);
 
     this.anims.play(`${bulletName}_move`);
   }

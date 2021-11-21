@@ -4,9 +4,9 @@ import Ai from "./Ai";
 
 const TARGET_DELTA = 10;
 
-function collideWithPlayer(player, character) {
+function collideWithPlayer(player, character, bumpAttackSystem) {
   character.setVelocity(0, 0);
-  BumpAttackSystem.resolveCombat(player, character);
+  bumpAttackSystem.resolveCombat(player, character);
   Ai.changeState(character, "wait");
 }
 
@@ -14,7 +14,6 @@ function collideWithCharacter(character, second) {
   switch (character.ai.state) {
     case "charge": {
       character.setVelocity(0, 0);
-      character.stepCount = 0;
       Ai.changeState(character, "wait");
       break;
     }
@@ -25,7 +24,6 @@ function collideWithMap(character) {
   switch (character.ai.state) {
     case "charge": {
       character.setVelocity(0, 0);
-      character.stepCount = 0;
       Ai.changeState(character, "wait");
       break;
     }
@@ -72,7 +70,6 @@ function stateMachine(scene, character, player) {
       // console.log(`dist: ${Phaser.Math.Distance.BetweenPoints(character, character.ai.target)}`);
       if (Phaser.Math.Distance.BetweenPoints(character, character.ai.target) < TARGET_DELTA) {
         character.setVelocity(0, 0);
-        character.stepCount = 0;
         Ai.changeState(character, "wait");
       } else {
         const angle = Phaser.Math.Angle.BetweenPoints(character, character.ai.target);

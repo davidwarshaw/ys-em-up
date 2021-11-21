@@ -3,7 +3,7 @@ import * as ROT from "rot-js";
 ROT.RNG.setSeed(Date.now());
 
 export default {
-  debug: false,
+  debug: true,
   rng: ROT.RNG,
   width: 320,
   height: 208,

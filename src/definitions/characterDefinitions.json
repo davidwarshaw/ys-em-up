@@ -10,7 +10,7 @@
       "row": 11
     }
   },
-  "villager-01": {
+  "villager": {
     "healthMax": 10,
     "power": 5,
     "speed": 2,
@@ -22,7 +22,7 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 1
+      "row": 8
     }
   },
   "rambler": {

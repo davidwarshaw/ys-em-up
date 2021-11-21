@@ -33,7 +33,7 @@ export default class MapScene extends Phaser.Scene {
 
     this.physics.world.setBounds(0, 0, widthInPixels, heightInPixels);
 
-    this.player = new Player(this, this.map, this.spawnXY, playerState);
+    this.player = new Player(this, this.map, this.spawnXY, spawn.direction, playerState);
     // console.log(`widthInPixels: ${widthInPixels} heightInPixels: ${heightInPixels}`);
 
     this.portals = new Portals(this, this.map);
@@ -49,9 +49,9 @@ export default class MapScene extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, widthInPixels, heightInPixels, centerOn);
     this.cameras.main.startFollow(this.player, true, 1, 1, 0, 0);
 
-    this.aiSystem = new AiSystem(this, this.map, this.player, this.bullets);
-
     this.bumpAttackSystem = new BumpAttackSystem(this);
+
+    this.aiSystem = new AiSystem(this, this.map, this.player, this.bullets, this.bumpAttackSystem);
 
     this.inputMultiplexer = new InputMultiplexer(this);
 
@@ -176,7 +176,7 @@ export default class MapScene extends Phaser.Scene {
     this.playState.currentMap = {
       key: toMapKey,
       // NOTE: Why Tiled y values always one off?
-      spawn: { x: toX, y: toY + 1 },
+      spawn: { x: toX, y: toY + 1, direction: this.player.direction },
     };
     this.cameras.main.fadeOut(properties.fadeMillis);
     this.scene.restart(this.playState);

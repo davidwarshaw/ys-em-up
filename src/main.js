@@ -1,6 +1,7 @@
 import "phaser";
 
 import phaserJuice from "../../phaser3-juice-plugin/dist/phaserJuicePlugin.min.js";
+import PhaserRaycaster from "phaser-raycaster";
 
 import properties from "./properties";
 
@@ -25,14 +26,21 @@ const config = {
     default: "arcade",
     arcade: {
       gravity: { y: 0 },
-      // debug: {
-      //   showBody: properties.debug,
-      //   showStaticBody: properties.debug,
-      // },
+      debug: {
+        showBody: properties.debug,
+        showStaticBody: properties.debug,
+      },
     },
   },
   plugins: {
-    scene: [{ key: "phaserJuice", plugin: phaserJuice, mapping: "juice" }],
+    scene: [
+      { key: "phaserJuice", plugin: phaserJuice, mapping: "juice" },
+      {
+        key: "PhaserRaycaster",
+        plugin: PhaserRaycaster,
+        mapping: "raycasterPlugin",
+      },
+    ],
   },
   scene: [BootScene, TitleScene, HudScene, MapScene],
 };

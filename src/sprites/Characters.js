@@ -12,6 +12,7 @@ export default class Characters {
 
   setCharacters(characters, player, aiSystem, bumpAttackSystem) {
     this.characters = characters;
+    this.bumpAttackSystem = bumpAttackSystem;
 
     // Assign colliders
     this.characters.forEach((firstCharacter) => {
@@ -40,7 +41,7 @@ export default class Characters {
       );
       // Characters collide with the player
       this.scene.physics.add.collider(player, firstCharacter, (player, enemy) =>
-        bumpAttackSystem.resolveCombat(player, enemy)
+        aiSystem.collideWithPlayer(player, enemy)
       );
     });
   }
@@ -59,11 +60,10 @@ export default class Characters {
   }
 
   killCharacter(character) {
-    this.scene.playState.currentEnemy = null;
+    this.bumpAttackSystem.clearCurrentEnemy();
     character.disableBody();
     character.setVelocity(0, 0);
     character.isFlickering = true;
-    console.log(`flicker: ${character.flicker}`);
     const flickerTimer = this.scene.time.delayedCall(properties.flickerMillis, () => {
       this.purgeDead();
       character.destroy();

@@ -4,10 +4,10 @@ import TileMath from "../utils/TileMath";
 import Character from "./Character";
 
 export default class Player extends Character {
-  constructor(scene, map, worldXY, playerState) {
+  constructor(scene, map, worldXY, direction, playerState) {
     super(scene, map, worldXY, "player", Phaser.Physics.Arcade.DYNAMIC_BODY);
 
-    this.direction = "down";
+    this.direction = direction;
     this.state = "normal";
     this.knockback = {
       force: null,

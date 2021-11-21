@@ -38,6 +38,22 @@ export default class Map {
     this.tilemap.setCollisionByProperty({ collides: true }, true, true, "collision");
   }
 
+  getCollisionTileIndices() {
+    const indexFreq = {};
+    this.layers.collision.layer.data.forEach((row) =>
+      row.forEach((tile) => {
+        if (tile && tile.index && tile.index > 0) {
+          if (tile.index in indexFreq) {
+            indexFreq[tile.index] = indexFreq[tile.index] + 1;
+          } else {
+            indexFreq[tile.index] = 0;
+          }
+        }
+      })
+    );
+    return Object.keys(indexFreq);
+  }
+
   isBackgroundOrHazard(position) {
     const tilePosition = this.tilemap.worldToTileXY(position.x, position.y);
     const backgroundTile = this.layers.background.getTileAt(tilePosition.x, tilePosition.y);

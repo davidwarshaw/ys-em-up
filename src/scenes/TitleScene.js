@@ -12,8 +12,8 @@ export default class TitleScene extends Phaser.Scene {
   create() {
     this.playState = {
       currentMap: {
-        key: "map-overworld-forest-01",
-        spawn: { x: 9, y: 6 },
+        key: "map-overworld-village-01",
+        spawn: { x: 9, y: 26, direction: "up" },
       },
       playerState: {
         health: 50,

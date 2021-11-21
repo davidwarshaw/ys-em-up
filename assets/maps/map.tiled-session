@@ -394,10 +394,10 @@
         },
         "map-dungeon-fork.tmx": {
             "scale": 2,
-            "selectedLayer": 0,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 141,
-                "y": 233.5
+                "x": 200.75,
+                "y": 153.25
             }
         },
         "map-dungeon-fork.tmx#characters_spritesheet": {
@@ -424,12 +424,29 @@
         "map-overworld-01.tmx#ys_ii_tileset_extruded": {
             "scaleInDock": 1
         },
+        "map-overworld-forest-01.json": {
+            "scale": 1.594642857142857,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 152.38521836506158,
+                "y": 104.09854423292275
+            }
+        },
+        "map-overworld-forest-01.json#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-overworld-forest-01.json#tileset": {
+            "scaleInDock": 1
+        },
+        "map-overworld-forest-01.json#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
         "map-overworld-forest-01.tmx": {
             "scale": 2.01,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 153.48258706467664,
-                "y": 125.87064676616917
+                "x": 123.38308457711445,
+                "y": 125.6218905472637
             }
         },
         "map-overworld-forest-01.tmx#characters_spritesheet": {
@@ -439,6 +456,40 @@
             "scaleInDock": 1
         },
         "map-overworld-forest-01.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-overworld-forest-02.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 162,
+                "y": 457.5
+            }
+        },
+        "map-overworld-forest-02.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-overworld-forest-02.tmx#tileset": {
+            "scaleInDock": 1.5
+        },
+        "map-overworld-forest-02.tmx#ys_ii_tileset_extruded": {
+            "scaleInDock": 1
+        },
+        "map-overworld-village-01.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 233.33333333333331,
+                "y": 253
+            }
+        },
+        "map-overworld-village-01.tmx#characters_spritesheet": {
+            "scaleInDock": 1
+        },
+        "map-overworld-village-01.tmx#tileset": {
+            "scaleInDock": 1.5
+        },
+        "map-overworld-village-01.tmx#ys_ii_tileset_extruded": {
             "scaleInDock": 1
         }
     },
@@ -458,20 +509,20 @@
         "map-dungeon-02.tmx"
     ],
     "project": "map.tiled-project",
-    "property.type": "bool",
+    "property.type": "int",
     "recentFiles": [
-        "map-dungeon-fork.tmx",
-        "map-overworld-forest-01.tmx",
-        "map-dungeon-ante-chamber-02.tmx",
-        "map-dungeon-ante-chamber-01.tmx",
-        "map-dungeon-02.tmx",
+        "map-overworld-forest-01.json",
         "map-dungeon-boss.tmx",
+        "map-overworld-forest-01.tmx",
+        "map-dungeon-ante-chamber-01.tmx",
+        "map-dungeon-fork.tmx",
+        "map-dungeon-ante-chamber-02.tmx",
+        "map-dungeon-02.tmx",
         "map-dungeon-01.tmx",
         "map-overworld-01.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx",
         "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/forest_01.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/doki-doki-pirate/assets/images/map/level-2-1.tmx"
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/forest_01.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "All Files (*)",

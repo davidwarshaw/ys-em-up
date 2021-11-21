@@ -97,7 +97,6 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
 
   flicker(delta) {
     this.flickerCount += 0.01 * delta;
-    console.log(this.flickerCount);
     if (this.flickerCount >= properties.flickerFrames) {
       this.setVisible(!this.visible);
       this.flickerCount = 0;

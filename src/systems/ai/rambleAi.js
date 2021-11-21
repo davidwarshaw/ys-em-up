@@ -4,8 +4,8 @@ import Ai from "./Ai";
 
 const TARGET_DELTA = 10;
 
-function collideWithPlayer(player, character) {
-  BumpAttackSystem.resolveCombat(player, character);
+function collideWithPlayer(player, character, bumpAttackSystem) {
+  bumpAttackSystem.resolveCombat(player, character);
 }
 
 function collideWithCharacter(character, second) {

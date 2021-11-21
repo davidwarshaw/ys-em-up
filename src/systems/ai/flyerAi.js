@@ -5,10 +5,10 @@ import Ai from "./Ai";
 const COORD_DELTA = 16 * 3;
 const WAVE_FACTOR = 300;
 
-function collideWithPlayer(player, character) {
-  BumpAttackSystem.resolveCombat(player, character);
+function collideWithPlayer(player, character, bumpAttackSystem) {
+  bumpAttackSystem.resolveCombat(player, character);
   character.stepCount = 0;
-  character.ai.state = "wait";
+  Ai.changeState(character, "wait");
 }
 
 function collideWithCharacter(character, second) {

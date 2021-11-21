@@ -7,11 +7,19 @@ import chargerAi from "./ai/chargerAi";
 import bossAi from "./ai/bossAi";
 
 export default class AiSystem {
-  constructor(scene, map, player, bullets) {
+  constructor(scene, map, player, bullets, bumpAttackSystem) {
     this.scene = scene;
     this.map = map;
     this.player = player;
     this.bullets = bullets;
+    this.bumpAttackSystem = bumpAttackSystem;
+
+    // const collisionTiles = this.map.getCollisionTileIndices();
+    // console.log(`Creating raycaster with collision Tiles: ${collisionTiles}`);
+    // this.raycaster = this.scene.raycasterPlugin.createRaycaster({ debug: false });
+    // this.raycaster.mapGameObjects(this.player);
+    // this.raycaster.mapGameObjects(this.map.layers.collision, false, { collisionTiles });
+    // this.ray = this.raycaster.createRay();
 
     this.collideWithMap = this.collideWithMap.bind(this);
     this.collideWithCharacter = this.collideWithCharacter.bind(this);
@@ -21,23 +29,23 @@ export default class AiSystem {
     const { ai } = character.characterDefinition;
     switch (ai.behavior) {
       case "turret": {
-        turretAi.collideWithPlayer(player, character);
+        turretAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
       case "ramble": {
-        rambleAi.collideWithMapPlayer(player, character);
+        rambleAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
       case "charger": {
-        chargerAi.collideWithMapPlayer(player, character);
+        chargerAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
       case "flyer": {
-        flyerAi.collideWithMapPlayer(player, character);
+        flyerAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
       case "big-charger": {
-        bossAi.collideWithMapPlayer(player, character);
+        bossAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
     }
@@ -115,11 +123,15 @@ export default class AiSystem {
     const { ai } = character.characterDefinition;
     character.stepCount += 0.01 * delta;
     switch (ai.behavior) {
+      case "static": {
+        character.setImmovable(true);
+        break;
+      }
       case "turret": {
         if (!this.characterInView(character)) {
           return;
         }
-        turretAi.stateMachine(this.scene, character, this.player, this.bullets);
+        turretAi.stateMachine(this.scene, character, this.player, this.bullets, this.map, this.ray);
         break;
       }
       case "ramble": {

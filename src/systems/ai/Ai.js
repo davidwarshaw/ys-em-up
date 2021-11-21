@@ -6,6 +6,10 @@ function characterInView(scene, character) {
   return scene.cameras.main.worldView.contains(character.x, character.y);
 }
 
+function inState(character, state) {
+  return character.ai.state === state;
+}
+
 function changeState(character, newState) {
   console.log(`character changeState: ${character.ai.state} -> ${newState}`);
   character.ai.state = newState;
@@ -30,6 +34,7 @@ function targetPlayer(character, player) {
 
 export default {
   characterInView,
+  inState,
   changeState,
   directionTowardsPlayer,
   randomizeDirection,
