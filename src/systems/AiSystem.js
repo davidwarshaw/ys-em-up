@@ -1,5 +1,6 @@
 import properties from "../properties";
 
+import npcAi from "./ai/npcAi";
 import turretAi from "./ai/turretAi";
 import rambleAi from "./ai/rambleAi";
 import flyerAi from "./ai/flyerAi";
@@ -28,6 +29,10 @@ export default class AiSystem {
   collideWithPlayer(player, character) {
     const { ai } = character.characterDefinition;
     switch (ai.behavior) {
+      case "npc": {
+        npcAi.collideWithPlayer(player, character, this.bumpAttackSystem, this.scene);
+        break;
+      }
       case "turret": {
         turretAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
@@ -123,15 +128,15 @@ export default class AiSystem {
     const { ai } = character.characterDefinition;
     character.stepCount += 0.01 * delta;
     switch (ai.behavior) {
-      case "static": {
-        character.setImmovable(true);
+      case "npc": {
+        npcAi.stateMachine(this.scene, character, this.player, this.bullets, this.map);
         break;
       }
       case "turret": {
         if (!this.characterInView(character)) {
           return;
         }
-        turretAi.stateMachine(this.scene, character, this.player, this.bullets, this.map, this.ray);
+        turretAi.stateMachine(this.scene, character, this.player, this.bullets, this.map);
         break;
       }
       case "ramble": {

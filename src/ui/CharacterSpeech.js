@@ -1,6 +1,6 @@
 import properties from "../properties";
 
-import speechDefinitions from '../definitions/speechDefinitions.json';
+import speechDefinitions from "../definitions/speechDefinitions.json";
 
 import Font from "./Font";
 
@@ -18,18 +18,15 @@ export default class CharacterSpeech {
     this.centerX = properties.width / 2;
     this.centerY = properties.height / 2;
 
-    this.numberLines = 4;
-    this.maxLineLength = Math.floor((properties.width - (2 * properties.ninePatchDimension.left))  / 8);
+    this.speechPanelY = properties.height - properties.speechWindowHeight;
 
-    this.speechPanel = scene.add.ninePatch(
-      this.centerX,
-      properties.height - Math.round(properties.speechWindowHeight / 2),
-      properties.width,
-      properties.speechWindowHeight,
-      'speech-frame-ninepatch-light',
-      null,
-      properties.ninePatchDimension
+    this.numberLines = 4;
+    this.maxLineLength = Math.floor(
+      (properties.width - 2 * properties.ninePatchDimension.left) / 9
     );
+
+    this.speechPanel = scene.add.image(0, this.speechPanelY, "speech");
+    this.speechPanel.setOrigin(0, 0);
     this.speechPanel.visible = false;
 
     const panelBounds = this.speechPanel.getBounds();
@@ -55,12 +52,12 @@ export default class CharacterSpeech {
   }
 
   renderSpeechesToTextBlock() {
-    this.definition.speech.forEach(speech => {
+    this.definition.speech.forEach((speech) => {
       // The current block
       let textBlock = [];
       // The current line
-      let textLine = [`${this.definition[speech.speaker]}:`];
-      speech.text.split(" ").forEach(word => {
+      let textLine = [""];
+      speech.text.split(" ").forEach((word) => {
         const candidateLine = [...textLine, word].join(" ");
         const candidateLength = candidateLine.length;
         // console.log(`candidateLine: ${candidateLine} candidateLength: ${candidateLength}`);

@@ -1,6 +1,7 @@
 const MAP_NAMES = [
   "overworld-village-01",
   "overworld-forest-01",
+  "overworld-forest-02",
   "dungeon-ante-chamber-01",
   "dungeon-ante-chamber-02",
   "dungeon-fork",
@@ -17,6 +18,7 @@ export default class BootScene extends Phaser.Scene {
     this.load.image("font-small", "assets/fonts/Altered_Chrome_Bold.png");
     this.load.image("font-small-two-tone", "assets/fonts/Altered_Chrome_Bold-two-tone.png");
     this.load.image("hud", "assets/images/hud.png");
+    this.load.image("speech", "assets/images/speech.png");
 
     // Maps
     this.load.image("tileset", "assets/maps/tileset.png");

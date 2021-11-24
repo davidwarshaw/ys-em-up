@@ -125,23 +125,23 @@
 </data>
  </layer>
  <objectgroup id="4" name="characters">
-  <object id="13" name="villager" gid="97" x="272" y="208" width="16" height="16"/>
-  <object id="14" name="villager" gid="97" x="368" y="240" width="16" height="16"/>
+  <object id="13" name="villager-02" gid="97" x="272" y="208" width="16" height="16"/>
+  <object id="14" name="villager-01" gid="97" x="368" y="240" width="16" height="16"/>
   <object id="15" name="rambler" gid="117" x="64" y="336" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="portals">
   <object id="10" gid="12" x="240" y="48" width="16" height="16">
    <properties>
-    <property name="toMapKey" value="map-overworld-forest-01"/>
+    <property name="toMapKey" value="map-overworld-forest-02"/>
     <property name="toX" type="int" value="9"/>
-    <property name="toY" type="int" value="10"/>
+    <property name="toY" type="int" value="39"/>
    </properties>
   </object>
   <object id="12" gid="12" x="256" y="48" width="16" height="16">
    <properties>
-    <property name="toMapKey" value="map-overworld-forest-01"/>
+    <property name="toMapKey" value="map-overworld-forest-02"/>
     <property name="toX" type="int" value="10"/>
-    <property name="toY" type="int" value="10"/>
+    <property name="toY" type="int" value="39"/>
    </properties>
   </object>
  </objectgroup>

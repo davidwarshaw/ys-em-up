@@ -15,6 +15,7 @@ export default class Player extends Character {
     };
     // console.log("Setting justPortaled: true");
     this.justPortaled = true;
+    this.justHeardSpeech = false;
 
     this.power = 10;
     this.healthRegenFactor = 0.001;
@@ -113,6 +114,10 @@ export default class Player extends Character {
       this.playAnimationForDirection("idle");
       this.setVelocity(0, 0);
       this.regenerateHealth(delta);
+    }
+
+    if (inputMultiplexer.anyPressed()) {
+      this.justHeardSpeech = false;
     }
 
     return null;

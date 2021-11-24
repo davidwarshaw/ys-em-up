@@ -1,32 +1,27 @@
 {
-  "intro": {
-    "left": "lich-king",
-    "right": "hench-skeleton",
+  "intro-01": {
     "speech": [
       {
-        "speaker": "left",
-        "expression": 0,
-        "text": "Foolish mortal! You dare to enter my dark fortress! You'll rue the day you stepped foot in my..."
+        "text": "Some intro..."
       },
       {
-        "speaker": "left",
-        "expression": 0,
-        "text": "...in my..."
+        "text": "more intro..."
       },
       {
-        "speaker": "left",
-        "expression": 0,
-        "text": "...wait, what's that?"
+        "text": "and, the end."
+      }
+    ]
+  },
+  "intro-02": {
+    "speech": [
+      {
+        "text": "Another intro..."
       },
       {
-        "speaker": "right",
-        "expression": 1,
-        "text": "It's an SUV!!!"
+        "text": "more intro..."
       },
       {
-        "speaker": "left",
-        "expression": 1,
-        "text": "A what?!"
+        "text": "and, the end."
       }
     ]
   }

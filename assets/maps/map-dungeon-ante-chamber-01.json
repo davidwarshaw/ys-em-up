@@ -115,17 +115,17 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-overworld-forest-01"
+                         "value":"map-overworld-forest-02"
                         }, 
                         {
                          "name":"toX",
                          "type":"int",
-                         "value":9
+                         "value":24
                         }, 
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":0
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",
@@ -171,17 +171,17 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-overworld-forest-01"
+                         "value":"map-overworld-forest-02"
                         }, 
                         {
                          "name":"toX",
                          "type":"int",
-                         "value":10
+                         "value":25
                         }, 
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":0
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",

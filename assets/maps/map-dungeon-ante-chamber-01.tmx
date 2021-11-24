@@ -93,9 +93,9 @@
   </object>
   <object id="5" gid="12" x="144" y="208" width="16" height="16">
    <properties>
-    <property name="toMapKey" value="map-overworld-forest-01"/>
-    <property name="toX" type="int" value="9"/>
-    <property name="toY" type="int" value="0"/>
+    <property name="toMapKey" value="map-overworld-forest-02"/>
+    <property name="toX" type="int" value="24"/>
+    <property name="toY" type="int" value="1"/>
    </properties>
   </object>
   <object id="8" gid="12" x="160" y="16" width="16" height="16">
@@ -107,9 +107,9 @@
   </object>
   <object id="9" gid="12" x="160" y="208" width="16" height="16">
    <properties>
-    <property name="toMapKey" value="map-overworld-forest-01"/>
-    <property name="toX" type="int" value="10"/>
-    <property name="toY" type="int" value="0"/>
+    <property name="toMapKey" value="map-overworld-forest-02"/>
+    <property name="toX" type="int" value="25"/>
+    <property name="toY" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>

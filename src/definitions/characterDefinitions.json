@@ -10,15 +10,30 @@
       "row": 11
     }
   },
-  "villager": {
+  "villager-01": {
     "healthMax": 10,
     "power": 5,
     "speed": 2,
     "hostile": false,
     "flies": false,
     "ai": {
-      "behavior": "static",
-      "speech": "intro"
+      "behavior": "npc",
+      "speech": "intro-01"
+    },
+    "spritesheet": {
+      "key": "characters",
+      "row": 8
+    }
+  },
+  "villager-02": {
+    "healthMax": 10,
+    "power": 5,
+    "speed": 2,
+    "hostile": false,
+    "flies": false,
+    "ai": {
+      "behavior": "npc",
+      "speech": "intro-02"
     },
     "spritesheet": {
       "key": "characters",

@@ -18,6 +18,7 @@ export default class SpeechScene extends Phaser.Scene {
 
     this.stopSpeech = this.stopSpeech.bind(this);
     this.characterSpeech = new CharacterSpeech(this, speechId, this.stopSpeech);
+    console.log(this.characterSpeech);
 
     this.inputMultiplexer = new InputMultiplexer(this);
 

@@ -323,8 +323,8 @@
             "scale": 2.11,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 165.6398104265403,
-                "y": 127.01421800947865
+                "x": 192.654028436019,
+                "y": 127.25118483412322
             }
         },
         "map-dungeon-ante-chamber-01.tmx#characters_spritesheet": {
@@ -340,8 +340,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 168.33333333333331,
-                "y": 159.33333333333334
+                "x": 207,
+                "y": 159.66666666666666
             }
         },
         "map-dungeon-ante-chamber-02.tmx#characters_spritesheet": {
@@ -459,11 +459,11 @@
             "scaleInDock": 1
         },
         "map-overworld-forest-02.tmx": {
-            "scale": 1,
-            "selectedLayer": 2,
+            "scale": 1.5,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 162,
-                "y": 457.5
+                "x": 190.33333333333331,
+                "y": 495.66666666666663
             }
         },
         "map-overworld-forest-02.tmx#characters_spritesheet": {
@@ -477,10 +477,10 @@
         },
         "map-overworld-village-01.tmx": {
             "scale": 1.5,
-            "selectedLayer": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 233.33333333333331,
-                "y": 253
+                "x": 243.66666666666663,
+                "y": 148.99999999999997
             }
         },
         "map-overworld-village-01.tmx#characters_spritesheet": {
@@ -511,18 +511,18 @@
     "project": "map.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "map-overworld-forest-01.tmx",
+        "map-overworld-village-01.tmx",
+        "map-dungeon-fork.tmx",
+        "map-overworld-forest-02.tmx",
         "map-overworld-forest-01.json",
         "map-dungeon-boss.tmx",
-        "map-overworld-forest-01.tmx",
         "map-dungeon-ante-chamber-01.tmx",
-        "map-dungeon-fork.tmx",
         "map-dungeon-ante-chamber-02.tmx",
         "map-dungeon-02.tmx",
         "map-dungeon-01.tmx",
         "map-overworld-01.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test.tmx",
-        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/forest_01.tmx"
+        "/Users/davidwarshaw/git/davidwarshaw/winters-bone/assets/images/maps/test-2.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "All Files (*)",

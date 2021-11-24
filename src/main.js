@@ -8,6 +8,7 @@ import properties from "./properties";
 import BootScene from "./scenes/BootScene";
 import HudScene from "./scenes/HudScene";
 import MapScene from "./scenes/MapScene";
+import SpeechScene from "./scenes/SpeechScene";
 import TitleScene from "./scenes/TitleScene";
 
 const config = {
@@ -42,7 +43,7 @@ const config = {
       },
     ],
   },
-  scene: [BootScene, TitleScene, HudScene, MapScene],
+  scene: [BootScene, TitleScene, HudScene, MapScene, SpeechScene],
 };
 
 const game = new Phaser.Game(config); // eslint-disable-line no-unused-vars

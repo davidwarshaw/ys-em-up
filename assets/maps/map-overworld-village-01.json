@@ -47,7 +47,7 @@
                  "gid":97,
                  "height":16,
                  "id":13,
-                 "name":"villager",
+                 "name":"villager-02",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -59,7 +59,7 @@
                  "gid":97,
                  "height":16,
                  "id":14,
-                 "name":"villager",
+                 "name":"villager-01",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -99,7 +99,7 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-overworld-forest-01"
+                         "value":"map-overworld-forest-02"
                         }, 
                         {
                          "name":"toX",
@@ -109,7 +109,7 @@
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":10
+                         "value":39
                         }],
                  "rotation":0,
                  "type":"",
@@ -127,7 +127,7 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-overworld-forest-01"
+                         "value":"map-overworld-forest-02"
                         }, 
                         {
                          "name":"toX",
@@ -137,7 +137,7 @@
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":10
+                         "value":39
                         }],
                  "rotation":0,
                  "type":"",
