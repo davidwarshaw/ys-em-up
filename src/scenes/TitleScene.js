@@ -18,6 +18,7 @@ export default class TitleScene extends Phaser.Scene {
       playerState: {
         health: 50,
         healthMax: 50,
+        hasItem: false,
       },
       currentEnemy: null,
     };

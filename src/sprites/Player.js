@@ -35,6 +35,8 @@ export default class Player extends Character {
     this.health = playerState.health;
     this.healthMax = playerState.healthMax;
 
+    this.hasItem = playerState.hasItem;
+
     this.body.collideWorldBounds = true;
 
     this.setSize(12, 12);
@@ -138,7 +140,7 @@ export default class Player extends Character {
       this.justHeardSpeech = false;
     }
 
-    if (inputMultiplexer.actionPressed()) {
+    if (inputMultiplexer.actionPressed() && this.hasItem) {
       this.scene.stopCameraFollow();
       this.charge.juice = this.scene.juice.shake(this, {
         x: 1,

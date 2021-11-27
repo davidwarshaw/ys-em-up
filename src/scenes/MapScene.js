@@ -11,7 +11,7 @@ import BumpAttackSystem from "../systems/BumpAttackSystem";
 
 import InputMultiplexer from "../utils/InputMultiplexer";
 
-const CODE_WORDS = ["health", "exit", "village", "boss", "rambler", "charger", "flyer"];
+const CODE_WORDS = ["health", "item", "exit", "village", "boss", "rambler", "charger", "flyer"];
 
 export default class MapScene extends Phaser.Scene {
   constructor() {
@@ -85,6 +85,10 @@ export default class MapScene extends Phaser.Scene {
       switch (codeWord) {
         case "health": {
           this.player.refillHealth();
+          break;
+        }
+        case "item": {
+          this.player.hasItem = !this.player.hasItem;
           break;
         }
         case "exit": {
@@ -168,6 +172,7 @@ export default class MapScene extends Phaser.Scene {
     this.playState.playerState = {
       health: this.player.health,
       healthMax: this.player.healthMax,
+      hasItem: this.player.hasItem,
     };
   }
 
