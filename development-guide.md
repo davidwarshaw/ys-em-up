@@ -1,5 +1,17 @@
 # Development Guide
 
+## NPCs
+
+Villager 1
+
+- Gives dialog, static
+- 1 frame sprite: 1 frame idle, down direction
+
+Villager 2
+
+- Gives dialog, static
+- 1 frame sprite: 1 frame idle, down direction
+
 ## Enemies
 
 Rambler
@@ -25,14 +37,14 @@ Flyer
 - Flying, i.e. no collision with map, floor hazards, other enemies
 - Encountered only inside the dungeon
 - Low strength
-- 3 frame sprite: 1 frame idle, 2 frames wings flapping, no directions?
+- 3 frame sprite: 1 frame idle, 2 frames wings flapping, no directions
 
 Charger
 
 - Vibrates, then charges towards player periodically
 - Encountered only inside the dungeon, mostly in the deeper parts
 - High strength
-- Character sprite?
+- 3 frame sprite: 1 frame idle, 1 frame prepping charge, 1 frame charging, no directions
 
 Boss - Big Charger
 
@@ -41,7 +53,7 @@ Boss - Big Charger
 - 3 phases or increasingly faster charges / more bullets
 - Encountered only in the boss room of the dungeon
 - Very high strength
-- Boss sprite
+- Boss Sprite
 
 ## Bullets
 
@@ -49,6 +61,15 @@ Bullet
 
 - Medium speed
 - Medium strength
+
+## Items
+
+Dash Item
+
+- Allows player to dash over gaps
+- Player is invulnerable to enemy attacks while dashing, but not bullets
+- 1 16x16px tile representing the item on the map and in the HUD as player inventory
+- 1+ frame sprite, 16x16px animated overlay on player and enemies while dashing, no directions
 
 ## Assets
 
@@ -73,12 +94,17 @@ Bullet Sprites
 
 - 8x8px
 - Animation Frames
-  - 2 frames of move, no directions
-  - 2 frames of impact/explode, no directions
+  - No directions
+  - 2 frames of move,
+  - 2 frames of impact/explode
   - [Example](assets/images/bullets-spritesheet.png)
 
 Boss Sprite
 
 - 32x32px
 - Animation Frames
-  - ?
+  - No Directions
+  - 1 frame idle
+  - 1 frame prepping charge
+  - 1 frame charging
+  - 1 frame firing bullets
