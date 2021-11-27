@@ -11,7 +11,7 @@ import BumpAttackSystem from "../systems/BumpAttackSystem";
 
 import InputMultiplexer from "../utils/InputMultiplexer";
 
-const CODE_WORDS = ["boss", "rambler", "charger", "flyer"];
+const CODE_WORDS = ["health", "exit", "village", "boss", "rambler", "charger", "flyer"];
 
 export default class MapScene extends Phaser.Scene {
   constructor() {
@@ -87,6 +87,16 @@ export default class MapScene extends Phaser.Scene {
           this.player.refillHealth();
           break;
         }
+        case "exit": {
+          this.player.refillHealth();
+          this.changeMap({ toMapKey: "map-overworld-forest-dungeon-exit", toX: 10, toY: 2 });
+          break;
+        }
+        case "village": {
+          this.player.refillHealth();
+          this.changeMap({ toMapKey: "map-overworld-village-01", toX: 16, toY: 16 });
+          break;
+        }
         case "boss": {
           this.player.refillHealth();
           this.changeMap({ toMapKey: "map-dungeon-fork", toX: 6, toY: 2 });
@@ -137,7 +147,7 @@ export default class MapScene extends Phaser.Scene {
     }
 
     const pit = this.map.checkPits(this.player);
-    if (pit) {
+    if (pit && !this.player.charge.charging) {
       this.fallInPit();
     }
 
@@ -211,6 +221,7 @@ export default class MapScene extends Phaser.Scene {
   }
 
   startSpeech(speechId) {
+    this.player.stateChange("normal");
     this.playState.speechId = speechId;
     this.scene.pause("MapScene", this.playState);
     this.scene.run("SpeechScene", this.playState);

@@ -61,8 +61,8 @@ export default class Characters {
 
   killCharacter(character) {
     this.bumpAttackSystem.clearCurrentEnemy();
-    character.disableBody();
-    character.setVelocity(0, 0);
+    character.body.stop();
+    character.body.enable = false;
     character.isFlickering = true;
     const flickerTimer = this.scene.time.delayedCall(properties.flickerMillis, () => {
       this.purgeDead();

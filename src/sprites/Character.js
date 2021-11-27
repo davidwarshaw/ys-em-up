@@ -2,10 +2,19 @@ import properties from "../properties";
 
 import characterDefinitions from "../definitions/characterDefinitions.json";
 
-export default class Character extends Phaser.Physics.Arcade.Sprite {
+export default class Character extends Phaser.GameObjects.Container {
   constructor(scene, map, world, characterName, bodyType) {
+    super(scene, 0, 0);
+
     const spriteSheetKey = characterDefinitions[characterName].spritesheet.key;
-    super(scene, 0, 0, spriteSheetKey);
+    this.sprite = scene.add.sprite(0, 0, spriteSheetKey);
+    this.add(this.sprite);
+    this.setSize(this.sprite.width, this.sprite.height);
+
+    this.bubble = scene.add.sprite(0, 0, "bubble");
+    this.bubble.setVisible(false);
+    this.add(this.bubble);
+
     this.map = map;
     this.characterName = characterName;
 
@@ -51,7 +60,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
     this.setPosition(world.x + tileWidth * 0.5, world.y - tileHeight * 0.5);
     const depth = this.characterDefinition.flies ? 40 : 20;
     this.setDepth(depth);
-    this.setOrigin(0.5, 0.5);
+    // this.setOrigin(0.5, 0.5);
 
     scene.physics.world.enable(this, bodyType);
     scene.add.existing(this);
@@ -85,11 +94,28 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
       });
     });
 
-    this.anims.play(`${characterName}_idle_down`);
+    this.sprite.anims.play(`${characterName}_idle_down`);
 
-    const stopFrame = this.anims.currentAnim.frames[0];
-    this.anims.stopOnFrame(stopFrame);
+    const stopFrame = this.sprite.anims.currentAnim.frames[0];
+    this.sprite.anims.stopOnFrame(stopFrame);
   }
+
+  // Shadow sprite methods below
+  setVelocity(x, y) {
+    this.body.setVelocity(x, y);
+  }
+
+  setImmovable(value) {
+    this.body.setImmovable(value);
+  }
+
+  setTintFill(value) {
+    this.sprite.setTintFill(value);
+  }
+  clearTint() {
+    this.sprite.clearTint();
+  }
+  // Shadow sprite methods above
 
   refillHealth() {
     this.health = this.healthMax;
@@ -116,10 +142,10 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
   }
 
   playAnimationForDirection(action) {
-    this.flipX = this.direction === "left" ? true : false;
+    this.sprite.flipX = this.direction === "left" ? true : false;
     const animationDirection = this.direction === "left" ? "right" : this.direction;
 
-    this.anims.play(`${this.characterName}_${action}_${animationDirection}`, true);
+    this.sprite.anims.play(`${this.characterName}_${action}_${animationDirection}`, true);
   }
 
   stateChange(newState) {
@@ -218,7 +244,7 @@ export default class Character extends Phaser.Physics.Arcade.Sprite {
         break;
       }
       default: {
-        this.anims.stop();
+        this.sprite.anims.stop();
         this.setVelocity(0, 0);
         this.playAnimationForDirection("idle");
       }

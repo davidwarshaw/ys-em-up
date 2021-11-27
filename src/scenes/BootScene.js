@@ -2,6 +2,7 @@ const MAP_NAMES = [
   "overworld-village-01",
   "overworld-forest-01",
   "overworld-forest-02",
+  "overworld-forest-dungeon-exit",
   "dungeon-ante-chamber-01",
   "dungeon-ante-chamber-02",
   "dungeon-fork",
@@ -27,6 +28,7 @@ export default class BootScene extends Phaser.Scene {
     );
 
     // Sprites
+    this.load.image("bubble", "assets/images/bubble.png");
     this.load.spritesheet("bosses", "assets/images/bosses-spritesheet.png", {
       frameWidth: 32,
       frameHeight: 32,

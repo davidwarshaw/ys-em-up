@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="11">
+ <editorsettings>
+  <export target="map-overworld-forest-dungeon-exit.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="ys_ii_tileset_extruded" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="16" columns="4">
+  <image source="ys_ii_tileset_extruded.png" width="72" height="72"/>
+  <tile id="4">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+    <property name="pit" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="17" name="characters_spritesheet" tilewidth="16" tileheight="16" tilecount="130" columns="10">
+  <image source="../images/characters-spritesheet.png" width="160" height="208"/>
+ </tileset>
+ <tileset firstgid="147" name="tileset" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="tileset.png" width="256" height="256"/>
+ </tileset>
+ <layer id="1" name="background" width="20" height="13">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,167,167,0,0,0,0,0,0,0,2,2,
+0,227,244,244,227,244,227,244,227,167,167,227,244,244,227,227,244,227,227,2,
+0,165,165,165,165,165,165,165,165,166,167,165,165,165,165,165,165,165,165,2,
+180,180,180,180,180,181,181,181,180,167,166,166,166,166,166,180,181,181,180,180,
+244,227,227,227,165,165,165,165,166,167,166,180,181,180,181,165,165,165,165,227,
+0,0,0,0,244,227,244,227,167,166,167,167,166,165,165,165,227,244,227,0,
+0,0,0,0,0,0,0,0,227,244,227,227,244,227,244,244,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,166,165,2,
+0,165,166,166,166,166,166,166,167,166,167,167,166,166,166,166,166,166,165,2,
+0,165,166,166,166,166,166,166,165,166,166,165,166,166,166,166,166,166,165,2,
+0,165,166,166,166,166,166,166,165,167,166,165,166,166,166,166,166,166,165,2,
+0,165,165,166,166,166,166,166,165,166,167,165,166,166,166,166,166,165,165,2,
+0,0,0,0,0,0,0,0,0,167,167,0,0,0,0,0,0,0,2,2
+</data>
+ </layer>
+ <layer id="6" name="hazard" width="20" height="13" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+5,5,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,
+5,5,5,5,5,5,5,5,0,0,0,0,0,0,0,0,5,5,5,5,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+0,0,0,5,5,5,5,5,5,5,5,5,5,5,5,5,5,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="collision" width="20" height="13" visible="0">
+  <data encoding="csv">
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
+0,0,0,0,0,0,0,0,0,0,0,16,16,16,16,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,16,16,
+16,16,16,16,16,16,16,16,0,0,0,0,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,0,0,0,0,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,0,0,0,0,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,0,0,0,0,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16
+</data>
+ </layer>
+ <objectgroup id="4" name="characters"/>
+ <objectgroup id="5" name="portals">
+  <object id="3" gid="12" x="144" y="16" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-dungeon-ante-chamber-02"/>
+    <property name="toX" type="int" value="5"/>
+    <property name="toY" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="5" gid="12" x="144" y="208" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-overworld-forest-02"/>
+    <property name="toX" type="int" value="4"/>
+    <property name="toY" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="8" gid="12" x="160" y="16" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-dungeon-ante-chamber-02"/>
+    <property name="toX" type="int" value="6"/>
+    <property name="toY" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="9" gid="12" x="160" y="208" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-overworld-forest-02"/>
+    <property name="toX" type="int" value="5"/>
+    <property name="toY" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="2" name="foreground" width="20" height="13">
+  <data encoding="csv">
+163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,
+163,163,163,163,163,163,163,163,163,0,0,163,163,163,163,163,163,163,163,163,
+163,163,163,163,163,163,163,163,163,0,0,163,163,163,163,163,163,163,163,163,
+0,0,0,0,0,0,0,0,0,0,0,163,163,163,163,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+163,163,163,0,0,0,0,0,0,0,0,0,0,0,0,0,0,163,163,163,
+163,163,163,163,163,163,163,163,0,0,0,0,163,163,163,163,163,163,163,163,
+163,163,163,163,163,163,163,163,0,0,0,0,163,163,163,163,163,163,163,163,
+163,163,163,163,163,163,163,163,0,0,0,0,163,163,163,163,163,163,163,163,
+163,163,163,163,163,163,163,163,0,0,0,0,163,163,163,163,163,163,163,163,
+163,163,163,163,163,163,163,163,163,0,0,163,163,163,163,163,163,163,163,163
+</data>
+ </layer>
+</map>

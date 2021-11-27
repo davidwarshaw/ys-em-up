@@ -8,6 +8,7 @@ function collideWithPlayer(player, character, bumpAttackSystem) {
   character.setVelocity(0, 0);
   bumpAttackSystem.resolveCombat(player, character);
   Ai.changeState(character, "wait");
+  character.bubble.setVisible(false);
 }
 
 function collideWithCharacter(character, second) {
@@ -15,6 +16,7 @@ function collideWithCharacter(character, second) {
     case "charge": {
       character.setVelocity(0, 0);
       Ai.changeState(character, "wait");
+      character.bubble.setVisible(false);
       break;
     }
   }
@@ -25,6 +27,7 @@ function collideWithMap(character) {
     case "charge": {
       character.setVelocity(0, 0);
       Ai.changeState(character, "wait");
+      character.bubble.setVisible(false);
       break;
     }
   }
@@ -66,11 +69,13 @@ function stateMachine(scene, character, player) {
         };
         // console.log(`character target: ${character.ai.target.x}, ${character.ai.target.y}`);
         character.ai.animation = true;
+        character.bubble.setVisible(true);
       }
       // console.log(`dist: ${Phaser.Math.Distance.BetweenPoints(character, character.ai.target)}`);
       if (Phaser.Math.Distance.BetweenPoints(character, character.ai.target) < TARGET_DELTA) {
         character.setVelocity(0, 0);
         Ai.changeState(character, "wait");
+        character.bubble.setVisible(false);
       } else {
         const angle = Phaser.Math.Angle.BetweenPoints(character, character.ai.target);
         const velocityX = character.walkspeed * Math.cos(angle);

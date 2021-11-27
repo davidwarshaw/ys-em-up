@@ -27,10 +27,10 @@ const config = {
     default: "arcade",
     arcade: {
       gravity: { y: 0 },
-      debug: {
-        showBody: properties.debug,
-        showStaticBody: properties.debug,
-      },
+      // debug: {
+      //   showBody: properties.debug,
+      //   showStaticBody: properties.debug,
+      // },
     },
   },
   plugins: {

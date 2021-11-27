@@ -1,4 +1,5 @@
 const BUTTONS = ["action", "jump", "up", "down", "left", "right"];
+const D_PAD_BUTTONS = ["up", "down", "left", "right"];
 
 export default class InputMultiplexer {
   constructor(scene) {
@@ -134,6 +135,18 @@ export default class InputMultiplexer {
   }
   rightReleased() {
     return this.inputReleased("right");
+  }
+
+  anyDPad() {
+    return D_PAD_BUTTONS.some((button) => this.input(button));
+  }
+
+  anyDPadPressed() {
+    return D_PAD_BUTTONS.some((button) => this.inputPressed(button));
+  }
+
+  anyDPadReleased() {
+    return D_PAD_BUTTONS.some((button) => this.inputReleased(button));
   }
 
   dPadVector() {
