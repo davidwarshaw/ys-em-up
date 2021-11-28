@@ -44,7 +44,7 @@
          "name":"characters",
          "objects":[
                 {
-                 "gid":117,
+                 "gid":27,
                  "height":16,
                  "id":6,
                  "name":"rambler",
@@ -56,7 +56,7 @@
                  "y":80
                 }, 
                 {
-                 "gid":117,
+                 "gid":27,
                  "height":16,
                  "id":10,
                  "name":"rambler",

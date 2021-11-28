@@ -19,8 +19,8 @@ export default class Bullets {
     this.bumpAttackSystem = bumpAttackSystem;
   }
 
-  configure(bullet, character, bulletName) {
-    bullet.setPosition(character.x, character.y);
+  configure(bullet, origin, bulletName) {
+    bullet.setPosition(origin.x, origin.y);
     bullet.enableBody();
     bullet.setVisible(true);
     bullet.setActive(true);
@@ -54,17 +54,20 @@ export default class Bullets {
     this.killBullet(character, bullet);
   }
 
-  spawnAtTarget(character, targetPoint, bulletName) {
-    const angle = Phaser.Math.Angle.BetweenPoints(character, targetPoint);
-    return this.spawnAtAngle(character, angle, bulletName);
+  spawnAtTarget(character, targetPoint, bulletName, possibleOffset) {
+    const origin = this.originFromPossibleOffset(character, possibleOffset);
+    const angle = Phaser.Math.Angle.BetweenPoints(origin, targetPoint);
+    return this.spawnAtAngle(character, angle, bulletName, possibleOffset);
   }
 
-  spawnAtAngle(character, angle, bulletName) {
+  spawnAtAngle(character, angle, bulletName, possibleOffset) {
+    const origin = this.originFromPossibleOffset(character, possibleOffset);
+
     const poolBullet = this.group.get();
 
     poolBullet.initialize(this.scene, bulletName);
 
-    const bullet = this.configure(poolBullet, character, bulletName);
+    const bullet = this.configure(poolBullet, origin, bulletName);
 
     // Bullets collide with map
     this.scene.physics.add.collider(bullet, this.map.layers.collision, (collidingBullet, tile) =>
@@ -84,5 +87,14 @@ export default class Bullets {
     bullet.direction = Direction.directionFromAngle(angle);
 
     return bullet;
+  }
+
+  originFromPossibleOffset(character, possibleOffset) {
+    const offset = possibleOffset || { x: 0, y: 0 };
+    const origin = {
+      x: character.x + offset.x,
+      y: character.y + offset.y,
+    };
+    return origin;
   }
 }

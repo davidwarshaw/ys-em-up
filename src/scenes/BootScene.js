@@ -6,6 +6,7 @@ const MAP_NAMES = [
   "dungeon-ante-chamber-01",
   "dungeon-ante-chamber-02",
   "dungeon-fork",
+  "dungeon-before-item",
   "dungeon-boss",
 ];
 

@@ -119,9 +119,9 @@
 </data>
  </layer>
  <objectgroup id="4" name="characters">
-  <object id="6" name="rambler" gid="117" x="208" y="288" width="16" height="16"/>
-  <object id="10" name="rambler" gid="117" x="184" y="105" width="16" height="16"/>
-  <object id="16" name="turret" gid="27" x="136" y="312.5" width="16" height="16"/>
+  <object id="6" name="rambler" gid="27" x="208" y="288" width="16" height="16"/>
+  <object id="10" name="rambler" gid="27" x="184" y="105" width="16" height="16"/>
+  <object id="16" name="turret" gid="37" x="136" y="312.5" width="16" height="16"/>
   <object id="44" name="flyer" gid="107" x="96" y="160" width="16" height="16"/>
   <object id="45" name="flyer" gid="107" x="272" y="80" width="16" height="16"/>
  </objectgroup>

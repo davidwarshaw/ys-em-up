@@ -93,6 +93,17 @@ export default class Character extends Phaser.GameObjects.Container {
         repeat: -1,
       });
     });
+    // Non-Direction animations
+    this.characterDefinition.spritesheet.anims.forEach((anim) => {
+      const start = offset + anim.start;
+      const end = offset + anim.end;
+      scene.anims.create({
+        key: `${characterName}_${anim.key}`,
+        frames: scene.anims.generateFrameNumbers(spriteSheetKey, { start, end }),
+        frameRate: properties.animFrameRate,
+        repeat: -1,
+      });
+    });
 
     this.sprite.anims.play(`${characterName}_idle_down`);
 
@@ -139,6 +150,17 @@ export default class Character extends Phaser.GameObjects.Container {
 
   canSetCurrentEnemy() {
     return true;
+  }
+
+  playAnimationForDirection(action) {
+    this.sprite.flipX = this.direction === "left" ? true : false;
+    const animationDirection = this.direction === "left" ? "right" : this.direction;
+
+    this.sprite.anims.play(`${this.characterName}_${action}_${animationDirection}`, true);
+  }
+
+  playAnimationForKey(key) {
+    this.sprite.anims.play(`${this.characterName}_${key}`, true);
   }
 
   playAnimationForDirection(action) {

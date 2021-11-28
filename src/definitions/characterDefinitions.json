@@ -7,7 +7,8 @@
     "flies": false,
     "spritesheet": {
       "key": "characters",
-      "row": 11
+      "row": 0,
+      "anims": []
     }
   },
   "villager-01": {
@@ -22,7 +23,8 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 8
+      "row": 8,
+      "anims": []
     }
   },
   "villager-02": {
@@ -37,7 +39,8 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 8
+      "row": 8,
+      "anims": []
     }
   },
   "rambler": {
@@ -51,7 +54,8 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 10
+      "row": 1,
+      "anims": []
     }
   },
   "turret": {
@@ -65,7 +69,14 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 1
+      "row": 2,
+      "anims": [
+        {
+          "key": "open",
+          "start": 4,
+          "end": 4
+        }
+      ]
     }
   },
   "charger": {
@@ -79,7 +90,8 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 12
+      "row": 12,
+      "anims": []
     }
   },
   "flyer": {
@@ -93,7 +105,8 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 9
+      "row": 9,
+      "anims": []
     }
   },
   "boss-01": {
@@ -107,7 +120,8 @@
     },
     "spritesheet": {
       "key": "bosses",
-      "row": 0
+      "row": 0,
+      "anims": []
     }
   }
 }

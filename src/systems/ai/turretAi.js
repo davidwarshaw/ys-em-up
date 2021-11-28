@@ -27,22 +27,26 @@ function stateMachine(scene, character, player, bullets, map, ray) {
     character.ai.state = "shoot";
   }
   switch (character.ai.state) {
-    case "shoot": {
+    case "idle": {
       const bulletActive = character.bullet && character.bullet.active;
-      if (character.stepCount > 15 && !bulletActive) {
-        // const angle = Phaser.Math.Angle.BetweenPoints(character, player);
-        // console.log(`character: ${character.x}, ${character.y} angle: ${angle}`);
-        // ray.setRay(character.x, character.y, angle);
-        // const intersection = ray.cast({ target: player });
-        // console.log(ray);
-        // console.log(intersection);
-        // if (intersection.object && intersection.object.characterName === "player") {
-        // console.log(intersection);
-        // console.log(`player: ${player.x}, ${player.y}`);
-        character.ai.bullet = bullets.spawnAtTarget(character, player, "standard");
-        character.stepCount = 0;
-        // }
+      if (character.stepCount > 10 && !bulletActive) {
+        character.playAnimationForKey("open");
+        Ai.changeState(character, "prep-shoot");
       }
+      break;
+    }
+    case "prep-shoot": {
+      if (character.stepCount > 5) {
+        Ai.changeState(character, "shoot");
+      }
+      break;
+    }
+    case "shoot": {
+      const offset = { x: 0, y: -4 };
+      character.ai.bullet = bullets.spawnAtTarget(character, player, "standard", offset);
+      character.stepCount = 0;
+      character.playAnimationForDirection("idle");
+      Ai.changeState(character, "idle");
       break;
     }
   }

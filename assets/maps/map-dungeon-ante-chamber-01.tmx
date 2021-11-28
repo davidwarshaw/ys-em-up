@@ -80,8 +80,8 @@
 </data>
  </layer>
  <objectgroup id="4" name="characters">
-  <object id="6" name="rambler" gid="117" x="256" y="80" width="16" height="16"/>
-  <object id="10" name="rambler" gid="117" x="48" y="80" width="16" height="16"/>
+  <object id="6" name="rambler" gid="27" x="256" y="80" width="16" height="16"/>
+  <object id="10" name="rambler" gid="27" x="48" y="80" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="portals">
   <object id="3" gid="12" x="144" y="16" width="16" height="16">
