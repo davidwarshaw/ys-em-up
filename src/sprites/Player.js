@@ -36,6 +36,7 @@ export default class Player extends Character {
     this.healthMax = playerState.healthMax;
 
     this.hasItem = playerState.hasItem;
+    this.bossDefeated = playerState.bossDefeated;
 
     this.body.collideWorldBounds = true;
 
@@ -67,6 +68,10 @@ export default class Player extends Character {
   }
 
   update(delta, inputMultiplexer) {
+    if (this.isFlickering) {
+      this.flicker(delta);
+      return;
+    }
     this.regeneratingHealth = false;
     switch (this.state) {
       case "knockback": {

@@ -59,7 +59,7 @@ export default class Characters {
     return null;
   }
 
-  killCharacter(character) {
+  killCharacter(character, afterDeathCallback) {
     this.bumpAttackSystem.clearCurrentEnemy();
     character.body.stop();
     character.body.enable = false;
@@ -67,6 +67,9 @@ export default class Characters {
     const flickerTimer = this.scene.time.delayedCall(properties.flickerMillis, () => {
       this.purgeDead();
       character.destroy();
+      if (afterDeathCallback) {
+        afterDeathCallback();
+      }
     });
   }
 

@@ -5,145 +5,156 @@ import Ai from "./Ai";
 const TARGET_DELTA = 10;
 const FIRE_ANGLES = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
 
-function collideWithPlayer(player, boss, bumpAttackSystem) {
-  console.log("boss collide with player");
-  boss.setVelocity(0, 0);
-  bumpAttackSystem.resolveCombat(player, boss);
-  if (!Ai.inState(boss, "wait")) {
-    Ai.changeState(boss, "wait");
+function collideWithPlayer(player, character, bumpAttackSystem) {
+  console.log("character collide with player");
+  character.setVelocity(0, 0);
+  bumpAttackSystem.resolveCombat(player, character);
+  if (!Ai.inState(character, "wait")) {
+    character.playAnimationForDirection("idle");
+    Ai.changeState(character, "wait");
   }
 }
 
-function collideWithMap(boss) {
-  switch (boss.ai.state) {
+function collideWithMap(character) {
+  switch (character.ai.state) {
     case "charge": {
-      boss.setVelocity(0, 0);
-      boss.ai.firingAngle = 0;
-      Ai.changeState(boss, "fire-01");
+      character.setVelocity(0, 0);
+      character.ai.firingAngle = 0;
+      character.playAnimationForKey("fire");
+      Ai.changeState(character, "fire-01");
       break;
     }
   }
 }
 
-function collideWithCharacter(boss, second) {
+function collideWithCharacter(character, second) {
   console.log("This should never happen :/");
 }
 
-function stateMachine(scene, boss, player, bullets, map) {
-  if (!boss.ai.state) {
-    boss.ai.state = "intro";
-    boss.ai.phase = 0;
+function stateMachine(scene, character, player, bullets, map) {
+  if (!character.ai.state) {
+    character.ai.state = "intro";
+    character.ai.phase = 0;
   }
-  switch (boss.ai.state) {
+  switch (character.ai.state) {
     case "intro": {
-      if (boss.stepCount > 10) {
-        Ai.changeState(boss, "prep-charge");
+      if (character.stepCount > 10) {
+        character.playAnimationForKey("prep-charge");
+        Ai.changeState(character, "prep-charge");
       }
       break;
     }
     case "wait": {
-      boss.invulnerable = false;
-      boss.setVelocity(0, 0);
-      if (boss.stepCount > 10 - 3 * boss.ai.phase) {
-        Ai.changeState(boss, "prep-charge");
+      character.invulnerable = false;
+      character.setVelocity(0, 0);
+      if (character.stepCount > 10 - 3 * character.ai.phase) {
+        character.playAnimationForKey("prep-charge");
+        Ai.changeState(character, "prep-charge");
       }
       break;
     }
     case "prep-charge": {
-      if (!boss.ai.animation) {
-        scene.juice.shake(boss, {
-          x: 1 + 2 * boss.ai.phase,
+      if (!character.ai.animation) {
+        scene.juice.shake(character, {
+          x: 1 + 2 * character.ai.phase,
           onComplete: (tween, target) => {
-            Ai.changeState(boss, "charge");
-            boss.ai.animation = false;
+            character.playAnimationForKey("charge");
+            Ai.changeState(character, "charge");
+            character.ai.animation = false;
           },
         });
-        boss.ai.animation = true;
+        character.ai.animation = true;
       }
       break;
     }
     case "charge": {
-      boss.invulnerable = true;
-      if (!boss.ai.animation) {
-        boss.ai.target = {
+      character.invulnerable = true;
+      if (!character.ai.animation) {
+        character.ai.target = {
           x: player.x,
           y: player.y,
         };
-        // console.log(`boss target: ${boss.ai.target.x}, ${boss.ai.target.y}`);
-        boss.ai.animation = true;
+        // console.log(`character target: ${character.ai.target.x}, ${character.ai.target.y}`);
+        character.ai.animation = true;
       }
-      chargeAndChangeState(boss, "fire-01");
+      character.playAnimationForKey("fire");
+      chargeAndChangeState(character, "fire-01");
       break;
     }
     case "fire-01": {
-      boss.invulnerable = false;
-      boss.setVelocity(0, 0);
-      if (boss.stepCount > 10 && Math.round(boss.stepCount) % 5 == 0) {
-        const playerAngle = Phaser.Math.Angle.BetweenPoints(boss, boss.ai.target);
-        boss.ai.bullets = FIRE_ANGLES.map((angle) => angle + playerAngle + boss.ai.firingAngle).map(
-          (angle) => bullets.spawnAtAngle(boss, angle, "standard")
-        );
-        boss.ai.firingAngle += Math.PI * (0.01 * (1 + boss.ai.phase));
+      character.invulnerable = false;
+      character.setVelocity(0, 0);
+      if (character.stepCount > 10 && Math.round(character.stepCount) % 5 == 0) {
+        const playerAngle = Phaser.Math.Angle.BetweenPoints(character, character.ai.target);
+        character.ai.bullets = FIRE_ANGLES.map(
+          (angle) => angle + playerAngle + character.ai.firingAngle
+        ).map((angle) => bullets.spawnAtAngle(character, angle, "standard"));
+        character.ai.firingAngle += Math.PI * (0.01 * (1 + character.ai.phase));
       }
-      if (boss.stepCount > 20 + 5 * boss.ai.phase) {
-        boss.stepCount = 0;
-        Ai.changeState(boss, "wait");
+      if (character.stepCount > 20 + 5 * character.ai.phase) {
+        character.stepCount = 0;
+        character.playAnimationForDirection("idle");
+        Ai.changeState(character, "wait");
       }
-      if (boss.getHealthAsPercent() < 0.66 && boss.ai.phase < 1) {
-        boss.ai.phase = 1;
-        console.log(`new boss phase: ${boss.ai.phase}`);
-        Ai.changeState(boss, "charge-center");
-      } else if (boss.getHealthAsPercent() < 0.33 && boss.ai.phase < 2) {
-        boss.ai.phase = 2;
-        console.log(`new boss phase: ${boss.ai.phase}`);
-        Ai.changeState(boss, "charge-center");
+      if (character.getHealthAsPercent() < 0.66 && character.ai.phase < 1) {
+        character.ai.phase = 1;
+        console.log(`new character phase: ${character.ai.phase}`);
+        character.playAnimationForDirection("idle");
+        Ai.changeState(character, "charge-center");
+      } else if (character.getHealthAsPercent() < 0.33 && character.ai.phase < 2) {
+        character.ai.phase = 2;
+        console.log(`new character phase: ${character.ai.phase}`);
+        character.playAnimationForDirection("idle");
+        Ai.changeState(character, "charge-center");
       }
       break;
     }
     case "fire-02": {
-      boss.invulnerable = false;
-      boss.setVelocity(0, 0);
-      if (boss.stepCount > 2) {
-        if (Math.round(boss.stepCount) % 2 == 0) {
-          bullets.spawnAtAngle(boss, boss.ai.firingAngle, "standard");
+      character.invulnerable = false;
+      character.setVelocity(0, 0);
+      if (character.stepCount > 2) {
+        if (Math.round(character.stepCount) % 2 == 0) {
+          bullets.spawnAtAngle(character, character.ai.firingAngle, "standard");
         }
-        boss.ai.firingAngle += Math.PI * 0.01;
+        character.ai.firingAngle += Math.PI * 0.01;
       }
-      if (boss.stepCount > 20) {
-        Ai.changeState(boss, "prep-charge");
+      if (character.stepCount > 20) {
+        character.playAnimationForKey("prep-charge");
+        Ai.changeState(character, "prep-charge");
       }
       break;
     }
     case "charge-center": {
-      boss.invulnerable = true;
+      character.invulnerable = true;
       const { widthInPixels, heightInPixels } = map.tilemap;
-      if (!boss.ai.animation) {
-        boss.ai.target = {
+      if (!character.ai.animation) {
+        character.ai.target = {
           x: widthInPixels / 2,
           y: heightInPixels / 2,
         };
-        // console.log(`boss target: ${boss.ai.target.x}, ${boss.ai.target.y}`);
-        boss.ai.animation = true;
+        // console.log(`character target: ${character.ai.target.x}, ${character.ai.target.y}`);
+        character.ai.animation = true;
       }
-      chargeAndChangeState(boss, "fire-02");
+      character.playAnimationForKey("fire");
+      chargeAndChangeState(character, "fire-02");
       break;
     }
   }
 }
 
-function chargeAndChangeState(boss, newState) {
-  // console.log(`dist: ${Phaser.Math.Distance.BetweenPoints(boss, boss.ai.target)}`);
-  if (Phaser.Math.Distance.BetweenPoints(boss, boss.ai.target) < TARGET_DELTA) {
-    boss.setVelocity(0, 0);
-    boss.ai.firingAngle = 0;
-    Ai.changeState(boss, newState);
+function chargeAndChangeState(character, newState) {
+  // console.log(`dist: ${Phaser.Math.Distance.BetweenPoints(character, character.ai.target)}`);
+  if (Phaser.Math.Distance.BetweenPoints(character, character.ai.target) < TARGET_DELTA) {
+    character.setVelocity(0, 0);
+    character.ai.firingAngle = 0;
+    Ai.changeState(character, newState);
   } else {
-    const angle = Phaser.Math.Angle.BetweenPoints(boss, boss.ai.target);
-    const velocityX = boss.walkspeed * Math.cos(angle) * (1 + 0.5 * boss.ai.phase);
-    const velocityY = boss.walkspeed * Math.sin(angle) * (1 + 0.5 * boss.ai.phase);
+    const angle = Phaser.Math.Angle.BetweenPoints(character, character.ai.target);
+    const velocityX = character.walkspeed * Math.cos(angle) * (1 + 0.5 * character.ai.phase);
+    const velocityY = character.walkspeed * Math.sin(angle) * (1 + 0.5 * character.ai.phase);
 
-    boss.setVelocity(velocityX, velocityY);
-    boss.direction = Direction.directionFromAngle(angle);
+    character.setVelocity(velocityX, velocityY);
+    character.direction = Direction.directionFromAngle(angle);
   }
 }
 

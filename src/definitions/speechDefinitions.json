@@ -24,5 +24,15 @@
         "text": "and, the end."
       }
     ]
+  },
+  "item-pickup": {
+    "speech": [
+      {
+        "text": "When your glove touches the glowing orb, it dissolves in a bright flash."
+      },
+      {
+        "text": "Press Z or the Controller Button 3 to Orb Dash. When enclosed in the orb, you're invulnerable to melee attacks and can cross gaps."
+      }
+    ]
   }
 }

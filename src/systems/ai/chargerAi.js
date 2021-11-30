@@ -42,6 +42,7 @@ function stateMachine(scene, character, player) {
       character.invulnerable = false;
       character.setVelocity(0, 0);
       if (character.stepCount > 10) {
+        character.playAnimationForKey("prep-charge");
         Ai.changeState(character, "prep-charge");
       }
       break;
@@ -51,6 +52,7 @@ function stateMachine(scene, character, player) {
         scene.juice.shake(character, {
           x: 1,
           onComplete: (tween, target) => {
+            character.playAnimationForKey("charge");
             Ai.changeState(character, "charge");
             character.ai.animation = false;
           },
@@ -74,6 +76,7 @@ function stateMachine(scene, character, player) {
       // console.log(`dist: ${Phaser.Math.Distance.BetweenPoints(character, character.ai.target)}`);
       if (Phaser.Math.Distance.BetweenPoints(character, character.ai.target) < TARGET_DELTA) {
         character.setVelocity(0, 0);
+        character.playAnimationForDirection("idle");
         Ai.changeState(character, "wait");
         character.bubble.setVisible(false);
       } else {

@@ -7,7 +7,11 @@ const MAP_NAMES = [
   "dungeon-ante-chamber-02",
   "dungeon-fork",
   "dungeon-before-item",
+  "dungeon-item",
+  "dungeon-before-boss",
   "dungeon-boss",
+  "dungeon-boss-after-killed",
+  "dungeon-before-exit",
 ];
 
 export default class BootScene extends Phaser.Scene {
@@ -20,7 +24,9 @@ export default class BootScene extends Phaser.Scene {
     this.load.image("font-small", "assets/fonts/Altered_Chrome_Bold.png");
     this.load.image("font-small-two-tone", "assets/fonts/Altered_Chrome_Bold-two-tone.png");
     this.load.image("hud", "assets/images/hud.png");
+    this.load.image("hud-dash", "assets/images/hud-dash.png");
     this.load.image("speech", "assets/images/speech.png");
+    this.load.image("title-big", "assets/images/title-big.png");
 
     // Maps
     this.load.image("tileset", "assets/maps/tileset.png");
@@ -50,6 +56,10 @@ export default class BootScene extends Phaser.Scene {
     });
 
     // Audio
+    this.load.audio("overworld-music", "assets/audio/overworld-music.mp3");
+    this.load.audio("dungeon-music", "assets/audio/dungeon-music.mp3");
+    this.load.audio("boss-music", "assets/audio/boss-music.mp3");
+
     this.load.audio("enter", "assets/audio/sfx_menu_select2.wav");
     this.load.audio("next-level", "assets/audio/sfx_sounds_fanfare2.wav");
     this.load.audio("game-over", "assets/audio/sfx_sounds_negative2.wav");

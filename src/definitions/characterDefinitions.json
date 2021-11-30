@@ -23,7 +23,7 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 8,
+      "row": 5,
       "anims": []
     }
   },
@@ -39,7 +39,23 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 8,
+      "row": 6,
+      "anims": []
+    }
+  },
+  "item-pickup": {
+    "healthMax": 10,
+    "power": 5,
+    "speed": 2,
+    "hostile": false,
+    "flies": false,
+    "ai": {
+      "behavior": "npc",
+      "speech": "item-pickup"
+    },
+    "spritesheet": {
+      "key": "characters",
+      "row": 7,
       "anims": []
     }
   },
@@ -90,8 +106,19 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 12,
-      "anims": []
+      "row": 4,
+      "anims": [
+        {
+          "key": "prep-charge",
+          "start": 4,
+          "end": 4
+        },
+        {
+          "key": "charge",
+          "start": 5,
+          "end": 5
+        }
+      ]
     }
   },
   "flyer": {
@@ -105,8 +132,14 @@
     },
     "spritesheet": {
       "key": "characters",
-      "row": 9,
-      "anims": []
+      "row": 3,
+      "anims": [
+        {
+          "key": "swoop",
+          "start": 4,
+          "end": 5
+        }
+      ]
     }
   },
   "boss-01": {
@@ -121,7 +154,23 @@
     "spritesheet": {
       "key": "bosses",
       "row": 0,
-      "anims": []
+      "anims": [
+        {
+          "key": "prep-charge",
+          "start": 4,
+          "end": 4
+        },
+        {
+          "key": "charge",
+          "start": 5,
+          "end": 5
+        },
+        {
+          "key": "fire",
+          "start": 6,
+          "end": 6
+        }
+      ]
     }
   }
 }

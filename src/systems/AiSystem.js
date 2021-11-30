@@ -34,22 +34,27 @@ export default class AiSystem {
         break;
       }
       case "turret": {
+        this.scene.playState.sfx.hit.play();
         turretAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
       case "ramble": {
+        this.scene.playState.sfx.hit.play();
         rambleAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
       case "charger": {
+        this.scene.playState.sfx.hit.play();
         chargerAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
       case "flyer": {
+        this.scene.playState.sfx.hit.play();
         flyerAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }
       case "big-charger": {
+        this.scene.playState.sfx.hit.play();
         bossAi.collideWithPlayer(player, character, this.bumpAttackSystem);
         break;
       }

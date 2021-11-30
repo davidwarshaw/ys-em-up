@@ -7,7 +7,7 @@ function collideWithPlayer(player, character, bumpAttackSystem, scene) {
   if (!player.justHeardSpeech) {
     player.setVelocity(0, 0);
     character.setVelocity(0, 0);
-    scene.startSpeech(speech);
+    scene.startSpeech(speech, character);
     player.justHeardSpeech = true;
   }
 }
@@ -17,7 +17,9 @@ function collideWithCharacter(character, second) {}
 function collideWithMap(character) {}
 
 function stateMachine(scene, character, player) {
-  character.setImmovable(true);
+  if (character) {
+    character.setImmovable(true);
+  }
 }
 
 export default {

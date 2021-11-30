@@ -9,9 +9,8 @@ import Bullets from "../sprites/Bullets";
 import AiSystem from "../systems/AiSystem";
 import BumpAttackSystem from "../systems/BumpAttackSystem";
 
+import KeyCombos from "../ui/KeyCombos";
 import InputMultiplexer from "../utils/InputMultiplexer";
-
-const CODE_WORDS = ["health", "item", "exit", "village", "boss", "rambler", "charger", "flyer"];
 
 export default class MapScene extends Phaser.Scene {
   constructor() {
@@ -29,7 +28,7 @@ export default class MapScene extends Phaser.Scene {
     // console.log(`player tile spawn: ${spawn.x}, ${spawn.y}`);
     this.map = new Map(this, key);
     const { widthInPixels, heightInPixels } = this.map.tilemap;
-    this.spawnXY = this.map.tilemap.tileToWorldXY(spawn.x, spawn.y);
+    this.spawnXY = this.map.tilemap.tileToWorldXY(spawn.x, spawn.y + 1);
 
     this.physics.world.setBounds(0, 0, widthInPixels, heightInPixels);
 
@@ -68,61 +67,15 @@ export default class MapScene extends Phaser.Scene {
 
     this.playState.player = this.player;
 
-    this.sounds = {
-      gameOver: this.sound.add("game-over"),
-      nextLevel: this.sound.add("next-level"),
-    };
+    KeyCombos.setup(this);
 
-    this.comboKeyCodes = {};
-    CODE_WORDS.forEach((codeWord) => {
-      const combo = this.input.keyboard.createCombo(codeWord, { resetOnMatch: true });
-      const keyCode = combo.keyCodes.join("");
-      this.comboKeyCodes[keyCode] = codeWord;
-    });
-    this.input.keyboard.on("keycombomatch", (event) => {
-      const keyCode = event.keyCodes.join("");
-      const codeWord = this.comboKeyCodes[keyCode];
-      switch (codeWord) {
-        case "health": {
-          this.player.refillHealth();
-          break;
-        }
-        case "item": {
-          this.player.hasItem = !this.player.hasItem;
-          break;
-        }
-        case "exit": {
-          this.player.refillHealth();
-          this.changeMap({ toMapKey: "map-overworld-forest-dungeon-exit", toX: 10, toY: 2 });
-          break;
-        }
-        case "village": {
-          this.player.refillHealth();
-          this.changeMap({ toMapKey: "map-overworld-village-01", toX: 16, toY: 16 });
-          break;
-        }
-        case "boss": {
-          this.player.refillHealth();
-          this.changeMap({ toMapKey: "map-dungeon-fork", toX: 6, toY: 2 });
-          break;
-        }
-        case "rambler": {
-          this.player.refillHealth();
-          this.changeMap({ toMapKey: "map-dungeon-ante-chamber-01", toX: 14, toY: 9 });
-          break;
-        }
-        case "charger": {
-          this.player.refillHealth();
-          this.changeMap({ toMapKey: "map-dungeon-fork", toX: 31, toY: 31 });
-          break;
-        }
-        case "flyer": {
-          this.player.refillHealth();
-          this.changeMap({ toMapKey: "map-dungeon-ante-chamber-02", toX: 13, toY: 22 });
-          break;
-        }
-      }
-    });
+    if (key.startsWith("map-dungeon") && this.playState.music.overworld.isPlaying) {
+      this.playState.music.overworld.stop();
+      this.playState.music.dungeon.play({ loop: true, volume: 0.5 });
+    } else if (key.startsWith("map-overworld") && this.playState.music.dungeon.isPlaying) {
+      this.playState.music.dungeon.stop();
+      this.playState.music.overworld.play({ loop: true, volume: 0.5 });
+    }
 
     this.cameras.main.fadeIn(properties.fadeMillis);
   }
@@ -130,15 +83,15 @@ export default class MapScene extends Phaser.Scene {
   update(time, delta) {
     this.inputMultiplexer.setPadButtons();
 
-    const actionTile = this.player.update(delta, this.inputMultiplexer);
-    if (actionTile) {
-      this.startConfrontation("sheriff");
-      // const character = this.characters.characterAtTile(actionTile);
-      // if (character) {
-      //   const speechId = this.characters.getSpeechForCharacter(character);
-      //   this.startSpeech(speechId);
-      // }
+    const { bossDefeated } = this.playState.playerState;
+    const { key, spawn } = this.playState.currentMap;
+    if (!bossDefeated && key === "map-dungeon-boss-after-killed") {
+      this.playState.music.dungeon.stop();
+      this.playState.music.boss.play({ loop: true, volume: 0.5 });
+      this.changeMap({ toMapKey: "map-dungeon-boss", toX: spawn.x, toY: spawn.y });
     }
+
+    this.player.update(delta, this.inputMultiplexer);
 
     const portal = this.portals.playerOnPortal(this.player);
     if (portal) {
@@ -173,6 +126,7 @@ export default class MapScene extends Phaser.Scene {
       health: this.player.health,
       healthMax: this.player.healthMax,
       hasItem: this.player.hasItem,
+      bossDefeated: this.player.bossDefeated,
     };
   }
 
@@ -190,18 +144,31 @@ export default class MapScene extends Phaser.Scene {
     const { toMapKey, toX, toY } = portal;
     this.playState.currentMap = {
       key: toMapKey,
-      // NOTE: Why Tiled y values always one off?
-      spawn: { x: toX, y: toY + 1, direction: this.player.direction },
+      spawn: { x: toX, y: toY, direction: this.player.direction },
     };
     this.cameras.main.fadeOut(properties.fadeMillis);
     this.scene.restart(this.playState);
   }
 
   fallInPit() {
-    this.cameras.main.fadeOut(properties.fadeMillis);
-    this.player.x = this.spawnXY.x;
-    this.player.y = this.spawnXY.y;
-    this.cameras.main.fadeIn(properties.fadeMillis);
+    this.player.isFlickering = true;
+    this.player.setVelocity(0, 0);
+    this.player.direction = "down";
+    this.player.sprite.flipY = true;
+    this.player.playAnimationForDirection("idle");
+    const flickerTimer = this.time.delayedCall(properties.flickerMillis, () => {
+      this.cameras.main.fadeOut(properties.fadeMillis);
+      this.player.setPosition(
+        this.spawnXY.x + properties.tileWidth * 0.5,
+        this.spawnXY.y - properties.tileHeight * 0.5
+      );
+      // We have to set this
+      this.player.justPortaled = true;
+      this.player.isFlickering = false;
+      this.player.sprite.setVisible(true);
+      this.player.sprite.flipY = false;
+      this.cameras.main.fadeIn(properties.fadeMillis);
+    });
   }
 
   killCharacter(character) {
@@ -214,7 +181,11 @@ export default class MapScene extends Phaser.Scene {
 
   killEnemy(enemy) {
     console.log("enemy killed");
-    this.characters.killCharacter(enemy);
+    if (enemy.characterName !== "boss-01") {
+      this.characters.killCharacter(enemy);
+    } else {
+      this.characters.killCharacter(enemy, () => this.bossDied());
+    }
   }
 
   killPlayer() {
@@ -225,7 +196,21 @@ export default class MapScene extends Phaser.Scene {
     this.scene.restart();
   }
 
-  startSpeech(speechId) {
+  bossDied() {
+    const tile = this.map.tilemap.worldToTileXY(this.player.x, this.player.y);
+    this.player.bossDefeated = true;
+    this.cameras.main.flash(3 * properties.fadeMillis);
+    this.playState.music.boss.stop();
+    this.playState.music.dungeon.play({ loop: true, volume: 0.5 });
+    this.changeMap({ toMapKey: "map-dungeon-boss-after-killed", toX: tile.x, toY: tile.y });
+  }
+
+  startSpeech(speechId, character) {
+    if (character.characterName === "item-pickup") {
+      this.player.hasItem = true;
+      this.characters.killCharacter(character);
+      this.cameras.main.flash(properties.fadeMillis);
+    }
     this.player.stateChange("normal");
     this.playState.speechId = speechId;
     this.scene.pause("MapScene", this.playState);

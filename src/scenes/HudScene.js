@@ -41,6 +41,8 @@ export default class HudScene extends Phaser.Scene {
     this.enemyHealthBar = this.add
       .rectangle(frameX, 6 + 4 + 8, 0, barHeight, barColor)
       .setOrigin(0, 0);
+
+    this.add.image(286, 8, "hud-dash").setOrigin(0, 0).setDepth(10);
   }
 
   update(time, delta) {

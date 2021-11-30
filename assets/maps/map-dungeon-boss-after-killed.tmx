@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="12">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="16">
  <editorsettings>
-  <export target="map-dungeon-boss.json" format="json"/>
+  <export target="map-dungeon-boss-after-killed.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="ys_ii_tileset_extruded" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="16" columns="4">
   <image source="ys_ii_tileset_extruded.png" width="72" height="72"/>
@@ -33,12 +33,12 @@
  </tileset>
  <layer id="1" name="background" width="20" height="11">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,268,268,
-0,267,267,267,267,284,267,284,284,284,267,267,284,267,284,267,284,267,267,268,
+0,0,0,0,0,0,0,0,0,268,268,0,0,0,0,0,0,0,268,268,
+0,267,267,267,267,284,267,284,284,268,268,267,284,267,284,267,284,267,267,268,
 0,268,268,268,268,268,268,268,268,268,268,268,268,268,268,268,268,268,268,268,
 0,268,268,269,269,269,269,269,271,269,269,269,269,269,269,269,269,268,268,268,
-0,268,269,269,269,270,269,270,269,271,271,269,269,270,269,271,269,269,268,268,
-3,268,269,270,269,271,269,271,271,270,271,269,270,269,269,270,269,269,268,268,
+0,268,269,269,269,270,269,269,269,207,207,269,269,270,269,271,269,269,268,268,
+3,268,269,270,269,271,269,271,271,207,207,269,270,269,269,270,269,269,268,268,
 268,268,269,269,269,271,270,269,270,271,270,271,271,269,269,269,270,269,268,268,
 268,268,269,269,270,269,269,270,269,270,271,270,269,270,269,270,271,269,268,268,
 0,268,268,269,269,269,269,269,271,269,271,269,269,269,270,269,269,268,268,268,
@@ -61,10 +61,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="3" name="collision" width="20" height="11" visible="0">
+ <layer id="3" name="collision" width="20" height="11">
   <data encoding="csv">
-16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
-16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
 16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
 16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
 16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
@@ -73,16 +73,43 @@
 16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
 16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
 16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,
-16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16
 </data>
  </layer>
- <objectgroup id="4" name="characters">
-  <object id="11" name="boss-01" gid="147" x="144" y="80" width="32" height="32"/>
+ <objectgroup id="4" name="characters"/>
+ <objectgroup id="5" name="portals">
+  <object id="12" gid="12" x="144" y="16" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-dungeon-before-exit"/>
+    <property name="toX" type="int" value="34"/>
+    <property name="toY" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="13" gid="12" x="160" y="16" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-dungeon-before-exit"/>
+    <property name="toX" type="int" value="35"/>
+    <property name="toY" type="int" value="25"/>
+   </properties>
+  </object>
+  <object id="14" gid="12" x="144" y="176" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-dungeon-before-boss"/>
+    <property name="toX" type="int" value="16"/>
+    <property name="toY" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="15" gid="12" x="160" y="176" width="16" height="16">
+   <properties>
+    <property name="toMapKey" value="map-dungeon-before-boss"/>
+    <property name="toX" type="int" value="17"/>
+    <property name="toY" type="int" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="5" name="portals"/>
  <layer id="2" name="foreground" width="20" height="11">
   <data encoding="csv">
-283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,
+283,283,283,283,283,283,283,283,283,0,0,283,283,283,283,283,283,283,283,283,
 283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,283,
 283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,283,
 283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,283,
@@ -92,7 +119,7 @@
 283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,283,
 283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,283,
 283,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,283,
-283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283
+283,283,283,283,283,283,283,283,283,0,0,283,283,283,283,283,283,283,283,283
 </data>
  </layer>
 </map>

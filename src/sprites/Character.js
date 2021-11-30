@@ -113,10 +113,16 @@ export default class Character extends Phaser.GameObjects.Container {
 
   // Shadow sprite methods below
   setVelocity(x, y) {
+    if (!this.body) {
+      return;
+    }
     this.body.setVelocity(x, y);
   }
 
   setImmovable(value) {
+    if (!this.body) {
+      return;
+    }
     this.body.setImmovable(value);
   }
 
@@ -202,6 +208,7 @@ export default class Character extends Phaser.GameObjects.Container {
   update(delta, aiSystem) {
     if (this.isFlickering) {
       this.flicker(delta);
+      return;
     }
     this.regeneratingHealth = false;
     switch (this.state) {
