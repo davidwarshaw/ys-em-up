@@ -168,14 +168,14 @@
    <properties>
     <property name="toMapKey" value="map-dungeon-boss-after-killed"/>
     <property name="toX" type="int" value="10"/>
-    <property name="toY" type="int" value="0"/>
+    <property name="toY" type="int" value="2"/>
    </properties>
   </object>
   <object id="77" gid="12" x="432" y="432" width="16" height="16">
    <properties>
     <property name="toMapKey" value="map-dungeon-boss-after-killed"/>
     <property name="toX" type="int" value="9"/>
-    <property name="toY" type="int" value="0"/>
+    <property name="toY" type="int" value="2"/>
    </properties>
   </object>
  </objectgroup>

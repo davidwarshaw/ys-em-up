@@ -129,7 +129,7 @@
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":0
+                         "value":2
                         }],
                  "rotation":0,
                  "type":"",
@@ -157,7 +157,7 @@
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":0
+                         "value":2
                         }],
                  "rotation":0,
                  "type":"",
