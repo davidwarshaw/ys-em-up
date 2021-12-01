@@ -8,11 +8,14 @@ const FIRE_ANGLES = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
 function collideWithPlayer(player, character, bumpAttackSystem) {
   console.log("character collide with player");
   character.setVelocity(0, 0);
+  character.ai.aggro++;
+  if (character.ai.aggro > 3) {
+    character.invulnerable = true;
+    character.setImmovable(true);
+  }
   bumpAttackSystem.resolveCombat(player, character);
-  // if (!Ai.inState(character, "wait")) {
-  //   character.playAnimationForDirection("idle");
-  //   Ai.changeState(character, "wait");
-  // }
+  console.log(`character.ai.aggro: ${character.ai.aggro}`);
+  Ai.changeState(character, "fire-01");
 }
 
 function collideWithMap(character) {
@@ -35,6 +38,7 @@ function stateMachine(scene, character, player, bullets, map) {
   if (!character.ai.state) {
     character.ai.state = "intro";
     character.ai.phase = 0;
+    character.ai.aggro = 0;
   }
   switch (character.ai.state) {
     case "intro": {
@@ -45,7 +49,9 @@ function stateMachine(scene, character, player, bullets, map) {
       break;
     }
     case "wait": {
+      character.ai.aggro = 0;
       character.invulnerable = false;
+      character.setImmovable(false);
       character.setVelocity(0, 0);
       if (character.stepCount > 10 - 3 * character.ai.phase) {
         character.playAnimationForKey("prep-charge");
@@ -85,7 +91,7 @@ function stateMachine(scene, character, player, bullets, map) {
       character.invulnerable = false;
       character.setVelocity(0, 0);
       if (character.stepCount > 10 && Math.round(character.stepCount) % 5 == 0) {
-        const playerAngle = Phaser.Math.Angle.BetweenPoints(character, character.ai.target);
+        const playerAngle = Phaser.Math.Angle.BetweenPoints(character, player);
         character.ai.bullets = FIRE_ANGLES.map(
           (angle) => angle + playerAngle + character.ai.firingAngle
         ).map((angle) => {

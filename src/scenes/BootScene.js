@@ -26,7 +26,7 @@ export default class BootScene extends Phaser.Scene {
     this.load.image("hud", "assets/images/hud.png");
     this.load.image("hud-dash", "assets/images/hud-dash.png");
     this.load.image("speech", "assets/images/speech.png");
-    this.load.image("title-big", "assets/images/title-big.png");
+    this.load.image("title-big", "assets/images/title-plate.png");
 
     // Maps
     this.load.image("tileset", "assets/maps/tileset.png");

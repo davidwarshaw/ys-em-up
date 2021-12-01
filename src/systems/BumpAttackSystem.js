@@ -38,7 +38,12 @@ export default class BumpAttackSystem {
     if (character.knockback.timer) {
       character.knockback.timer.remove();
     }
-    character.knockback.timer = this.scene.time.delayedCall(properties.knockbackMillis, () => {
+    // Ugh again.
+    const knockbackTime =
+      character.characterName === "boss-01"
+        ? 1 * properties.knockbackMillis
+        : properties.knockbackMillis;
+    character.knockback.timer = this.scene.time.delayedCall(knockbackTime, () => {
       character.stateChange("normal");
       character.clearTint();
       // When the knockback is over, start the camera again

@@ -33,12 +33,12 @@ export default class TitleScene extends Phaser.Scene {
 
     this.images = [];
 
-    this.images.push(this.add.image(centerX, centerY, "title-big"));
+    this.images.push(this.add.image(centerX, centerY - 32, "title-big"));
 
     const offsetY = 70;
-    const text = "Press Any Key or Button";
+    const text = "PRESS Z KEY TO START";
     const offsetX = this.font.offsetForText(text);
-    // this.images.push(this.font.render(centerX + offsetX, centerY + offsetY, text));
+    this.images.push(this.font.render(centerX + offsetX, centerY + offsetY, text));
 
     this.inputMultiplexer = new InputMultiplexer(this);
 

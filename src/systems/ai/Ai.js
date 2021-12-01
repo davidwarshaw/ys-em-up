@@ -11,6 +11,10 @@ function inState(character, state) {
 }
 
 function changeState(character, newState) {
+  if (character.ai.state === newState) {
+    console.log(`skipping redundant changeState: ${character.ai.state} -> ${newState}`);
+    return;
+  }
   console.log(`character changeState: ${character.ai.state} -> ${newState}`);
   character.ai.state = newState;
   character.stepCount = 0;

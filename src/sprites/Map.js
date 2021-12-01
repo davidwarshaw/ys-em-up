@@ -98,7 +98,6 @@ export default class Map {
       return character;
     });
     const characters = candidateCharacters.filter((character) => character);
-    console.log(characters);
     return characters;
   }
 
