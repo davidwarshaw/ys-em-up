@@ -100,12 +100,20 @@ export default class MapScene extends Phaser.Scene {
   update(time, delta) {
     this.inputMultiplexer.setPadButtons();
 
-    const { bossDefeated } = this.playState.playerState;
+    const { bossDefeated, seenCredits } = this.playState.playerState;
     const { key, spawn } = this.playState.currentMap;
+    // Go to boss fight
     if (!bossDefeated && key === "map-dungeon-boss-after-killed") {
       this.playState.music.dungeon.stop();
       this.playState.music.boss.play({ loop: true, volume: 0.5 });
       this.changeMap({ toMapKey: "map-dungeon-boss", toX: spawn.x, toY: spawn.y });
+    }
+
+    // Show credits on walk out of dungeon
+    const onCreditsTile =
+      this.player.isOnTile({ x: 9, y: 26 }) || this.player.isOnTile({ x: 10, y: 26 });
+    if (bossDefeated && !seenCredits && key === "map-dungeon-before-exit" && onCreditsTile) {
+      this.showCredits();
     }
 
     this.player.update(delta, this.inputMultiplexer);
@@ -145,6 +153,7 @@ export default class MapScene extends Phaser.Scene {
       healthMax: this.player.healthMax,
       hasItem: this.player.hasItem,
       bossDefeated: this.player.bossDefeated,
+      seenCredits: this.player.seenCredits,
     };
   }
 
@@ -244,5 +253,13 @@ export default class MapScene extends Phaser.Scene {
       this.scene.pause("MapScene", this.playState);
       this.scene.run("SpeechScene", this.playState);
     }
+  }
+
+  showCredits() {
+    this.scene.pause("MapScene", this.playState);
+    this.scene.setVisible(false, "MapScene");
+    this.scene.setVisible(false, "HudScene");
+    this.scene.run("CreditsScene", this.playState);
+    this.player.seenCredits = true;
   }
 }

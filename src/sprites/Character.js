@@ -11,7 +11,12 @@ export default class Character extends Phaser.GameObjects.Container {
     this.add(this.sprite);
     this.setSize(this.sprite.width, this.sprite.height);
 
-    this.bubble = scene.add.sprite(0, 0, "bubble");
+    if (this.sprite.width <= 16) {
+      this.bubble = scene.add.sprite(0, 0, "bubble");
+    } else {
+      this.bubble = scene.add.sprite(0, 0, "bubble-big");
+    }
+
     this.bubble.setVisible(false);
     this.add(this.bubble);
 
@@ -197,7 +202,7 @@ export default class Character extends Phaser.GameObjects.Container {
   }
 
   isOnTile(tile) {
-    const pTile = this.map.worldToTileXY(this.x, this.y);
+    const pTile = this.map.tilemap.worldToTileXY(this.x, this.y);
     return pTile.x === tile.x && pTile.y === tile.y;
   }
 

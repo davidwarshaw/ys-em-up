@@ -84,7 +84,7 @@
   <object id="3" gid="12" x="144" y="16" width="16" height="16">
    <properties>
     <property name="toMapKey" value="map-dungeon-before-exit"/>
-    <property name="toX" type="int" value="16"/>
+    <property name="toX" type="int" value="9"/>
     <property name="toY" type="int" value="35"/>
    </properties>
   </object>
@@ -98,7 +98,7 @@
   <object id="8" gid="12" x="160" y="16" width="16" height="16">
    <properties>
     <property name="toMapKey" value="map-dungeon-before-exit"/>
-    <property name="toX" type="int" value="17"/>
+    <property name="toX" type="int" value="10"/>
     <property name="toY" type="int" value="35"/>
    </properties>
   </object>

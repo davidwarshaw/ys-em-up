@@ -20,6 +20,7 @@ export default class TitleScene extends Phaser.Scene {
         healthMax: 50,
         hasItem: false,
         bossDefeated: false,
+        seenCredits: false,
       },
       currentEnemy: null,
       currentSpeechCharacter: null,
@@ -60,6 +61,10 @@ export default class TitleScene extends Phaser.Scene {
       enemyFly: this.sound.add("enemy-fly"),
       enemyCharge: this.sound.add("enemy-charge"),
       enemyBullet: this.sound.add("enemy-bullet"),
+
+      bossPrepCharge: this.sound.add("boss-prep-charge"),
+      bossCharge: this.sound.add("boss-charge"),
+      bossHitWall: this.sound.add("boss-hit-wall"),
 
       speech: this.sound.add("speech"),
     };

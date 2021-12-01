@@ -41,6 +41,7 @@ export default class Player extends Character {
 
     this.hasItem = playerState.hasItem;
     this.bossDefeated = playerState.bossDefeated;
+    this.seenCredits = playerState.seenCredits;
 
     this.body.collideWorldBounds = true;
 

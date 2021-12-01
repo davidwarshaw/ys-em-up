@@ -68,12 +68,12 @@
                         {
                          "name":"toX",
                          "type":"int",
-                         "value":34
+                         "value":27
                         }, 
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":25
+                         "value":26
                         }],
                  "rotation":0,
                  "type":"",
@@ -96,12 +96,12 @@
                         {
                          "name":"toX",
                          "type":"int",
-                         "value":35
+                         "value":28
                         }, 
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":25
+                         "value":26
                         }],
                  "rotation":0,
                  "type":"",

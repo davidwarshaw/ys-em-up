@@ -81,15 +81,15 @@
   <object id="12" gid="12" x="144" y="16" width="16" height="16">
    <properties>
     <property name="toMapKey" value="map-dungeon-before-exit"/>
-    <property name="toX" type="int" value="34"/>
-    <property name="toY" type="int" value="25"/>
+    <property name="toX" type="int" value="27"/>
+    <property name="toY" type="int" value="26"/>
    </properties>
   </object>
   <object id="13" gid="12" x="160" y="16" width="16" height="16">
    <properties>
     <property name="toMapKey" value="map-dungeon-before-exit"/>
-    <property name="toX" type="int" value="35"/>
-    <property name="toY" type="int" value="25"/>
+    <property name="toX" type="int" value="28"/>
+    <property name="toY" type="int" value="26"/>
    </properties>
   </object>
   <object id="14" gid="12" x="144" y="176" width="16" height="16">

@@ -1,12 +1,17 @@
+import properties from "../../properties";
+
 import Direction from "../../utils/Direction";
-import BumpAttackSystem from "../BumpAttackSystem";
 import Ai from "./Ai";
 
 const TARGET_DELTA = 10;
 const FIRE_ANGLES = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
 
+const SHAKE_FORCE_HIT = 0.01;
+const SHAKE_FORCE_PREP = 0.005;
+
 function collideWithPlayer(player, character, bumpAttackSystem) {
   // console.log("character collide with player");
+  character.scene.cameras.main.shake(properties.fadeMillis, SHAKE_FORCE_HIT);
   character.setVelocity(0, 0);
   character.ai.aggro++;
   if (character.ai.aggro > 3) {
@@ -18,19 +23,19 @@ function collideWithPlayer(player, character, bumpAttackSystem) {
   character.setVelocity(0, 0);
   character.ai.firingAngle = 0;
   character.playAnimationForKey("fire");
+  character.bubble.setVisible(false);
   Ai.changeState(character, "fire-01");
 }
 
 function collideWithMap(character) {
-  // switch (character.ai.state) {
-  //   case "charge": {
+  // console.log("character collide with map");
+  character.scene.cameras.main.shake(properties.fadeMillis, SHAKE_FORCE_HIT);
+  character.scene.playState.sfx.bossHitWall.play();
   character.setVelocity(0, 0);
   character.ai.firingAngle = 0;
   character.playAnimationForKey("fire");
+  character.bubble.setVisible(false);
   Ai.changeState(character, "fire-01");
-  // break;
-  //   }
-  // }
 }
 
 function collideWithCharacter(character, second) {
@@ -57,6 +62,8 @@ function stateMachine(scene, character, player, bullets, map) {
       character.setImmovable(false);
       character.setVelocity(0, 0);
       if (character.stepCount > 10 - 3 * character.ai.phase) {
+        scene.cameras.main.shake(properties.fadeMillis, SHAKE_FORCE_PREP);
+        scene.playState.sfx.bossPrepCharge.play();
         character.playAnimationForKey("prep-charge");
         Ai.changeState(character, "prep-charge");
       }
@@ -67,6 +74,9 @@ function stateMachine(scene, character, player, bullets, map) {
         scene.juice.shake(character, {
           x: 1 + 2 * character.ai.phase,
           onComplete: (tween, target) => {
+            scene.playState.sfx.bossCharge.play();
+            scene.cameras.main.flash(properties.fadeMillis);
+            character.bubble.setVisible(true);
             character.playAnimationForKey("charge");
             Ai.changeState(character, "charge");
             character.ai.animation = false;
@@ -103,21 +113,26 @@ function stateMachine(scene, character, player, bullets, map) {
         });
         character.ai.firingAngle += Math.PI * (0.01 * (1 + character.ai.phase));
       }
-      if (character.stepCount > 20 + 5 * character.ai.phase) {
-        character.stepCount = 0;
-        character.playAnimationForDirection("idle");
-        Ai.changeState(character, "wait");
-      }
       if (character.getHealthAsPercent() < 0.66 && character.ai.phase < 1) {
+        scene.playState.sfx.bossCharge.play();
         character.ai.phase = 1;
         // console.log(`new character phase: ${character.ai.phase}`);
         character.playAnimationForDirection("idle");
+        character.bubble.setVisible(true);
         Ai.changeState(character, "charge-center");
       } else if (character.getHealthAsPercent() < 0.33 && character.ai.phase < 2) {
+        scene.playState.sfx.bossCharge.play();
         character.ai.phase = 2;
         // console.log(`new character phase: ${character.ai.phase}`);
         character.playAnimationForDirection("idle");
+        character.bubble.setVisible(true);
         Ai.changeState(character, "charge-center");
+      }
+      if (character.stepCount > 20 + 5 * character.ai.phase) {
+        character.stepCount = 0;
+        character.playAnimationForDirection("idle");
+        character.bubble.setVisible(false);
+        Ai.changeState(character, "wait");
       }
       break;
     }
@@ -133,6 +148,7 @@ function stateMachine(scene, character, player, bullets, map) {
       }
       if (character.stepCount > 20) {
         character.playAnimationForKey("prep-charge");
+        character.bubble.setVisible(false);
         Ai.changeState(character, "prep-charge");
       }
       break;
@@ -160,6 +176,7 @@ function chargeAndChangeState(character, newState) {
   if (Phaser.Math.Distance.BetweenPoints(character, character.ai.target) < TARGET_DELTA) {
     character.setVelocity(0, 0);
     character.ai.firingAngle = 0;
+    character.bubble.setVisible(false);
     Ai.changeState(character, newState);
   } else {
     const angle = Phaser.Math.Angle.BetweenPoints(character, character.ai.target);

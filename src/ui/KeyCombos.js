@@ -1,6 +1,7 @@
 const CODE_WORDS = [
   "health",
   "item",
+  "killboss",
   "fork",
   "itemroom",
   "grove",
@@ -29,6 +30,10 @@ function setup(scene) {
       }
       case "item": {
         scene.player.hasItem = !scene.player.hasItem;
+        break;
+      }
+      case "killboss": {
+        scene.player.bossDefeated = !scene.player.bossDefeated;
         break;
       }
       case "fork": {

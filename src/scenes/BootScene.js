@@ -36,6 +36,7 @@ export default class BootScene extends Phaser.Scene {
 
     // Sprites
     this.load.image("bubble", "assets/images/bubble.png");
+    this.load.image("bubble-big", "assets/images/bubble-big.png");
     this.load.spritesheet("bosses", "assets/images/bosses-spritesheet.png", {
       frameWidth: 32,
       frameHeight: 32,
@@ -77,6 +78,10 @@ export default class BootScene extends Phaser.Scene {
     this.load.audio("enemy-fly", "assets/audio/sfx_movement_footstepsloop4_fast.wav");
     this.load.audio("enemy-charge", "assets/audio/sfx_sounds_interaction21.wav");
     this.load.audio("enemy-bullet", "assets/audio/sfx_sound_neutral8.wav");
+
+    this.load.audio("boss-prep-charge", "assets/audio/sfx_sound_poweron.wav");
+    this.load.audio("boss-charge", "assets/audio/sfx_sound_shutdown1.wav");
+    this.load.audio("boss-hit-wall", "assets/audio/sfx_sounds_impact11.wav");
 
     this.load.audio("speech", "assets/audio/sfx_sounds_interaction24.wav");
   }
