@@ -15,13 +15,6 @@ export default class AiSystem {
     this.bullets = bullets;
     this.bumpAttackSystem = bumpAttackSystem;
 
-    // const collisionTiles = this.map.getCollisionTileIndices();
-    // console.log(`Creating raycaster with collision Tiles: ${collisionTiles}`);
-    // this.raycaster = this.scene.raycasterPlugin.createRaycaster({ debug: false });
-    // this.raycaster.mapGameObjects(this.player);
-    // this.raycaster.mapGameObjects(this.map.layers.collision, false, { collisionTiles });
-    // this.ray = this.raycaster.createRay();
-
     this.collideWithMap = this.collideWithMap.bind(this);
     this.collideWithCharacter = this.collideWithCharacter.bind(this);
   }

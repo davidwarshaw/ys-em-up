@@ -68,7 +68,7 @@ export default class Player extends Character {
   }
 
   collideWithWorld(playerBody) {
-    console.log(playerBody);
+    // console.log(playerBody);
   }
 
   update(delta, inputMultiplexer) {
@@ -262,11 +262,11 @@ export default class Player extends Character {
 
   stateChange(newState) {
     if (this.state === newState) {
-      console.log(`skipping redundant state change: ${this.state} -> ${newState}`);
+      // console.log(`skipping redundant state change: ${this.state} -> ${newState}`);
       return;
     }
 
-    console.log(`player state change: ${this.state} -> ${newState}`);
+    // console.log(`player state change: ${this.state} -> ${newState}`);
 
     // If we're changing from prep-charge, kill the juice
     if (this.state === "prep-charge") {

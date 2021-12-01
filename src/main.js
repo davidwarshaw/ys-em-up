@@ -1,7 +1,6 @@
 import "phaser";
 
 import phaserJuice from "../../phaser3-juice-plugin/dist/phaserJuicePlugin.min.js";
-import PhaserRaycaster from "phaser-raycaster";
 
 import properties from "./properties";
 
@@ -34,14 +33,7 @@ const config = {
     },
   },
   plugins: {
-    scene: [
-      { key: "phaserJuice", plugin: phaserJuice, mapping: "juice" },
-      {
-        key: "PhaserRaycaster",
-        plugin: PhaserRaycaster,
-        mapping: "raycasterPlugin",
-      },
-    ],
+    scene: [{ key: "phaserJuice", plugin: phaserJuice, mapping: "juice" }],
   },
   scene: [BootScene, TitleScene, HudScene, MapScene, SpeechScene],
 };

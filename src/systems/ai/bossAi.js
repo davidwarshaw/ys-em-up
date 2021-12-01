@@ -6,7 +6,7 @@ const TARGET_DELTA = 10;
 const FIRE_ANGLES = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
 
 function collideWithPlayer(player, character, bumpAttackSystem) {
-  console.log("character collide with player");
+  // console.log("character collide with player");
   character.setVelocity(0, 0);
   character.ai.aggro++;
   if (character.ai.aggro > 3) {
@@ -14,24 +14,27 @@ function collideWithPlayer(player, character, bumpAttackSystem) {
     character.setImmovable(true);
   }
   bumpAttackSystem.resolveCombat(player, character);
-  console.log(`character.ai.aggro: ${character.ai.aggro}`);
+  // console.log(`character.ai.aggro: ${character.ai.aggro}`);
+  character.setVelocity(0, 0);
+  character.ai.firingAngle = 0;
+  character.playAnimationForKey("fire");
   Ai.changeState(character, "fire-01");
 }
 
 function collideWithMap(character) {
-  switch (character.ai.state) {
-    case "charge": {
-      character.setVelocity(0, 0);
-      character.ai.firingAngle = 0;
-      character.playAnimationForKey("fire");
-      Ai.changeState(character, "fire-01");
-      break;
-    }
-  }
+  // switch (character.ai.state) {
+  //   case "charge": {
+  character.setVelocity(0, 0);
+  character.ai.firingAngle = 0;
+  character.playAnimationForKey("fire");
+  Ai.changeState(character, "fire-01");
+  // break;
+  //   }
+  // }
 }
 
 function collideWithCharacter(character, second) {
-  console.log("This should never happen :/");
+  // console.log("This should never happen :/");
 }
 
 function stateMachine(scene, character, player, bullets, map) {
@@ -107,12 +110,12 @@ function stateMachine(scene, character, player, bullets, map) {
       }
       if (character.getHealthAsPercent() < 0.66 && character.ai.phase < 1) {
         character.ai.phase = 1;
-        console.log(`new character phase: ${character.ai.phase}`);
+        // console.log(`new character phase: ${character.ai.phase}`);
         character.playAnimationForDirection("idle");
         Ai.changeState(character, "charge-center");
       } else if (character.getHealthAsPercent() < 0.33 && character.ai.phase < 2) {
         character.ai.phase = 2;
-        console.log(`new character phase: ${character.ai.phase}`);
+        // console.log(`new character phase: ${character.ai.phase}`);
         character.playAnimationForDirection("idle");
         Ai.changeState(character, "charge-center");
       }

@@ -153,7 +153,9 @@ export default class MapScene extends Phaser.Scene {
     // Just in case we change maps in the middle of an update loop
     this.syncPlayerState();
 
-    console.log(`Changing map to: ${portal.toMapKey}`);
+    this.playState.sfx.enemyFly.stop();
+
+    // console.log(`Changing map to: ${portal.toMapKey}`);
     const { toMapKey, toX, toY } = portal;
     this.playState.currentMap = {
       key: toMapKey,
