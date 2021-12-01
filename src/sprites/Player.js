@@ -8,6 +8,8 @@ import Character from "./Character";
 const TARGET_DELTA = 4;
 const CHARGE_TILES = 3;
 
+const CHARGE_VOLUME = 0.5;
+
 export default class Player extends Character {
   constructor(scene, map, worldXY, direction, playerState) {
     super(scene, map, worldXY, "player", Phaser.Physics.Arcade.DYNAMIC_BODY);
@@ -25,7 +27,9 @@ export default class Player extends Character {
     };
     // console.log("Setting justPortaled: true");
     this.justPortaled = true;
+    this.justFellInPit = false;
     this.justHeardSpeech = false;
+    this.acceptInput = true;
 
     this.chargeSpeed = 20;
 
@@ -68,6 +72,9 @@ export default class Player extends Character {
   }
 
   update(delta, inputMultiplexer) {
+    if (!this.acceptInput) {
+      return;
+    }
     if (this.isFlickering) {
       this.flicker(delta);
       return;
@@ -146,6 +153,7 @@ export default class Player extends Character {
     }
 
     if (inputMultiplexer.actionPressed() && this.hasItem) {
+      this.scene.playState.sfx.playerPrepCharge.play({ volume: CHARGE_VOLUME });
       this.scene.stopCameraFollow();
       this.charge.juice = this.scene.juice.shake(this, {
         x: 1,
@@ -204,6 +212,8 @@ export default class Player extends Character {
   }
 
   beginCharge() {
+    this.scene.playState.sfx.playerPrepCharge.stop();
+    this.scene.playState.sfx.playerCharge.play({ volume: CHARGE_VOLUME });
     this.bubble.setVisible(true);
     this.charge.charging = true;
   }
@@ -211,6 +221,43 @@ export default class Player extends Character {
   endCharge() {
     this.bubble.setVisible(false);
     this.charge.charging = false;
+  }
+
+  fallInPit() {
+    this.body.setEnable(false);
+    this.isFlickering = true;
+    this.setVelocity(0, 0);
+    this.direction = "down";
+    this.sprite.flipY = true;
+    this.playAnimationForDirection("idle");
+  }
+
+  resetFromPit(spawnXY) {
+    this.setPosition(
+      spawnXY.x + properties.tileWidth * 0.5,
+      spawnXY.y - properties.tileHeight * 0.5
+    );
+    // We have to set this to prevent automatic map changes
+    this.justPortaled = true;
+    // Undo the flicker effect
+    this.isFlickering = false;
+    this.setVisible(true);
+    this.sprite.flipY = false;
+    this.justFellInPit = false;
+    this.body.setEnable(true);
+  }
+
+  die() {
+    this.body.setEnable(false);
+    this.isFlickering = true;
+    this.setVelocity(0, 0);
+    this.playAnimationForDirection("idle");
+  }
+
+  resetDie() {
+    this.isFlickering = false;
+    this.setVisible(true);
+    this.body.setEnable(true);
   }
 
   stateChange(newState) {

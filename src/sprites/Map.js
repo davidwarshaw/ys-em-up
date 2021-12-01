@@ -80,8 +80,14 @@ export default class Map {
   }
 
   createCharacters(player) {
-    return this.tilemap.getObjectLayer("characters").objects.map((object) => {
+    const candidateCharacters = this.tilemap.getObjectLayer("characters").objects.map((object) => {
       const { x, y, name } = object;
+
+      // Ugh, this sucks. How to do this better?
+      if (name === "item-pickup" && this.scene.player.hasItem) {
+        return null;
+      }
+
       const character = new Character(
         this.scene,
         this,
@@ -91,6 +97,9 @@ export default class Map {
       );
       return character;
     });
+    const characters = candidateCharacters.filter((character) => character);
+    console.log(characters);
+    return characters;
   }
 
   checkPits(player) {

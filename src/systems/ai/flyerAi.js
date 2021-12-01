@@ -39,6 +39,9 @@ function stateMachine(scene, character, player, bullets, map) {
           character.ai.waveDelta = waveDelta;
           character.ai.passedOverMap = false;
           character.playAnimationForKey("swoop");
+          if (!scene.playState.sfx.enemyFly.isPlaying) {
+            scene.playState.sfx.enemyFly.play({ loop: true, rate: 5 });
+          }
           Ai.changeState(character, "swoop");
         }
       }
@@ -60,6 +63,7 @@ function stateMachine(scene, character, player, bullets, map) {
       if (character.ai.passedOverMap && !map.isBackgroundOrHazard(character)) {
         character.stepCount = 0;
         character.playAnimationForDirection("idle");
+        scene.playState.sfx.enemyFly.stop();
         Ai.changeState(character, "wait");
       }
       Ai.directionTowardsPlayer(character, player);

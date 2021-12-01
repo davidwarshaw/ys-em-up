@@ -185,16 +185,16 @@
   </object>
   <object id="30" gid="12" x="320" y="80" width="16" height="16">
    <properties>
-    <property name="toMapKey" value="map-dungeon-boss"/>
-    <property name="toX" type="int" value="9"/>
-    <property name="toY" type="int" value="9"/>
+    <property name="toMapKey" value="map-dungeon-item"/>
+    <property name="toX" type="int" value="4"/>
+    <property name="toY" type="int" value="12"/>
    </properties>
   </object>
   <object id="31" gid="12" x="336" y="80" width="16" height="16">
    <properties>
-    <property name="toMapKey" value="map-dungeon-boss"/>
-    <property name="toX" type="int" value="10"/>
-    <property name="toY" type="int" value="9"/>
+    <property name="toMapKey" value="map-dungeon-item"/>
+    <property name="toX" type="int" value="5"/>
+    <property name="toY" type="int" value="12"/>
    </properties>
   </object>
   <object id="46" gid="12" x="464" y="32" width="16" height="16">

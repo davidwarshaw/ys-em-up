@@ -42,6 +42,7 @@ function stateMachine(scene, character, player, bullets, map, ray) {
       break;
     }
     case "shoot": {
+      scene.playState.sfx.enemyBullet.play();
       const offset = { x: 0, y: -4 };
       character.ai.bullet = bullets.spawnAtTarget(character, player, "standard", offset);
       character.stepCount = 0;

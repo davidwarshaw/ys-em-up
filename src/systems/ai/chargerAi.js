@@ -65,6 +65,7 @@ function stateMachine(scene, character, player) {
     case "charge": {
       character.invulnerable = true;
       if (!character.ai.animation) {
+        scene.playState.sfx.enemyCharge.play();
         character.ai.target = {
           x: player.x,
           y: player.y,

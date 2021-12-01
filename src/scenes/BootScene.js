@@ -60,23 +60,25 @@ export default class BootScene extends Phaser.Scene {
     this.load.audio("dungeon-music", "assets/audio/dungeon-music.mp3");
     this.load.audio("boss-music", "assets/audio/boss-music.mp3");
 
-    this.load.audio("enter", "assets/audio/sfx_menu_select2.wav");
-    this.load.audio("next-level", "assets/audio/sfx_sounds_fanfare2.wav");
-    this.load.audio("game-over", "assets/audio/sfx_sounds_negative2.wav");
     this.load.audio("new-game", "assets/audio/sfx_menu_select2.wav");
 
-    this.load.audio("walk", "assets/audio/sfx_movement_footstepsloop4_fast.wav");
-    this.load.audio("jump", "assets/audio/sfx_movement_jump1.wav");
-
-    this.load.audio("dig", "assets/audio/sfx_wpn_punch1.wav");
-    this.load.audio("fill", "assets/audio/sfx_damage_hit2.wav");
     this.load.audio("hit", "assets/audio/sfx_wpn_punch3.wav");
-    this.load.audio("stone", "assets/audio/sfx_wpn_punch4.wav");
+    this.load.audio("hit-bullet", "assets/audio/sfx_sounds_impact4.wav");
+    this.load.audio("fall-in-pit", "assets/audio/sfx_sounds_falling7.wav");
 
-    this.load.audio("dump", "assets/audio/sfx_movement_dooropen4.wav");
+    this.load.audio("player-prep-charge", "assets/audio/sfx_sound_mechanicalnoise4.wav");
+    this.load.audio("player-charge", "assets/audio/sfx_sound_mechanicalnoise3.wav");
+    this.load.audio("item-pickup", "assets/audio/sfx_sound_depressurizing.wav");
 
-    this.load.audio("pestilence", "assets/audio/sfx_sound_neutral5.wav");
-    this.load.audio("infection", "assets/audio/sfx_sound_neutral8.wav");
+    this.load.audio("player-death", "assets/audio/sfx_sounds_falling10.wav");
+    this.load.audio("enemy-death", "assets/audio/sfx_sound_neutral7.wav");
+    this.load.audio("boss-death", "assets/audio/sfx_sound_mechanicalnoise6.wav");
+
+    this.load.audio("enemy-fly", "assets/audio/sfx_movement_footstepsloop4_fast.wav");
+    this.load.audio("enemy-charge", "assets/audio/sfx_sounds_interaction21.wav");
+    this.load.audio("enemy-bullet", "assets/audio/sfx_sound_neutral8.wav");
+
+    this.load.audio("speech", "assets/audio/sfx_sounds_interaction24.wav");
   }
 
   create() {

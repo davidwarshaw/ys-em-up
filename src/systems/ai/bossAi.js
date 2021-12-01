@@ -9,10 +9,10 @@ function collideWithPlayer(player, character, bumpAttackSystem) {
   console.log("character collide with player");
   character.setVelocity(0, 0);
   bumpAttackSystem.resolveCombat(player, character);
-  if (!Ai.inState(character, "wait")) {
-    character.playAnimationForDirection("idle");
-    Ai.changeState(character, "wait");
-  }
+  // if (!Ai.inState(character, "wait")) {
+  //   character.playAnimationForDirection("idle");
+  //   Ai.changeState(character, "wait");
+  // }
 }
 
 function collideWithMap(character) {
@@ -88,7 +88,10 @@ function stateMachine(scene, character, player, bullets, map) {
         const playerAngle = Phaser.Math.Angle.BetweenPoints(character, character.ai.target);
         character.ai.bullets = FIRE_ANGLES.map(
           (angle) => angle + playerAngle + character.ai.firingAngle
-        ).map((angle) => bullets.spawnAtAngle(character, angle, "standard"));
+        ).map((angle) => {
+          scene.playState.sfx.enemyBullet.play();
+          bullets.spawnAtAngle(character, angle, "standard");
+        });
         character.ai.firingAngle += Math.PI * (0.01 * (1 + character.ai.phase));
       }
       if (character.stepCount > 20 + 5 * character.ai.phase) {
@@ -114,6 +117,7 @@ function stateMachine(scene, character, player, bullets, map) {
       character.setVelocity(0, 0);
       if (character.stepCount > 2) {
         if (Math.round(character.stepCount) % 2 == 0) {
+          scene.playState.sfx.enemyBullet.play();
           bullets.spawnAtAngle(character, character.ai.firingAngle, "standard");
         }
         character.ai.firingAngle += Math.PI * 0.01;

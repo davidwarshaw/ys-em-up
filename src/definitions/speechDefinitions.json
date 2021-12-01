@@ -2,36 +2,39 @@
   "intro-01": {
     "speech": [
       {
-        "text": "Some intro..."
+        "text": "\n\n\nThe bugs come from a forest to the north."
       },
       {
-        "text": "more intro..."
+        "text": "\n\n\nThere's a cave there."
       },
       {
-        "text": "and, the end."
+        "text": "\n\n\nSometimes, at night, there are strange lights."
       }
     ]
   },
   "intro-02": {
     "speech": [
       {
-        "text": "Another intro..."
+        "text": "\n\n\nEvery year the bugs push closer and closer."
       },
       {
-        "text": "more intro..."
+        "text": "\n\n\nSoon they'll be in the village."
       },
       {
-        "text": "and, the end."
+        "text": "\n\n\nThat will be the end for us."
       }
     ]
   },
   "item-pickup": {
     "speech": [
       {
-        "text": "When your glove touches the glowing orb, it dissolves in a bright flash."
+        "text": "\n\n\nWhen the glove of the Lone Explorer touches the glowing orb, the room fills with light."
       },
       {
-        "text": "Press Z or the Controller Button 3 to Orb Dash. When enclosed in the orb, you're invulnerable to melee attacks and can cross gaps."
+        "text": "\n\n\nPress Z to power the Orb."
+      },
+      {
+        "text": "\n\n\nWhen enclosed in the Orb, the Lone Explorer is invulnerable to melee attacks and can float across gaps."
       }
     ]
   }

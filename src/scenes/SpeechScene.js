@@ -22,6 +22,7 @@ export default class SpeechScene extends Phaser.Scene {
 
     this.inputMultiplexer = new InputMultiplexer(this);
 
+    this.playState.sfx.speech.play();
     this.characterSpeech.showNextTexBlock();
   }
 
@@ -30,6 +31,7 @@ export default class SpeechScene extends Phaser.Scene {
 
     if (this.inputMultiplexer.actionPressed() || this.inputMultiplexer.jumpPressed()) {
       if (this.characterSpeech.textBlockIsOver()) {
+        this.playState.sfx.speech.play();
         this.characterSpeech.showNextTexBlock();
       } else {
         this.characterSpeech.showThisTexBlock();

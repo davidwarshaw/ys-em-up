@@ -44,10 +44,24 @@ export default class TitleScene extends Phaser.Scene {
 
     this.playState.sfx = {
       newGame: this.sound.add("new-game"),
+
       hit: this.sound.add("hit"),
-      // engine: this.sound.add("engine"),
-      // stomp: this.sound.add("stomp"),
-      // coin: this.sound.add("coin"),
+      hitBullet: this.sound.add("hit-bullet"),
+      fallInPit: this.sound.add("fall-in-pit"),
+
+      playerPrepCharge: this.sound.add("player-prep-charge"),
+      playerCharge: this.sound.add("player-charge"),
+      itemPickup: this.sound.add("item-pickup"),
+
+      playerDeath: this.sound.add("player-death"),
+      enemyDeath: this.sound.add("enemy-death"),
+      bossDeath: this.sound.add("boss-death"),
+
+      enemyFly: this.sound.add("enemy-fly"),
+      enemyCharge: this.sound.add("enemy-charge"),
+      enemyBullet: this.sound.add("enemy-bullet"),
+
+      speech: this.sound.add("speech"),
     };
 
     this.playState.music = {

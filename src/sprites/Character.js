@@ -159,6 +159,9 @@ export default class Character extends Phaser.GameObjects.Container {
   }
 
   playAnimationForDirection(action) {
+    if (!this.sprite || !this.sprite.anims) {
+      return;
+    }
     this.sprite.flipX = this.direction === "left" ? true : false;
     const animationDirection = this.direction === "left" ? "right" : this.direction;
 
@@ -166,6 +169,9 @@ export default class Character extends Phaser.GameObjects.Container {
   }
 
   playAnimationForKey(key) {
+    if (!this.sprite || !this.sprite.anims) {
+      return;
+    }
     this.sprite.anims.play(`${this.characterName}_${key}`, true);
   }
 

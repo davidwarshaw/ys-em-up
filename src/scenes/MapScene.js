@@ -71,11 +71,28 @@ export default class MapScene extends Phaser.Scene {
 
     if (key.startsWith("map-dungeon") && this.playState.music.overworld.isPlaying) {
       this.playState.music.overworld.stop();
-      this.playState.music.dungeon.play({ loop: true, volume: 0.5 });
+      this.playState.music.dungeon.play({ loop: true, volume: 1.0 });
     } else if (key.startsWith("map-overworld") && this.playState.music.dungeon.isPlaying) {
       this.playState.music.dungeon.stop();
       this.playState.music.overworld.play({ loop: true, volume: 0.5 });
     }
+
+    this.playState.sfx.fallInPit.on(
+      "complete",
+      (sound) => {
+        this.cameras.main.fadeOut(properties.fadeMillis);
+        this.player.resetFromPit(this.spawnXY);
+        this.cameras.main.fadeIn(properties.fadeMillis);
+      },
+      this
+    );
+    this.playState.sfx.playerDeath.on(
+      "complete",
+      (sound) => {
+        this.killPlayer();
+      },
+      this
+    );
 
     this.cameras.main.fadeIn(properties.fadeMillis);
   }
@@ -104,8 +121,9 @@ export default class MapScene extends Phaser.Scene {
     }
 
     const pit = this.map.checkPits(this.player);
-    if (pit && !this.player.charge.charging) {
+    if (pit && !this.player.charge.charging && !this.player.justFellInPit) {
       this.fallInPit();
+      this.player.justFellInPit = true;
     }
 
     this.characters.update(delta, this.aiSystem);
@@ -130,13 +148,8 @@ export default class MapScene extends Phaser.Scene {
     };
   }
 
-  startConfrontation(confrontation) {
-    this.playState.confrontation = confrontation;
-    this.scene.pause("MapScene", this.playState);
-    this.scene.run("ConfrontationScene", this.playState);
-  }
-
-  changeMap(portal) {
+  changeMap(portal, candidateFadeTime) {
+    const fadeTime = candidateFadeTime || properties.fadeMillis;
     // Just in case we change maps in the middle of an update loop
     this.syncPlayerState();
 
@@ -146,74 +159,88 @@ export default class MapScene extends Phaser.Scene {
       key: toMapKey,
       spawn: { x: toX, y: toY, direction: this.player.direction },
     };
-    this.cameras.main.fadeOut(properties.fadeMillis);
+    this.cameras.main.fadeOut(fadeTime);
     this.scene.restart(this.playState);
   }
 
   fallInPit() {
-    this.player.isFlickering = true;
-    this.player.setVelocity(0, 0);
-    this.player.direction = "down";
-    this.player.sprite.flipY = true;
-    this.player.playAnimationForDirection("idle");
-    const flickerTimer = this.time.delayedCall(properties.flickerMillis, () => {
-      this.cameras.main.fadeOut(properties.fadeMillis);
-      this.player.setPosition(
-        this.spawnXY.x + properties.tileWidth * 0.5,
-        this.spawnXY.y - properties.tileHeight * 0.5
-      );
-      // We have to set this
-      this.player.justPortaled = true;
-      this.player.isFlickering = false;
-      this.player.sprite.setVisible(true);
-      this.player.sprite.flipY = false;
-      this.cameras.main.fadeIn(properties.fadeMillis);
-    });
+    this.playState.sfx.fallInPit.play();
+    this.player.fallInPit();
   }
 
   killCharacter(character) {
     if (character.isPlayer()) {
-      this.killPlayer();
+      this.playState.sfx.playerDeath.play();
+      this.player.die();
     } else {
       this.killEnemy(character);
     }
   }
 
   killEnemy(enemy) {
-    console.log("enemy killed");
+    // console.log("enemy killed");
     if (enemy.characterName !== "boss-01") {
+      this.playState.sfx.enemyDeath.play();
       this.characters.killCharacter(enemy);
     } else {
-      this.characters.killCharacter(enemy, () => this.bossDied());
+      this.playState.sfx.bossDeath.on(
+        "complete",
+        (sound) => {
+          this.characters.killCharacter(enemy, () => this.bossDied());
+        },
+        this
+      );
+      this.cameras.main.flash(5 * properties.fadeMillis);
+      this.playState.sfx.bossDeath.play();
+    }
+    if (enemy.characterName === "flyer") {
+      this.playState.sfx.enemyFly.stop();
     }
   }
 
   killPlayer() {
-    console.log("player killed");
-    // this.player.destroy();
+    // console.log("player killed");
     this.playState.currentEnemy = null;
     this.player.refillHealth();
+    this.syncPlayerState();
     this.scene.restart();
   }
 
   bossDied() {
     const tile = this.map.tilemap.worldToTileXY(this.player.x, this.player.y);
     this.player.bossDefeated = true;
-    this.cameras.main.flash(3 * properties.fadeMillis);
     this.playState.music.boss.stop();
     this.playState.music.dungeon.play({ loop: true, volume: 0.5 });
-    this.changeMap({ toMapKey: "map-dungeon-boss-after-killed", toX: tile.x, toY: tile.y });
+    this.changeMap(
+      { toMapKey: "map-dungeon-boss-after-killed", toX: tile.x, toY: tile.y },
+      5 * properties.fadeMillis
+    );
   }
 
   startSpeech(speechId, character) {
     if (character.characterName === "item-pickup") {
-      this.player.hasItem = true;
-      this.characters.killCharacter(character);
-      this.cameras.main.flash(properties.fadeMillis);
+      this.playState.sfx.itemPickup.on(
+        "complete",
+        (sound) => {
+          this.player.acceptInput = true;
+          this.player.hasItem = true;
+          this.characters.killCharacter(character);
+          this.player.stateChange("normal");
+          this.playState.speechId = speechId;
+          this.scene.pause("MapScene", this.playState);
+          this.scene.run("SpeechScene", this.playState);
+        },
+        this
+      );
+      this.player.acceptInput = false;
+      this.player.playAnimationForDirection("idle");
+      this.playState.sfx.itemPickup.play();
+      this.cameras.main.flash(3 * properties.fadeMillis);
+    } else {
+      this.player.stateChange("normal");
+      this.playState.speechId = speechId;
+      this.scene.pause("MapScene", this.playState);
+      this.scene.run("SpeechScene", this.playState);
     }
-    this.player.stateChange("normal");
-    this.playState.speechId = speechId;
-    this.scene.pause("MapScene", this.playState);
-    this.scene.run("SpeechScene", this.playState);
   }
 }

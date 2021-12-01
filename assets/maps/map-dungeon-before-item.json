@@ -335,17 +335,17 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-dungeon-boss"
+                         "value":"map-dungeon-item"
                         }, 
                         {
                          "name":"toX",
                          "type":"int",
-                         "value":9
+                         "value":4
                         }, 
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":9
+                         "value":12
                         }],
                  "rotation":0,
                  "type":"",
@@ -363,17 +363,17 @@
                         {
                          "name":"toMapKey",
                          "type":"string",
-                         "value":"map-dungeon-boss"
+                         "value":"map-dungeon-item"
                         }, 
                         {
                          "name":"toX",
                          "type":"int",
-                         "value":10
+                         "value":5
                         }, 
                         {
                          "name":"toY",
                          "type":"int",
-                         "value":9
+                         "value":12
                         }],
                  "rotation":0,
                  "type":"",

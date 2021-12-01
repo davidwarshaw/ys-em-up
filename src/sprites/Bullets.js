@@ -50,6 +50,7 @@ export default class Bullets {
   }
 
   collideWithPlayer(character, bullet, player) {
+    this.scene.playState.sfx.hitBullet.play();
     this.bumpAttackSystem.resolveBulletImpact(bullet, player);
     this.killBullet(character, bullet);
   }

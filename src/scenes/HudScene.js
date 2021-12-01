@@ -42,10 +42,18 @@ export default class HudScene extends Phaser.Scene {
       .rectangle(frameX, 6 + 4 + 8, 0, barHeight, barColor)
       .setOrigin(0, 0);
 
-    this.add.image(286, 8, "hud-dash").setOrigin(0, 0).setDepth(10);
+    this.hudDash = this.add
+      .image(286, 8, "hud-dash")
+      .setOrigin(0, 0)
+      .setDepth(10)
+      .setVisible(false);
   }
 
   update(time, delta) {
+    if (!this.hudDash.visible && this.playState.playerState.hasItem) {
+      this.hudDash.setVisible(true);
+    }
+
     if (this.playState.playerState) {
       this.playerHealthBar.width = this.playState.playerState.health;
       this.playerHealthBarMax.width = this.playState.playerState.healthMax;
