@@ -62,9 +62,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="3" name="collision" width="20" height="13" visible="0">
+ <layer id="3" name="collision" width="20" height="13">
   <data encoding="csv">
-16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
+16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
 16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
 16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
 16,16,16,16,16,16,16,16,16,0,0,16,16,16,16,16,16,16,16,16,
@@ -81,25 +81,11 @@
  </layer>
  <objectgroup id="4" name="characters"/>
  <objectgroup id="5" name="portals">
-  <object id="3" gid="12" x="144" y="16" width="16" height="16">
-   <properties>
-    <property name="toMapKey" value="map-dungeon-before-exit"/>
-    <property name="toX" type="int" value="9"/>
-    <property name="toY" type="int" value="35"/>
-   </properties>
-  </object>
   <object id="5" gid="12" x="144" y="208" width="16" height="16">
    <properties>
     <property name="toMapKey" value="map-overworld-forest-02"/>
     <property name="toX" type="int" value="4"/>
     <property name="toY" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="8" gid="12" x="160" y="16" width="16" height="16">
-   <properties>
-    <property name="toMapKey" value="map-dungeon-before-exit"/>
-    <property name="toX" type="int" value="10"/>
-    <property name="toY" type="int" value="35"/>
    </properties>
   </object>
   <object id="9" gid="12" x="160" y="208" width="16" height="16">
