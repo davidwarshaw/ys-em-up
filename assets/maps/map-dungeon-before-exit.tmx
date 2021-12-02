@@ -154,14 +154,14 @@
    <properties>
     <property name="toMapKey" value="map-overworld-forest-dungeon-exit"/>
     <property name="toX" type="int" value="9"/>
-    <property name="toY" type="int" value="0"/>
+    <property name="toY" type="int" value="1"/>
    </properties>
   </object>
   <object id="31" gid="12" x="160" y="576" width="16" height="16">
    <properties>
     <property name="toMapKey" value="map-overworld-forest-dungeon-exit"/>
     <property name="toX" type="int" value="10"/>
-    <property name="toY" type="int" value="0"/>
+    <property name="toY" type="int" value="1"/>
    </properties>
   </object>
   <object id="75" gid="12" x="448" y="432" width="16" height="16">

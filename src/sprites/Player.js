@@ -246,6 +246,7 @@ export default class Player extends Character {
     this.sprite.flipY = false;
     this.justFellInPit = false;
     this.body.setEnable(true);
+    this.state = "normal";
   }
 
   die() {

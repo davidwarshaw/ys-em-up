@@ -213,6 +213,7 @@ export default class MapScene extends Phaser.Scene {
     // console.log("player killed");
     this.playState.currentEnemy = null;
     this.player.refillHealth();
+    this.player.state = "normal";
     this.syncPlayerState();
     this.scene.restart();
   }
