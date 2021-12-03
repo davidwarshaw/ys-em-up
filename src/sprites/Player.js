@@ -57,7 +57,7 @@ export default class Player extends Character {
       null,
       this
     );
-    this.scene.physics.world.on("worldbounds", this.collideWithWorld);
+    // this.scene.physics.world.on("worldbounds", this.collideWithWorld);
   }
 
   collideWithMap(player, tile) {

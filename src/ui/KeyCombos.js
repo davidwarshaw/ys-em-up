@@ -84,6 +84,12 @@ function setup(scene) {
     }
   });
 }
+
+function teardown(scene) {
+  scene.input.keyboard.off("keycombomatch");
+}
+
 export default {
   setup,
+  teardown,
 };

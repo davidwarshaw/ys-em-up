@@ -94,6 +94,8 @@ export default class MapScene extends Phaser.Scene {
       this
     );
 
+    console.log(`this.playState.currentMap.Key: ${this.playState.currentMap.key}`);
+
     this.cameras.main.fadeIn(properties.fadeMillis);
   }
 
@@ -171,6 +173,7 @@ export default class MapScene extends Phaser.Scene {
       spawn: { x: toX, y: toY, direction: this.player.direction },
     };
     this.cameras.main.fadeOut(fadeTime);
+    this.removeListeners();
     this.scene.restart(this.playState);
   }
 
@@ -215,7 +218,8 @@ export default class MapScene extends Phaser.Scene {
     this.player.refillHealth();
     this.player.state = "normal";
     this.syncPlayerState();
-    this.scene.restart();
+    this.removeListeners();
+    this.scene.restart(this.playState);
   }
 
   bossDied() {
@@ -262,5 +266,13 @@ export default class MapScene extends Phaser.Scene {
     this.scene.setVisible(false, "HudScene");
     this.scene.run("CreditsScene", this.playState);
     this.player.seenCredits = true;
+  }
+
+  removeListeners() {
+    this.playState.sfx.fallInPit.off("complete");
+    this.playState.sfx.playerDeath.off("complete");
+    this.playState.sfx.bossDeath.off("complete");
+    this.playState.sfx.itemPickup.off("complete");
+    KeyCombos.teardown(this);
   }
 }
